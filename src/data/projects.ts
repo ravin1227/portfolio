@@ -1,24 +1,31 @@
+// Types
+export type ProjectColor = 'pink' | 'blue' | 'teal' | 'purple' | 'emerald';
+
+export interface ProjectImage {
+  readonly src: string;
+  readonly height: number;
+  readonly width: number;
+  readonly blurDataURL: string;
+}
+
+export interface TechStackItem {
+  readonly name: string;
+  readonly icon: string;
+}
+
 export interface Project {
-  id: number;
-  title: string;
-  shortDes: string;
-  des: string;
-  desc: string;
-  bulletPoints: string[];
-  img: {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL: string;
-  };
-  color: 'pink' | 'blue' | 'teal' | 'purple' | 'emerald';
-  bulletPointsColor: string;
-  techStack: {
-    name: string;
-    icon: string;
-  }[];
-  liveLink: string;
-  githubLink?: string;
+  readonly id: number;
+  readonly title: string;
+  readonly shortDes: string;
+  readonly des: string;
+  readonly desc: string;
+  readonly bulletPoints: readonly string[];
+  readonly img: ProjectImage;
+  readonly color: ProjectColor;
+  readonly bulletPointsColor: string;
+  readonly techStack: readonly TechStackItem[];
+  readonly liveLink: string;
+  readonly githubLink?: string;
 }
 
 export const projects: Project[] = [
@@ -27,7 +34,7 @@ export const projects: Project[] = [
     title: "Next Ventures",
     shortDes: "A online space for entrepreneurs to pitch ideas, explore others, and gain exposure with clean design.",
     des: "NextVentures leverages the latest Next.js 15 capabilities, including background processing using After, faster development via Server Component HMR Cache, and Partial Prerendering for optimal performance. Its clean design creates an ideal space for entrepreneurs to share and explore innovative ideas.",
-    desc: "A platform designed for early-stage entrepreneurs to pitch, browse, and engage with startup ideas. It's built to impress both users and investors with blazing speed, compelling visuals, and a modern tech stack.",
+    desc: "A platform designed for early-stage entrepreneurs to pitch, browse, and engage with startup ideas. Built to impress both users and investors with blazing speed, compelling visuals, and a modern tech stack.",
     bulletPoints: [
       "Leveraged Partial Prerendering and After for faster loading.",
       "Simplified idea submission with a clean, intuitive design.",
@@ -61,7 +68,7 @@ export const projects: Project[] = [
     title: "Zenith Minds",
     shortDes: "A platform connecting students and instructors for enhanced learning experiences.",
     des: "ZenithMinds is an innovative educational platform designed to enhance learning for students and instructors. It provides an interactive and accessible environment where students can explore resources and instructors can share their expertise, fostering a global community of collaboration and continuous learning.",
-    desc: "Developed ZenithMinds, an educational platform connecting students and instructors, fostering global collaboration and continuous learning.",
+    desc: "An educational platform connecting students and instructors, fostering global collaboration and continuous learning.",
     bulletPoints: [
       "Built with Next.js, React, and TypeScript for scalability.",
       "Styled using Tailwind CSS with animations by Motion.dev.",
@@ -99,7 +106,7 @@ export const projects: Project[] = [
     title: "Snippix",
     shortDes: "A platform for creating and sharing code snippets with a clean and intuitive design.",
     des: "Snippix is a platform for creating and sharing code snippets with a clean and intuitive design. It allows you to create, share, and discover code snippets with ease.",
-    desc: "A platform for creating and sharing code snippets with a clean and intuitive design. It allows you to create, share, and discover code snippets with ease.",
+    desc: "A platform for creating and sharing code snippets with a clean and intuitive design that allows users to create, share, and discover code snippets with ease.",
     bulletPoints: [
       "Choose from over 10+ code editor themes (light and dark) and 12+ handpicked monospace fonts.",
       "Automatic syntax highlighting powered by Highlight.js for all major programming languages",
@@ -199,7 +206,7 @@ export const projects: Project[] = [
     title: "FLux Lura",
     shortDes: "Effortlessly convert images, audio, and videos with a seamless and free multimedia tool!",
     des: "Unlock your creativity with FluxLura – the ultimate online tool for seamless and free multimedia conversion. Effortlessly transform images, audio, and videos without limits. Start converting today and elevate your content to new heights!",
-    desc: "a free online tool for seamless multimedia conversion. Effortlessly transform images, audio, and videos with ease and elevate your content instantly!",
+    desc: "A free online tool for seamless multimedia conversion. Effortlessly transform images, audio, and videos with ease and elevate your content instantly!",
     bulletPoints: [
       "Developed a multimedia converter using Next.js and TypeScript.",
       "Styled with Tailwind CSS and enhanced with Motion.dev for smooth animations.",
@@ -234,7 +241,7 @@ export const getProjectById = (id: number): Project | undefined => {
   return projects.find(project => project.id === id);
 };
 
-export const getProjectsByColor = (color: Project['color']): Project[] => {
+export const getProjectsByColor = (color: ProjectColor): Project[] => {
   return projects.filter(project => project.color === color);
 };
 
@@ -242,22 +249,30 @@ export const getProjectsWithGithub = (): Project[] => {
   return projects.filter(project => project.githubLink);
 };
 
-export const getProjectGradients = () => {
+export const getAllProjectColors = (): ProjectColor[] => {
+  return ['pink', 'blue', 'teal', 'purple', 'emerald'] as const;
+};
+
+export const getProjectCount = (): number => {
+  return projects.length;
+};
+
+export const getProjectGradients = (): Record<ProjectColor, string> => {
   return {
     pink: "linear-gradient(188.62deg, #6B0D33 49.9%, #DB2777 81.7%, #F9D793 113.5%)",
     blue: "linear-gradient(188.62deg, #070E57 49.9%, #2932CB 81.7%, #7980FF 93.88%, #F9D793 113.5%)",
     teal: "linear-gradient(188.62deg, #134E4A 49.9%, #14B8A6 81.7%, #5EEAD4 93.88%, #F9D793 113.5%)",
     purple: "linear-gradient(188.62deg, #581C87 49.9%, #7C3AED 81.7%, #A855F7 93.88%, #F9D793 113.5%)",
     emerald: "linear-gradient(188.62deg, #064E3B 49.9%, #10B981 81.7%, #34D399 93.88%, #F9D793 113.5%)"
-  };
+  } as const;
 };
 
-export const getProjectShadows = () => {
+export const getProjectShadows = (): Record<ProjectColor, string> => {
   return {
     pink: "shadow-[0_0_30px_#DB2777]",
     blue: "shadow-[0_0_30px_#2932CB]",
     teal: "shadow-[0_0_30px_#14B8A6]",
     purple: "shadow-[0_0_30px_#7C3AED]",
     emerald: "shadow-[0_0_30px_#10B981]"
-  };
+  } as const;
 };

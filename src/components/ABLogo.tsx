@@ -1,9 +1,16 @@
+import { memo } from 'react';
+
 interface ABLogoProps {
-  className?: string;
-  size?: number;
+  readonly className?: string;
+  readonly size?: number;
+  readonly 'aria-label'?: string;
 }
 
-export default function ABLogo({ className = "", size = 35 }: ABLogoProps) {
+const ABLogo = memo(function ABLogo({
+  className = '',
+  size = 35,
+  'aria-label': ariaLabel = 'AB Logo'
+}: ABLogoProps) {
   return (
     <svg
       className={className}
@@ -11,6 +18,8 @@ export default function ABLogo({ className = "", size = 35 }: ABLogoProps) {
       height={size}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 5350 5350"
+      role="img"
+      aria-label={ariaLabel}
     >
       <path
         className="fill-black dark:fill-white"
@@ -22,4 +31,6 @@ export default function ABLogo({ className = "", size = 35 }: ABLogoProps) {
       />
     </svg>
   );
-}
+});
+
+export default ABLogo;

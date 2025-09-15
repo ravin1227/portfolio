@@ -4,90 +4,94 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import ABLogo from './ABLogo';
 import CommandIcon from './CommandIcon';
 import { useUIStore, useNavigationStore } from '@/store/useStore';
 
-const Navbar = () => {
+// Constants
+const NAV_ITEMS = [
+  { name: 'Home', href: '/', page: 'home' },
+  { name: 'About', href: '/about', page: 'about' },
+  { name: 'Work', href: '/work', page: 'work' },
+  { name: 'Blog', href: '/blog', page: 'blog' },
+] as const;
+
+const NOTCH_ITEMS = ['Home', 'About', 'Work', 'Blog', 'More'] as const;
+
+const MORE_PAGES = ['/guestbook', '/bucket-list', '/uses', '/attribution', '/links'] as const;
+
+const SPECIFICS_ITEMS = [
+  { name: 'Guest Book', href: '/guestbook', description: 'Let me know you were here' },
+  { name: 'Bucket List', href: '/bucket-list', description: 'Things to do at least once in my life' },
+  { name: 'Uses', href: '/uses', description: 'A peek into my digital...' },
+  { name: 'Attribution', href: '/attribution', description: 'Journey to create this site' },
+] as const;
+
+const MORE_ITEMS = [
+  { name: 'Links', href: '/links', description: 'Schedule a meeting' },
+  { name: 'Uses', href: '/uses', description: 'All my links are here' },
+  { name: 'Attribution', href: '/attribution', description: 'Subscribe to updates' },
+] as const;
+
+const PATH_TO_PAGE_MAP = {
+  '/': 'home',
+  '/about': 'about',
+  '/work': 'work',
+  '/blog': 'blog',
+} as const;
+
+// Types
+type TabType = 'quick-connect' | 'fill-form';
+type PageType = 'home' | 'about' | 'work' | 'blog' | 'more';
+
+interface NavItem {
+  readonly name: string;
+  readonly href: string;
+  readonly page: string;
+}
+
+interface DropdownItem {
+  readonly name: string;
+  readonly href: string;
+  readonly description: string;
+}
+
+const Navbar = memo(function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { currentPage, setCurrentPage, isBookCallDrawerOpen, setIsBookCallDrawerOpen } = useUIStore();
   const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useNavigationStore();
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
   const [isCommandModalOpen, setIsCommandModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('quick-connect');
+  const [activeTab, setActiveTab] = useState<TabType>('quick-connect');
 
-  const navItems = [
-    { name: 'Home', href: '/', page: 'home' },
-    { name: 'About', href: '/about', page: 'about' },
-    { name: 'Work', href: '/work', page: 'work' },
-    { name: 'Blog', href: '/blog', page: 'blog' },
-  ];
-
-  // Whitelist of items that should show the notch when active
-  const notchItems = ['Home', 'About', 'Work', 'Blog', 'More'];
-
-  // More dropdown items - Specifics section
-  const specificsItems = [
-    { name: 'Guest Book', href: '/guestbook', description: 'Let me know you were here' },
-    { name: 'Bucket List', href: '/bucket-list', description: 'Things to do at least once in my life' },
-    { name: 'Uses', href: '/uses', description: 'A peek into my digital...' },
-    { name: 'Attribution', href: '/attribution', description: 'Journey to create this site' },
-  ];
-
-  // More dropdown items - More section
-  const moreItems = [
-    { name: 'Links', href: '/links', description: 'Schedule a meeting' },
-    { name: 'Uses', href: '/uses', description: 'All my links are here' },
-    { name: 'Attribution', href: '/attribution', description: 'Subscribe to updates' },
-  ];
 
   // Update current page based on pathname
   useEffect(() => {
-    const pathToPage: { [key: string]: string } = {
-      '/': 'home',
-      '/about': 'about',
-      '/work': 'work',
-      '/blog': 'blog',
-    };
-    
-    // Special case for blog details page
-    let page = pathToPage[pathname] || 'home';
+    let page = PATH_TO_PAGE_MAP[pathname as keyof typeof PATH_TO_PAGE_MAP] || 'home';
     if (pathname.startsWith('/blog-details')) {
       page = 'blog';
     }
-    
     setCurrentPage(page);
-  }, [pathname, setCurrentPage, currentPage]);
+  }, [pathname, setCurrentPage]);
 
-  const isActive = (page: string) => {
-    // Simple pathname-based detection
-    const pathToPage: { [key: string]: string } = {
-      '/': 'home',
-      '/about': 'about',
-      '/work': 'work',
-      '/blog': 'blog',
-    };
-    
-    // Special case for blog details page
+  const isActive = useCallback((page: string): boolean => {
     if (pathname.startsWith('/blog-details')) {
       return page === 'blog';
     }
-    
-    // Special case for more items pages
-    const morePages = ['/guestbook', '/bucket-list', '/uses', '/attribution', '/links'];
-    if (morePages.includes(pathname)) {
+
+    if (MORE_PAGES.includes(pathname as any)) {
       return page === 'more';
     }
-    
-    const currentPageFromPath = pathToPage[pathname] || 'home';
-    return currentPageFromPath === page;
-  };
 
-  const shouldShowNotch = (itemName: string, isItemActive: boolean) => {
-    return isItemActive && notchItems.includes(itemName);
-  };
+    const currentPageFromPath = PATH_TO_PAGE_MAP[pathname as keyof typeof PATH_TO_PAGE_MAP] || 'home';
+    return currentPageFromPath === page;
+  }, [pathname]);
+
+  const shouldShowNotch = useCallback((itemName: string, isItemActive: boolean): boolean => {
+    return isItemActive && NOTCH_ITEMS.includes(itemName as any);
+  }, []);
 
   // Close dropdown when clicking outside or moving mouse away
   useEffect(() => {
@@ -179,7 +183,7 @@ const Navbar = () => {
       {/* Center - Desktop Navigation */}
       <div className="justify-center absolute top-1/2 left-1/2 hidden w-fit -translate-x-1/2 -translate-y-1/2 rounded-full backdrop-blur-md md:flex" data-dropdown>
         <ul className="relative hidden items-center space-x-1 rounded-full border border-white/10 bg-white/10 px-1.5 py-1 backdrop-blur-md md:flex">
-          {navItems.map((item, index) => {
+          {NAV_ITEMS.map((item) => {
             const active = isActive(item.page) || (item.name === 'Home' && pathname === '/');
             const showNotch = shouldShowNotch(item.name, active);
             
@@ -313,7 +317,7 @@ const Navbar = () => {
                   <div className="flex flex-col h-full">
                     <div className="bg-black h-full flex flex-col">
                       <div className="flex flex-col h-full gap-2">
-                        {moreItems.map((item) => (
+                        {MORE_ITEMS.map((item) => (
                           <button
                             key={item.name}
                             className="flex items-center gap-3 p-2 rounded-lg bg-black border border-white/30 hover:bg-gray-900 transition-all duration-200 group flex-1"
@@ -434,7 +438,7 @@ const Navbar = () => {
           >
             <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4">
               <div className="space-y-2">
-                {navItems.map((item) => {
+                {NAV_ITEMS.map((item) => {
                   const active = isActive(item.page);
                   
                   return (
@@ -471,7 +475,7 @@ const Navbar = () => {
                       <div>
                         <h4 className="text-white font-medium text-sm mb-2">Specifics</h4>
                         <div className="space-y-1">
-                          {specificsItems.map((item) => (
+                          {SPECIFICS_ITEMS.map((item) => (
                             <Link
                               key={item.name}
                               href={item.href}
@@ -488,7 +492,7 @@ const Navbar = () => {
                       <div>
                         <h4 className="text-white font-medium text-sm mb-2">More</h4>
                         <div className="space-y-1">
-                          {moreItems.map((item) => (
+                          {MORE_ITEMS.map((item) => (
                             <Link
                               key={item.name}
                               href={item.href}
@@ -572,7 +576,7 @@ const Navbar = () => {
                       Navigation
                     </div>
                     <div className="space-y-1">
-                      {navItems.map((item) => {
+                      {NAV_ITEMS.map((item) => {
                         const isActive = pathname === item.href || (item.name === 'Home' && pathname === '/');
                         return (
                           <button
@@ -622,34 +626,27 @@ const Navbar = () => {
                       More
                     </div>
                     <div className="space-y-1">
-                      {moreItems.map((item) => (
+                      {MORE_ITEMS.map((item) => (
                         <button
                           key={item.name}
                           className="w-full flex items-center gap-3 px-3 py-2 text-left text-white hover:bg-white/10 rounded-lg transition-colors h-[50px]"
                           onClick={() => {
                             setIsCommandModalOpen(false);
-                            if (item.name === 'Book a call') {
-                              setIsBookCallDrawerOpen(true);
-                            } else if (item.name === 'Links') {
-                              router.push('/links');
-                            } else if (item.name === 'RSS') {
-                              // Handle RSS feed
-                              window.open('/rss.xml', '_blank');
-                            }
+                            router.push(item.href);
                           }}
                         >
                           <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
-                            {item.name === 'Book a call' && (
-                              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                              </svg>
-                            )}
                             {item.name === 'Links' && (
                               <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
                               </svg>
                             )}
-                            {item.name === 'RSS' && (
+                            {item.name === 'Uses' && (
+                              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+                              </svg>
+                            )}
+                            {item.name === 'Attribution' && (
                               <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                               </svg>
@@ -986,6 +983,6 @@ const Navbar = () => {
       </AnimatePresence>
     </nav>
   );
-};
+});
 
 export default Navbar;

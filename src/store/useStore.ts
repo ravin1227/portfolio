@@ -1,35 +1,40 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+// Constants
+const DEFAULT_PAGE = 'home' as const;
+const DEFAULT_CATEGORY = 'All' as const;
+const THEME_STORAGE_KEY = 'theme-storage' as const;
+
 // Types
 export interface ThemeState {
-  isDark: boolean;
+  readonly isDark: boolean;
   toggleTheme: () => void;
   setTheme: (isDark: boolean) => void;
 }
 
 export interface NavigationState {
-  isMobileMenuOpen: boolean;
+  readonly isMobileMenuOpen: boolean;
   toggleMobileMenu: () => void;
   closeMobileMenu: () => void;
   openMobileMenu: () => void;
 }
 
 export interface UIState {
-  isLoading: boolean;
+  readonly isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
-  currentPage: string;
+  readonly currentPage: string;
   setCurrentPage: (page: string) => void;
-  scrollPosition: number;
+  readonly scrollPosition: number;
   setScrollPosition: (position: number) => void;
-  isBookCallDrawerOpen: boolean;
+  readonly isBookCallDrawerOpen: boolean;
   setIsBookCallDrawerOpen: (open: boolean) => void;
 }
 
 export interface ProjectFilterState {
-  selectedCategory: string;
+  readonly selectedCategory: string;
   setSelectedCategory: (category: string) => void;
-  searchQuery: string;
+  readonly searchQuery: string;
   setSearchQuery: (query: string) => void;
 }
 
@@ -42,7 +47,7 @@ export const useThemeStore = create<ThemeState>()(
       setTheme: (isDark: boolean) => set({ isDark }),
     }),
     {
-      name: 'theme-storage',
+      name: THEME_STORAGE_KEY,
     }
   )
 );
@@ -59,7 +64,7 @@ export const useNavigationStore = create<NavigationState>((set) => ({
 export const useUIStore = create<UIState>((set) => ({
   isLoading: false,
   setIsLoading: (loading: boolean) => set({ isLoading: loading }),
-  currentPage: 'home',
+  currentPage: DEFAULT_PAGE,
   setCurrentPage: (page: string) => set({ currentPage: page }),
   scrollPosition: 0,
   setScrollPosition: (position: number) => set({ scrollPosition: position }),
@@ -69,16 +74,16 @@ export const useUIStore = create<UIState>((set) => ({
 
 // Project Filter Store
 export const useProjectFilterStore = create<ProjectFilterState>((set) => ({
-  selectedCategory: 'All',
+  selectedCategory: DEFAULT_CATEGORY,
   setSelectedCategory: (category: string) => set({ selectedCategory: category }),
   searchQuery: '',
   setSearchQuery: (query: string) => set({ searchQuery: query }),
 }));
 
-// Combined Store (for components that need multiple stores)
+// Combined Store Hook (for components that need multiple stores)
 export const useAppStore = () => ({
   theme: useThemeStore(),
   navigation: useNavigationStore(),
   ui: useUIStore(),
   projectFilter: useProjectFilterStore(),
-});
+} as const);
