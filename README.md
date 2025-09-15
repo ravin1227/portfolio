@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dev Portfolio
+
+A modern, responsive developer portfolio built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
+
+## Features
+
+- 🚀 **Next.js 14** with App Router
+- 💎 **TypeScript** for type safety
+- 🎨 **Tailwind CSS** for styling
+- ✨ **Framer Motion** for smooth animations
+- 🎯 **Lucide React** for beautiful icons
+- 📱 **Responsive Design** for all devices
+- 🔤 **Google Fonts** (Instrument Sans & Outfit)
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── about/
+│   │   └── page.tsx          # About page
+│   ├── work/
+│   │   └── page.tsx          # Work/Projects page
+│   ├── globals.css           # Global styles
+│   ├── layout.tsx            # Root layout with navbar and footer
+│   └── page.tsx              # Home page
+├── components/
+│   ├── Footer.tsx            # Footer component
+│   └── Navbar.tsx            # Navigation component
+```
+
+## Pages
+
+- **Home** (`/`) - Hero section with introduction and features
+- **About** (`/about`) - Personal information, skills, and experience
+- **Work** (`/work`) - Portfolio projects and case studies
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Fonts
+The project uses two Google Fonts:
+- **Instrument Sans** - Primary font for body text
+- **Outfit** - Secondary font for headings
 
-## Learn More
+### Colors
+The color scheme is defined in Tailwind CSS with:
+- Primary: Blue (`blue-600`)
+- Secondary: Purple (`purple-600`)
+- Background: Light gray (`gray-50`)
 
-To learn more about Next.js, take a look at the following resources:
+### Components
+- **Navbar**: Responsive navigation with mobile menu
+- **Footer**: Social links and quick navigation
+- **Layout**: Dynamic layout system with navbar, main content, and footer
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Fonts**: Google Fonts (Instrument Sans, Outfit)
 
-## Deploy on Vercel
+## Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Linting**: ESLint with Next.js config
+- **Type Checking**: TypeScript
+- **Styling**: Tailwind CSS with custom configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+This project can be deployed on:
+- Vercel (recommended)
+- Netlify
+- Any platform that supports Next.js
+
+## License
+
+MIT License - feel free to use this template for your own portfolio!

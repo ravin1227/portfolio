@@ -1,26 +1,951 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: var(--font-instrument-sans);
+  --font-mono: var(--font-outfit);
+  --muted-foreground: 0 0% 45.1%;
+  --primary: 0 0% 9%;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-instrument-sans);
+  --font-mono: var(--font-outfit);
+  --muted-foreground: 0 0% 45.1%;
+  --primary: 0 0% 9%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-instrument-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Custom scrollbar styles - Always visible */
+.scrollbar-thin {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.6) rgba(255, 255, 255, 0.2) !important;
+  overflow-y: scroll !important;
+}
+
+/* About page specific styles */
+.text-colorfull {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.font-nyght {
+  font-family: 'Nyght', serif;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.rotate-y-45 {
+  transform: rotateY(45deg);
+}
+
+.-rotate-y-45 {
+  transform: rotateY(-45deg);
+}
+
+.scale-75 {
+  transform: scale(0.75);
+}
+
+.scale-100 {
+  transform: scale(1);
+}
+
+/* Muted foreground color */
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+/* White color variants */
+.bg-white-1 {
+  background-color: hsl(0 0% 100%);
+}
+
+.bg-white-2 {
+  background-color: hsl(0 0% 98%);
+}
+
+.border-white-3 {
+  border-color: hsl(0 0% 96%);
+}
+
+/* Primary color */
+.bg-primary {
+  background-color: hsl(var(--primary));
+}
+
+.border-bg-primary {
+  border-color: hsl(var(--primary));
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  display: block !important;
+  visibility: visible !important;
+  min-height: 20px !important;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:active {
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Force scrollbar to always be visible */
+.scrollbar-thin::-webkit-scrollbar-corner {
+  background: rgba(255, 255, 255, 0.2) !important;
+  visibility: visible !important;
+}
+
+/* Custom background colors */
+.bg-white-2 {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Spin animation for the sticker */
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Gradient animation for blog title */
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+/* Halftone effect for blog images */
+.halftone {
+  background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.4) 2px, transparent 0);
+  background-size: 12px 12px;
+  mix-blend-mode: multiply;
+}
+
+/* Gradient text animation for bucket list */
+.text-colorfull {
+  background: linear-gradient(45deg, #8b5cf6, #ec4899, #f59e0b, #10b981, #3b82f6);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Font family for bucket list title */
+.font-nyght {
+  font-family: 'Nyght', serif;
+}
+
+/* Sticker animation keyframes */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+
+@keyframes rotateText {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Immediate blur effect for sticker */
+.sticker-blur {
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  transition: none !important;
+}
+
+.eye-blur {
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  transition: none !important;
+}
+
+/* Instant blur for immediate application */
+.instant-blur {
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Removed magic wand styles to prevent conflicts with Globe component */
+
+/* Marquee Animation for Ribbon Banner */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 30s) linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration, 40s) linear infinite;
+}
+
+/* Testimonial Horizontal Scroll Animation */
+@keyframes testimonial-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-testimonial-rotate {
+  animation: testimonial-scroll 30s linear infinite;
+}
+
+/* Line clamp utilities */
+.line-clamp-7 {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-10 {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Globe Component Styles - Ensure proper rendering */
+canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Ensure Three.js Canvas doesn't have conflicting styles */
+.three-canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none !important;
+  border: none !important;
+}
+
+/* Removed image magic effect styles to prevent conflicts with Globe component */
+
+/* Hero Section Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Gradient text styles */
+.grad-white {
+  background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Backdrop blur utilities */
+.backdrop-blur-xs {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Custom text utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Custom spacing utilities */
+.w-4xl {
+  width: 56rem;
+}
+
+/* Shooting star animations */
+@keyframes shooting-star {
+  0% {
+    transform: translateX(-100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-reverse {
+  0% {
+    transform: translateX(100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) translateY(-50px);
+    opacity: 0;
+  }
+}
+
+.animate-shooting-star {
+  animation: shooting-star 3s linear infinite;
+}
+
+.animate-shooting-star-reverse {
+  animation: shooting-star-reverse 3s linear infinite;
+}
+
+/* Shooting stars with specific angles */
+@keyframes shooting-star-30deg {
+  0% {
+    transform: translateX(-100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-45deg {
+  0% {
+    transform: translateX(-100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-45px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-60deg {
+  0% {
+    transform: translateX(-100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-60px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-random1 {
+  0% {
+    transform: translateX(-100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-25px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-random2 {
+  0% {
+    transform: translateX(-100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-35px);
+    opacity: 0;
+  }
+}
+
+/* Reverse shooting stars with angles */
+@keyframes shooting-star-reverse-30deg {
+  0% {
+    transform: translateX(100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-reverse-45deg {
+  0% {
+    transform: translateX(100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) translateY(-45px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-reverse-random1 {
+  0% {
+    transform: translateX(100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-reverse-random2 {
+  0% {
+    transform: translateX(100px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) translateY(-40px);
+    opacity: 0;
+  }
+}
+
+.animate-shooting-star-30deg {
+  animation: shooting-star-30deg 3s linear infinite;
+}
+
+.animate-shooting-star-45deg {
+  animation: shooting-star-45deg 3s linear infinite;
+}
+
+.animate-shooting-star-60deg {
+  animation: shooting-star-60deg 3s linear infinite;
+}
+
+.animate-shooting-star-random1 {
+  animation: shooting-star-random1 3s linear infinite;
+}
+
+.animate-shooting-star-random2 {
+  animation: shooting-star-random2 3s linear infinite;
+}
+
+.animate-shooting-star-reverse-30deg {
+  animation: shooting-star-reverse-30deg 3s linear infinite;
+}
+
+.animate-shooting-star-reverse-45deg {
+  animation: shooting-star-reverse-45deg 3s linear infinite;
+}
+
+.animate-shooting-star-reverse-random1 {
+  animation: shooting-star-reverse-random1 3s linear infinite;
+}
+
+.animate-shooting-star-reverse-random2 {
+  animation: shooting-star-reverse-random2 3s linear infinite;
+}
+
+/* Vertical shooting stars - top to bottom with tilted angles */
+@keyframes vertical-shooting-star-30deg {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-45deg {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(45px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-60deg {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(60px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-random1 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(25px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-random2 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(35px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-random3 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-random4 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-random5 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(15px);
+    opacity: 0;
+  }
+}
+
+.animate-vertical-shooting-star-30deg {
+  animation: vertical-shooting-star-30deg 3s linear infinite;
+}
+
+.animate-vertical-shooting-star-45deg {
+  animation: vertical-shooting-star-45deg 3s linear infinite;
+}
+
+.animate-vertical-shooting-star-60deg {
+  animation: vertical-shooting-star-60deg 3s linear infinite;
+}
+
+.animate-vertical-shooting-star-random1 {
+  animation: vertical-shooting-star-random1 3s linear infinite;
+}
+
+.animate-vertical-shooting-star-random2 {
+  animation: vertical-shooting-star-random2 3s linear infinite;
+}
+
+.animate-vertical-shooting-star-random3 {
+  animation: vertical-shooting-star-random3 3s linear infinite;
+}
+
+.animate-vertical-shooting-star-random4 {
+  animation: vertical-shooting-star-random4 3s linear infinite;
+}
+
+.animate-vertical-shooting-star-random5 {
+  animation: vertical-shooting-star-random5 3s linear infinite;
+}
+
+/* Slower vertical shooting stars with more tilt */
+@keyframes vertical-shooting-star-slow-30deg {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(80px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-slow-45deg {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(120px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-slow-60deg {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(160px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-slow-random1 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(70px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-slow-random2 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-slow-random3 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(60px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-slow-random4 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(110px);
+    opacity: 0;
+  }
+}
+
+@keyframes vertical-shooting-star-slow-random5 {
+  0% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+.animate-vertical-shooting-star-slow-30deg {
+  animation: vertical-shooting-star-slow-30deg 8s linear infinite;
+}
+
+.animate-vertical-shooting-star-slow-45deg {
+  animation: vertical-shooting-star-slow-45deg 8s linear infinite;
+}
+
+.animate-vertical-shooting-star-slow-60deg {
+  animation: vertical-shooting-star-slow-60deg 8s linear infinite;
+}
+
+.animate-vertical-shooting-star-slow-random1 {
+  animation: vertical-shooting-star-slow-random1 8s linear infinite;
+}
+
+.animate-vertical-shooting-star-slow-random2 {
+  animation: vertical-shooting-star-slow-random2 8s linear infinite;
+}
+
+.animate-vertical-shooting-star-slow-random3 {
+  animation: vertical-shooting-star-slow-random3 8s linear infinite;
+}
+
+.animate-vertical-shooting-star-slow-random4 {
+  animation: vertical-shooting-star-slow-random4 8s linear infinite;
+}
+
+.animate-vertical-shooting-star-slow-random5 {
+  animation: vertical-shooting-star-slow-random5 8s linear infinite;
 }
