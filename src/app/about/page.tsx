@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import MySiteSection from '@/components/MySiteSection';
+import GitHubActivity from '@/components/GitHubActivity';
 
 const AboutPage = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -464,76 +465,7 @@ const AboutPage = () => {
           </span>
         </h2>
         
-        <div className="flex justify-center">
-          <article className="react-activity-calendar" style={{width: 'max-content', maxWidth: '100%', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px'}}>
-            <div className="react-activity-calendar__scroll-container" style={{maxWidth: '100%', overflowX: 'auto', overflowY: 'hidden', paddingTop: '2px'}}>
-              <svg width="950" height="144" viewBox="0 0 950 144" className="react-activity-calendar__calendar" style={{display: 'block', overflow: 'visible'}}>
-                {/* Month labels */}
-                <g>
-                  <text x="0" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Sep</text>
-                  <text x="90" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Oct</text>
-                  <text x="180" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Nov</text>
-                  <text x="270" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Dec</text>
-                  <text x="360" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Jan</text>
-                  <text x="450" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Feb</text>
-                  <text x="540" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Mar</text>
-                  <text x="630" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Apr</text>
-                  <text x="720" y="12" fontSize="12" fill="currentColor" className="text-gray-400">May</text>
-                  <text x="810" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Jun</text>
-                  <text x="900" y="12" fontSize="12" fill="currentColor" className="text-gray-400">Jul</text>
-                </g>
-                
-                {/* Calendar grid */}
-                <g transform="translate(0, 0)">
-                  <rect x="0" y="76" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-01" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="94" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-02" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="112" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-03" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="130" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-04" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                </g>
-                <g transform="translate(18, 0)">
-                  <rect x="0" y="22" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-05" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="40" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-06" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="58" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-07" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="76" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-08" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="94" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-09" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="112" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-10" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                  <rect x="0" y="130" width="14" height="14" rx="2" ry="2" fill="#161b22" data-date="2025-01-11" data-level="0" style={{stroke: 'rgba(0, 0, 0, 0.08)'}}></rect>
-                </g>
-                {/* Continue with more calendar data... */}
-                {Array.from({length: 50}, (_, i) => {
-                  const week = i + 2;
-                  const x = week * 18;
-                  return (
-                    <g key={i} transform={`translate(${x}, 0)`}>
-                      {Array.from({length: 7}, (_, day) => {
-                        const y = day * 18 + 22;
-                        const level = Math.floor(Math.random() * 5);
-                        // GitHub's actual commit colors
-                        const colors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
-                        return (
-                          <rect
-                            key={day}
-                            x="0"
-                            y={y}
-                            width="14"
-                            height="14"
-                            rx="2"
-                            ry="2"
-                            fill={colors[level]}
-                            style={{stroke: 'rgba(0, 0, 0, 0.08)'}}
-                          />
-                        );
-                      })}
-                    </g>
-                  );
-                })}
-              </svg>
-            </div>
-            <footer className="react-activity-calendar__footer" style={{display: 'flex', flexWrap: 'wrap', gap: '4px 16px', whiteSpace: 'nowrap'}}>
-              <div>Total 2036 contributions in this year</div>
-            </footer>
-          </article>
-        </div>
+        <GitHubActivity username="ravin1227" />
         
         {/* <div className="mx-auto mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
           <div className="relative overflow-hidden rounded-xl border p-3 transition-all duration-300 md:p-4 bg-zinc-900/50 border-purple-500/30 hover:bg-purple-500/5 col-span-1">
