@@ -4,41 +4,45 @@ import Image from 'next/image';
 import { useState, useRef } from 'react';
 import GlobeScene from './GlobeScene';
 
+// Helper function to get Skill Icons URL
+const getSkillIconUrl = (iconName: string): string => {
+  return `https://skillicons.dev/icons?i=${iconName}`;
+};
 
 export default function TechnologySection() {
   const [isHovered, setIsHovered] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const frontendTechs = [
-    { name: 'ReactJS', icon: 'https://cdn.simpleicons.org/react' },
-    { name: 'NextJS', icon: 'https://cdn.simpleicons.org/nextdotjs/white' },
-    { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript' },
-    { name: 'Tailwind CSS', icon: 'https://cdn.simpleicons.org/tailwindcss' },
-    { name: 'Motion', icon: 'https://cdn.simpleicons.org/framer' },
-    { name: 'Sanity', icon: 'https://cdn.simpleicons.org/sanity' },
-    { name: 'Contentful', icon: 'https://cdn.simpleicons.org/contentful' }
+    { name: 'ReactJS', icon: getSkillIconUrl('react') },
+    { name: 'NextJS', icon: getSkillIconUrl('nextjs') },
+    { name: 'TypeScript', icon: getSkillIconUrl('ts') },
+    { name: 'Tailwind CSS', icon: getSkillIconUrl('tailwind') },
+    { name: 'Motion', icon: getSkillIconUrl('framer') },
+    { name: 'Sanity', icon: getSkillIconUrl('sanity') },
+    { name: 'Contentful', icon: getSkillIconUrl('contentful') }
   ];
 
   const backendTechs = [
-    { name: 'NodeJS', icon: 'https://cdn.simpleicons.org/nodedotjs/darkgreen' },
-    { name: 'ExpressJS', icon: 'https://cdn.simpleicons.org/express/white' },
-    { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/sky' },
-    { name: 'MongoDB', icon: 'https://cdn.simpleicons.org/mongodb/darkgreen' },
-    { name: 'Prisma', icon: 'https://cdn.simpleicons.org/prisma/blue' },
-    { name: 'Zustand', icon: 'https://cdn.simpleicons.org/redux/pink' },
-    { name: 'Zod', icon: 'https://cdn.simpleicons.org/zod' }
+    { name: 'NodeJS', icon: getSkillIconUrl('nodejs') },
+    { name: 'ExpressJS', icon: getSkillIconUrl('express') },
+    { name: 'PostgreSQL', icon: getSkillIconUrl('postgresql') },
+    { name: 'MongoDB', icon: getSkillIconUrl('mongodb') },
+    { name: 'Prisma', icon: getSkillIconUrl('prisma') },
+    { name: 'Zustand', icon: getSkillIconUrl('redux') },
+    { name: 'Zod', icon: getSkillIconUrl('zod') }
   ];
 
   const tools = [
-    { name: 'pnpm', icon: 'https://cdn.simpleicons.org/pnpm' },
-    { name: 'Bun', icon: 'https://cdn.simpleicons.org/bun/white' },
-    { name: 'Git', icon: 'https://cdn.simpleicons.org/git' },
-    { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github/white' },
-    { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel/white' },
-    { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonwebservices/gray' },
-    { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker' },
-    { name: 'Expo', icon: 'https://cdn.simpleicons.org/expo/gray' },
-    { name: 'Clerk', icon: 'https://cdn.simpleicons.org/clerk' },
-    { name: 'Linux', icon: 'https://cdn.simpleicons.org/linux' }
+    { name: 'pnpm', icon: getSkillIconUrl('pnpm') },
+    { name: 'Bun', icon: getSkillIconUrl('bun') },
+    { name: 'Git', icon: getSkillIconUrl('git') },
+    { name: 'GitHub', icon: getSkillIconUrl('github') },
+    { name: 'Vercel', icon: getSkillIconUrl('vercel') },
+    { name: 'AWS', icon: getSkillIconUrl('aws') },
+    { name: 'Docker', icon: getSkillIconUrl('docker') },
+    { name: 'Expo', icon: getSkillIconUrl('expo') },
+    { name: 'Clerk', icon: getSkillIconUrl('clerk') },
+    { name: 'Linux', icon: getSkillIconUrl('linux') }
   ];
 
   const TechBadge = ({ name, icon }: { name: string; icon: string }) => (

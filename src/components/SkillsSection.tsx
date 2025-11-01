@@ -2,6 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 
+// Helper function to get Skill Icons URL
+const getSkillIconUrl = (iconName: string): string => {
+  return `https://skillicons.dev/icons?i=${iconName}`;
+};
+
 export default function SkillsSection() {
   const imageRef = useRef<HTMLDivElement>(null);
 
@@ -19,30 +24,30 @@ export default function SkillsSection() {
   }, []);
 
   const skills = [
-    { name: 'ReactJS', icon: 'react' },
-    { name: 'NextJS', icon: 'nextdotjs/white' },
-    { name: 'TypeScript', icon: 'typescript' },
-    { name: 'Tailwind CSS', icon: 'tailwindcss' },
-    { name: 'Motion', icon: 'framer' },
-    { name: 'Sanity', icon: 'sanity' },
-    { name: 'Contentful', icon: 'contentful' },
-    { name: 'NodeJS', icon: 'nodedotjs/darkgreen' },
-    { name: 'ExpressJS', icon: 'express/white' },
-    { name: 'PostgreSQL', icon: 'postgresql/sky' },
-    { name: 'MongoDB', icon: 'mongodb/darkgreen' },
-    { name: 'Prisma', icon: 'prisma/blue' },
-    { name: 'Zustand', icon: 'redux/pink' },
-    { name: 'Zod', icon: 'zod' },
-    { name: 'pnpm', icon: 'pnpm' },
-    { name: 'Bun', icon: 'bun/white' },
-    { name: 'Git', icon: 'git' },
-    { name: 'GitHub', icon: 'github/white' },
-    { name: 'Vercel', icon: 'vercel/white' },
-    { name: 'AWS', icon: 'amazonwebservices/gray' },
-    { name: 'Docker', icon: 'docker' },
-    { name: 'Expo', icon: 'expo/gray' },
-    { name: 'Clerk', icon: 'clerk' },
-    { name: 'Linux', icon: 'linux' }
+    { name: 'ReactJS', icon: getSkillIconUrl('react') },
+    { name: 'NextJS', icon: getSkillIconUrl('nextjs') },
+    { name: 'TypeScript', icon: getSkillIconUrl('ts') },
+    { name: 'Tailwind CSS', icon: getSkillIconUrl('tailwind') },
+    { name: 'Notion', icon: getSkillIconUrl('notion') },
+    { name: 'Sentry', icon: getSkillIconUrl('sentry') },
+    { name: 'NodeJS', icon: getSkillIconUrl('nodejs') },
+    { name: 'ExpressJS', icon: getSkillIconUrl('express') },
+    { name: 'PostgreSQL', icon: getSkillIconUrl('postgresql') },
+    { name: 'MongoDB', icon: getSkillIconUrl('mongodb') },
+    { name: 'Prisma', icon: getSkillIconUrl('prisma') },
+    { name: 'Zustand', icon: getSkillIconUrl('redux') },
+    { name: 'pnpm', icon: getSkillIconUrl('pnpm') },
+    { name: 'Bun', icon: getSkillIconUrl('bun') },
+    { name: 'Git', icon: getSkillIconUrl('git') },
+    { name: 'GitHub', icon: getSkillIconUrl('github') },
+    { name: 'Vercel', icon: getSkillIconUrl('vercel') },
+    { name: 'AWS', icon: getSkillIconUrl('aws') },
+    { name: 'Docker', icon: getSkillIconUrl('docker') },
+    { name: 'Linux', icon: getSkillIconUrl('linux') },
+    { name: 'Laravel', icon: getSkillIconUrl('laravel') },
+    { name: 'Vue.js', icon: getSkillIconUrl('vuejs') },
+    { name: 'Ruby on Rails', icon: getSkillIconUrl('rails') },
+    { name: 'JavaScript', icon: getSkillIconUrl('javascript') },
   ];
 
   return (
@@ -95,7 +100,7 @@ export default function SkillsSection() {
               height="18" 
               width="18" 
               alt={skill.name}
-              src={`https://cdn.simpleicons.org/${skill.icon}`} 
+              src={skill.icon} 
               className="w-4" 
             />
             <span>{skill.name}</span>

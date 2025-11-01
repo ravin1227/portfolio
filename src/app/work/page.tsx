@@ -5,6 +5,29 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { projects, getProjectGradients, getProjectShadows } from '@/data/projects';
 
+// Helper function to convert icon name to Skill Icons format
+const getSkillIconUrl = (iconName: string, techName?: string): string => {
+  // Icons that should use Simple Icons instead of Skill Icons
+  const simpleIconsOnly = ['zapier', 'openai', 'googleanalytics'];
+  
+  const lowerIconName = iconName.toLowerCase();
+  
+  // Check if this icon should use Simple Icons
+  if (simpleIconsOnly.includes(lowerIconName)) {
+    return `https://cdn.simpleicons.org/${iconName}`;
+  }
+  
+  // Map Simple Icons names to Skill Icons names
+  const iconMap: Record<string, string> = {
+    'vuedotjs': 'vuejs',
+    'nodedotjs': 'nodejs',
+    'rubyonrails': 'rails',
+  };
+  
+  const skillIconName = iconMap[lowerIconName] || lowerIconName;
+  return `https://skillicons.dev/icons?i=${skillIconName}`;
+};
+
 export default function Work() {
   const [activeProject, setActiveProject] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -270,7 +293,7 @@ export default function Work() {
                               <img
                                 height="14"
                                 width="14"
-                                src={`https://cdn.simpleicons.org/${tech.icon}`}
+                                src={getSkillIconUrl(tech.icon)}
                                 alt={tech.name}
                                 className="md:h-4 md:w-4"
                               />
@@ -347,7 +370,7 @@ export default function Work() {
                           <img
                             height="16"
                             width="16"
-                            src={`https://cdn.simpleicons.org/${tech.icon}`}
+                            src={getSkillIconUrl(tech.icon)}
                             alt={tech.name}
                           />
                           {tech.name}
