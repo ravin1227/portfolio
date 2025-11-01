@@ -182,9 +182,9 @@ export default function BlogDetailsPage() {
 
               <div className="flex justify-between border-b pb-3 text-sm text-white/70">
                 <div aria-label="Author" className="my-2 flex gap-3">
-                  <img src="/aayush.webp" alt="Author logo" className="size-10 rounded-full" />
+                  <img src="/assets/profile/ravi.jpeg" alt="Author logo" className="size-10 rounded-full" />
                   <div className="gap-px text-sm">
-                    <p className="text-white">Aayush Bharti</p>
+                    <p className="text-white">Ravindra Verma</p>
                     <time
                       dateTime={selectedPost.date}
                       className="text-xs text-neutral-400"

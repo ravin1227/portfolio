@@ -17,9 +17,8 @@ export default function TechnologySection() {
     { name: 'NextJS', icon: getSkillIconUrl('nextjs') },
     { name: 'TypeScript', icon: getSkillIconUrl('ts') },
     { name: 'Tailwind CSS', icon: getSkillIconUrl('tailwind') },
-    { name: 'Motion', icon: getSkillIconUrl('framer') },
-    { name: 'Sanity', icon: getSkillIconUrl('sanity') },
-    { name: 'Contentful', icon: getSkillIconUrl('contentful') }
+    { name: 'Notion', icon: getSkillIconUrl('notion') },
+    { name: 'Sentry', icon: getSkillIconUrl('sentry') },
   ];
 
   const backendTechs = [
@@ -29,7 +28,6 @@ export default function TechnologySection() {
     { name: 'MongoDB', icon: getSkillIconUrl('mongodb') },
     { name: 'Prisma', icon: getSkillIconUrl('prisma') },
     { name: 'Zustand', icon: getSkillIconUrl('redux') },
-    { name: 'Zod', icon: getSkillIconUrl('zod') }
   ];
 
   const tools = [
@@ -40,8 +38,6 @@ export default function TechnologySection() {
     { name: 'Vercel', icon: getSkillIconUrl('vercel') },
     { name: 'AWS', icon: getSkillIconUrl('aws') },
     { name: 'Docker', icon: getSkillIconUrl('docker') },
-    { name: 'Expo', icon: getSkillIconUrl('expo') },
-    { name: 'Clerk', icon: getSkillIconUrl('clerk') },
     { name: 'Linux', icon: getSkillIconUrl('linux') }
   ];
 
@@ -145,7 +141,7 @@ export default function TechnologySection() {
                     </svg>
                     <Image
                       className="absolute top-1/2 left-1/2 h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 transform rounded-full"
-                      src="/assets/profile/aayush.webp"
+                      src="/assets/profile/ravi.jpeg"
                       alt="Ravindra Verma picture"
                       width={100}
                       height={100}

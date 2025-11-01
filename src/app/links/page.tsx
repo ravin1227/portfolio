@@ -22,13 +22,15 @@ export default function LinksPage() {
           <div className="relative mx-auto min-h-screen max-w-lg overflow-x-hidden">
             {/* Profile Section */}
             <div className="relative mx-auto flex flex-col items-center justify-center gap-4 overflow-hidden pt-24 md:pt-32 lg:pt-36 pb-12 md:pb-16 lg:pb-20">
-              <img 
-                src="https://lh3.googleusercontent.com/a/ACg8ocIvRQZl9V7AbR05EQA0fSc9jHFidf9j5xV6W-rRR1-SGw3C3cy4=s317-c-no"
-                width="90" 
-                height="90" 
-                alt="Ravindra Verma's Profile Picture" 
-                className="rounded-full" 
-              />
+              <div className="relative w-[120px] h-[120px] rounded-full overflow-hidden">
+                <Image
+                  src="/assets/profile/ravi.jpeg"
+                  width={120} 
+                  height={120} 
+                  alt="Ravindra Verma's Profile Picture" 
+                  className="rounded-full object-cover"
+                />
+              </div>
               <h1 className="text-xl font-semibold">Ravindra Verma</h1>
               <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs md:text-sm">
                 <span className="rounded-full px-2 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-500">Developer</span>

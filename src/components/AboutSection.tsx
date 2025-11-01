@@ -188,7 +188,7 @@ export default function AboutSection() {
             {/* Profile Image */}
             <Image 
               alt="Ravindra Verma blue pic"
-              src="/aayush-blue.jpg"
+              src="/assets/profile/ravi.jpeg"
               fill
               className="abImg absolute inset-0 rotate-3 rounded-[58px] object-cover opacity-[var(--opacity)] blur-[calc(var(--blur)*10px)]"
               style={{

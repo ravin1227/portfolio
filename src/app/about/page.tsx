@@ -12,8 +12,8 @@ const AboutPage = () => {
   const experienceRef = useRef<HTMLDivElement>(null);
   
   const images = [
-    { src: '/assets/images/aayush-blue.jpg', alt: 'Coding image', title: 'I Code' },
-    { src: '/assets/images/travel.jpg', alt: 'Travel image', title: 'I Travel' },
+    { src: '/assets/profile/ravi.jpeg', alt: 'Coding image', title: 'I Code' },
+    { src: '/assets/images/travel.jpeg', alt: 'Travel image', title: 'I Travel' },
     { src: '/assets/images/gym.webp', alt: 'GYM image', title: 'I Lift' }
   ];
 
@@ -163,8 +163,8 @@ const AboutPage = () => {
                 >
                   <div className="relative aspect-[4/5] w-[220px] lg:w-[300px]">
                     <Image
-                      alt={images[(currentImage - 1 + images.length) % images.length].alt}
-                      src={images[(currentImage - 1 + images.length) % images.length].src}
+                      alt={images[(currentImage - 1 + images.length) % images.length]?.alt || ''}
+                      src={images[(currentImage - 1 + images.length) % images.length]?.src || ''}
                       fill
                       className="rounded-3xl object-cover"
                       sizes="(max-width: 768px) 220px, 300px"
@@ -181,8 +181,8 @@ const AboutPage = () => {
                 >
                   <div className="relative aspect-[4/5] w-[220px] lg:w-[300px]">
                     <Image
-                      alt={images[currentImage].alt}
-                      src={images[currentImage].src}
+                      alt={images[currentImage]?.alt || ''}
+                      src={images[currentImage]?.src || ''}
                       fill
                       className="rounded-3xl object-cover"
                       sizes="(max-width: 768px) 220px, 300px"
@@ -200,8 +200,8 @@ const AboutPage = () => {
                 >
                   <div className="relative aspect-[4/5] w-[220px] lg:w-[300px]">
                     <Image
-                      alt={images[(currentImage + 1) % images.length].alt}
-                      src={images[(currentImage + 1) % images.length].src}
+                      alt={images[(currentImage + 1) % images.length]?.alt || ''}
+                      src={images[(currentImage + 1) % images.length]?.src || ''}
                       fill
                       className="rounded-3xl object-cover"
                       sizes="(max-width: 768px) 220px, 300px"
@@ -210,7 +210,7 @@ const AboutPage = () => {
                 </div>
               </div>
               <h3 className="text-center text-2xl font-light transition-opacity duration-500 mt-4">
-                {images[currentImage].title}
+                {images[currentImage]?.title || ''}
               </h3>
             </div>
           </div>
@@ -452,7 +452,7 @@ const AboutPage = () => {
                   <div className="border-bg-primary bg-bg-primary relative h-9 w-9 overflow-hidden rounded-full border-2 shadow-md">
                     <Image
                       alt="Profile"
-                      src="/assets/images/aayush-blue.jpg"
+                      src="/assets/profile/ravi.jpeg"
                       fill
                       className="object-cover"
                       sizes="36px"

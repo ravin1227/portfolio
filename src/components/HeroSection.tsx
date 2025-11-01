@@ -83,14 +83,16 @@ export default function HeroSection() {
                 onMouseEnter={() => setShowWand(true)}
                 onMouseLeave={() => setShowWand(false)}
               >
-                <div className="w-16 cursor-pointer overflow-hidden rounded-3xl md:w-20 lg:mx-3">
-                  <Image
-                    alt="Ravindra Verma Image" 
-                    width={854}
-                    height={425}
-                    className="transition-transform duration-300 group-hover:rotate-6 hover:scale-110"
-                    src="/assets/profile/aayush-wide-img.webp"
-                  />
+                <div className="w-28 cursor-pointer overflow-hidden rounded-3xl md:w-36 lg:mx-3">
+                  <div className="relative w-full h-full group">
+                    <Image
+                      alt="Ravindra Verma Image" 
+                      width={854}
+                      height={425}
+                      className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 w-full h-full object-cover"
+                      src="/assets/profile/ravi.jpeg"
+                    />
+                  </div>
                 </div>
                 
                 {/* Magic Wand */}
