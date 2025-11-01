@@ -109,8 +109,8 @@ export default function WorkSection() {
     <div className="w-full bg-white dark:bg-black py-12 md:py-16 lg:py-20">
       {/* Hero Section */}
       <section className="relative w-full">
-        <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
-          <h2 
+        <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 lg:pt-16 pb-4 md:pb-6 lg:pb-8">
+          <h2
             className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance text-center"
             style={{
               textShadow: '0px 4px 8px rgba(255,255,255,.05),0px 8px 30px rgba(255,255,255,.25)'
@@ -130,10 +130,10 @@ export default function WorkSection() {
       </section>
 
       {/* Projects Section */}
-      <section ref={sectionRef} className="relative mx-auto w-full mt-0 px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
-        <div className="relative mx-auto flex w-full">
+      <section ref={sectionRef} className="relative w-full mt-0 pt-4 md:pt-6 lg:pt-8 pb-8 md:pb-12 lg:pb-16">
+        <div className="relative mx-auto flex w-full gap-12">
           {/* Left Side - Project Cards */}
-          <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2 lg:flex lg:max-w-[65%] lg:flex-col lg:gap-y-24">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2 lg:flex lg:w-[55%] lg:flex-col lg:gap-y-24">
             {projects.map((project, index) => (
               <div
                 key={project.id}
@@ -147,10 +147,10 @@ export default function WorkSection() {
                   transition: 'all 0.6s ease-out'
                 }}
               >
-                <div className="flex flex-col lg:mx-10 lg:w-full">
+                <div className="flex flex-col w-full">
                   <Link
                     href={project.liveLink}
-                    className="relative cursor-pointer overflow-hidden rounded-2xl border border-white-2 dark:border-white/15 bg-[#f2f2f20c] p-1.5 shadow-2xl lg:h-[560px] lg:rounded-3xl lg:p-2 group"
+                    className="relative cursor-pointer overflow-hidden rounded-2xl border border-white-2 dark:border-white/15 bg-[#f2f2f20c] p-1.5 shadow-2xl lg:h-[500px] lg:rounded-3xl lg:p-2 group"
                     onMouseEnter={() => {
                       console.log('Hovering project:', project.id);
                       setHoveredProject(project.id);
@@ -293,7 +293,7 @@ export default function WorkSection() {
           </div>
 
           {/* Right Side - Project Details */}
-          <div className="hidden py-4 lg:sticky lg:block lg:w-[35%]">
+          <div className="hidden py-4 lg:sticky lg:block lg:w-[45%]">
             <div className="sticky top-40">
               <div className="flex">
                 {/* Color indicator line */}

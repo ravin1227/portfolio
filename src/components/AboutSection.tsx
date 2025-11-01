@@ -167,10 +167,10 @@ export default function AboutSection() {
             ref={tilesRef}
             className="tile relative grid aspect-square w-52 place-content-center lg:me-10 lg:mt-20 lg:w-[500px]"
           >
-            {/* AB Logo */}
+            {/* RV Logo */}
             <Image 
-              alt="AB Logo" 
-              src="/ab-icon-sq.svg"
+              alt="RV Logo" 
+              src="/assets/logos/ChatGPT Image Nov 1, 2025, 02_49_17 PM-Photoroom.png"
               fill
               className="abLogo rotate-3 lg:opacity-100"
               style={{

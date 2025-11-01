@@ -2,10 +2,13 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { useUIStore } from '@/store/useStore';
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showWand, setShowWand] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const { setIsBookCallDrawerOpen } = useUIStore();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -17,7 +20,11 @@ export default function HeroSection() {
   }, []);
 
   const handleEmailCopy = () => {
-    navigator.clipboard.writeText('hello@ravindraverma.in');
+    navigator.clipboard.writeText('ravindraverma37@gmail.com');
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
   };
 
   return (
@@ -131,7 +138,9 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="animate-fadeInUp z-100 w-full max-w-2xl mx-auto mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 px-4">
-            <button className="group relative inline-flex cursor-pointer items-center justify-between overflow-hidden rounded-full border border-black/30 bg-black/20 py-[3px] pr-[3px] pl-2 text-base font-medium opacity-85 backdrop-blur-xs transition-all hover:bg-transparent md:py-1 md:pr-1 md:pl-3 dark:border-white/10 dark:bg-white/10">
+            <button
+              onClick={() => setIsBookCallDrawerOpen(true)}
+              className="group relative inline-flex cursor-pointer items-center justify-between overflow-hidden rounded-full border border-black/30 bg-black/20 py-[3px] pr-[3px] pl-2 text-base font-medium opacity-85 backdrop-blur-xs transition-all hover:bg-transparent md:py-1 md:pr-1 md:pl-3 dark:border-white/10 dark:bg-white/10">
               <span className="z-10 px-3 text-black transition-colors duration-300 group-hover:text-white dark:text-white dark:group-hover:text-black">
                 Let's Connect
               </span>
@@ -172,28 +181,52 @@ export default function HeroSection() {
               </span>
             </button>
             
-            <button 
+            <button
               type="button"
               onClick={handleEmailCopy}
               className="flex items-center gap-2 py-3 text-base font-light text-black dark:text-white/75 outline-hidden transition-all duration-300 cursor-pointer hover:text-black/60 dark:hover:text-white/90"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg" 
-                width="20" 
-                height="20" 
-                viewBox="0 0 24 24"
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round"
-                strokeLinejoin="round" 
-                className="lucide lucide-copy" 
-                aria-hidden="true"
-              >
-                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-              </svg>
-              ravindraverma37@gmail.com
+              {copied ? (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-check-check"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 7 17l-5-5" />
+                    <path d="m22 10-7.5 7.5L13 16" />
+                  </svg>
+                  Copied to clipboard
+                </>
+              ) : (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-copy"
+                    aria-hidden="true"
+                  >
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                  ravindraverma37@gmail.com
+                </>
+              )}
             </button>
           </div>
         </div>

@@ -931,136 +931,155 @@ const Navbar = memo(function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="relative w-[700px] max-w-[90vw] bg-black/95 backdrop-blur-xl border border-white/10 rounded-t-3xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-[600px] mx-4 bg-[#1a1a1a] border border-white/10 rounded-t-3xl shadow-2xl overflow-hidden"
             >
               {/* Notch */}
-              <div className="flex justify-center pt-4 pb-6">
-                <div className="w-12 h-1 bg-white/20 rounded-full"></div>
+              <div className="flex justify-center pt-4 pb-4">
+                <div className="w-10 h-1 bg-white/20 rounded-full"></div>
               </div>
 
               {/* Social Icons */}
-              <div className="flex items-center justify-center gap-8 pb-8">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <div className="flex items-center justify-center gap-6 pb-6">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
                   </svg>
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
                   </svg>
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                   </svg>
                 </a>
               </div>
 
               {/* Tab Headers */}
-              <div className="flex justify-center gap-8 pb-6">
-                <button
-                  onClick={() => setActiveTab('quick-connect')}
-                  className={`text-sm font-medium transition-colors ${
-                    activeTab === 'quick-connect' ? 'text-white' : 'text-white/40 hover:text-white/70'
-                  }`}
-                >
-                  Quick connect
-                </button>
-                <button
-                  onClick={() => setActiveTab('fill-form')}
-                  className={`text-sm font-medium transition-colors ${
-                    activeTab === 'fill-form' ? 'text-white' : 'text-white/40 hover:text-white/70'
-                  }`}
-                >
-                  Fill a form
-                </button>
+              <div className="px-6 pb-6">
+                <div className="flex gap-2 p-1 bg-[#242424] rounded-lg border border-white/10">
+                  <button
+                    onClick={() => setActiveTab('quick-connect')}
+                    className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-all ${
+                      activeTab === 'quick-connect'
+                        ? 'text-white bg-[#2a2a2a]'
+                        : 'text-white/50 bg-transparent hover:text-white/80'
+                    }`}
+                  >
+                    Quick connect
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('fill-form')}
+                    className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-all ${
+                      activeTab === 'fill-form'
+                        ? 'text-white bg-[#2a2a2a]'
+                        : 'text-white/50 bg-transparent hover:text-white/80'
+                    }`}
+                  >
+                    Fill a form
+                  </button>
+                </div>
               </div>
 
               {/* Content */}
-              <div className="px-8 pb-8">
+              <div className="px-6 py-6">
                 {activeTab === 'quick-connect' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Email Card */}
-                    <div className="bg-gray-900/50 border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center hover:border-white/20 transition-colors">
-                      <div className="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-6">
-                        <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
+                  <div className="space-y-4">
+                    {/* Email and Book a Call Cards - Side by Side */}
+                    <div className="grid grid-cols-2 gap-3">
+                      {/* Email Card */}
+                      <div className="bg-[#242424] border border-white/10 rounded-xl p-5 flex flex-col items-start hover:border-white/20 transition-colors">
+                        <div className="flex-shrink-0 mb-4">
+                          <div className="w-11 h-11 bg-blue-600/20 rounded-xl flex items-center justify-center">
+                            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="flex-1 w-full">
+                          <h3 className="text-white font-medium text-sm mb-2">Email</h3>
+                          <p className="text-white/60 text-xs mb-2 break-all">hello@aayushbharti.in</p>
+                          <p className="text-white/50 text-xs">Send me an email directly</p>
+                        </div>
                       </div>
-                      <p className="text-white/90 text-sm mb-6">your.email@example.com</p>
-                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl font-medium transition-all hover:scale-105">
-                        Send message
-                      </button>
+
+                      {/* Book a Call Card */}
+                      <div className="bg-[#242424] border border-white/10 rounded-xl p-5 flex flex-col items-start hover:border-white/20 transition-colors">
+                        <div className="flex-shrink-0 mb-4">
+                          <div className="w-11 h-11 bg-purple-600/20 rounded-xl flex items-center justify-center">
+                            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="flex-1 w-full">
+                          <h3 className="text-white font-medium text-sm mb-2">Book a Call</h3>
+                          <p className="text-white/60 text-xs mb-2">Schedule a time slot</p>
+                          <p className="text-white/50 text-xs">Book a call on my calendar</p>
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Call Card */}
-                    <div className="bg-gray-900/50 border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center hover:border-white/20 transition-colors">
-                      <div className="w-16 h-16 bg-green-600/20 rounded-2xl flex items-center justify-center mb-6">
-                        <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
-                      </div>
-                      <p className="text-white/90 text-sm mb-6">+91 98765 43210</p>
-                      <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-xl font-medium transition-all hover:scale-105">
-                        Call now
-                      </button>
+                    {/* Availability Status */}
+                    <div className="flex items-center justify-center gap-2 pt-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-white/60 text-xs">Currently available for new opportunities</span>
                     </div>
                   </div>
                 )}
 
                 {activeTab === 'fill-form' && (
-                  <div className="flex-1 flex flex-col px-6">
-                    <div className="flex-1 space-y-2">
-                      {/* Name and Email - Side by Side */}
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <label className="block text-sm font-medium text-white/80 mb-1">Name</label>
-                          <input 
-                            type="text" 
-                            className="w-full px-3 py-2 bg-black/50 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-colors"
-                            placeholder="Your name"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-white/80 mb-1">Email</label>
-                          <input 
-                            type="email" 
-                            className="w-full px-3 py-2 bg-black/50 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-colors"
-                            placeholder="your.email@example.com"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Message Box */}
+                  <div className="space-y-4">
+                    {/* Name and Email - Side by Side */}
+                    <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-sm font-medium text-white/80 mb-2">Message</label>
-                        <div className="relative">
-                          <textarea 
-                            rows={4}
-                            maxLength={1000}
-                            className="w-full px-3 py-2 bg-black/50 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-colors resize-none"
-                            placeholder="What would you like to discuss?"
-                          />
-                          <div className="absolute bottom-2 right-2 text-xs text-white/50">
-                            0/1000
-                          </div>
+                        <label className="block text-xs font-medium text-white/70 mb-2">Name</label>
+                        <input
+                          type="text"
+                          className="w-full px-3 py-2 bg-[#242424] border border-white/10 rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                          placeholder="Your name"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-white/70 mb-2">Email</label>
+                        <input
+                          type="email"
+                          className="w-full px-3 py-2 bg-[#242424] border border-white/10 rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Message Box */}
+                    <div>
+                      <label className="block text-xs font-medium text-white/70 mb-2">Message</label>
+                      <div className="relative">
+                        <textarea
+                          rows={4}
+                          maxLength={1000}
+                          className="w-full px-3 py-2 bg-[#242424] border border-white/10 rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                          placeholder="What would you like to discuss?"
+                        />
+                        <div className="absolute bottom-2 right-3 text-xs text-white/40">
+                          0/1000
                         </div>
                       </div>
                     </div>
 
                     {/* Send Message Button */}
-                    <div className="mt-4 flex justify-center">
-                      <button 
-                        type="submit"
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg font-medium transition-colors"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                        </svg>
-                        Send message
-                      </button>
-                    </div>
+                    <button
+                      type="submit"
+                      className="w-full flex items-center justify-center gap-2 bg-white text-black py-2.5 px-4 rounded-lg font-medium text-sm transition-all hover:bg-white/90"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                      Send message
+                    </button>
                   </div>
                 )}
               </div>
