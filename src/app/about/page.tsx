@@ -534,6 +534,8 @@ const AboutPage = () => {
         </div> */}
       </section>
 
+      {/* Timezone Section */}
+
       {/* My Site Section */}
       <MySiteSection />
     </div>
