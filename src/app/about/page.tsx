@@ -77,8 +77,8 @@ const AboutPage = () => {
         </div>
 
         <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 lg:pt-36 pb-12 md:pb-16 lg:pb-20">
-          <h2 
-            className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance text-center mb-8 md:mb-0 lg:text-left max-w-lg"
+          <h2
+            className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance text-center mb-8 md:mb-0 lg:text-left max-w-lg mx-auto lg:mx-0"
             style={{
               textShadow: '0px 4px 8px rgba(255,255,255,.05),0px 8px 30px rgba(255,255,255,.25)'
             }}

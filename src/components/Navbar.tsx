@@ -65,6 +65,41 @@ const Navbar = memo(function Navbar() {
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
   const [isCommandModalOpen, setIsCommandModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>('quick-connect');
+  const [showGreeting, setShowGreeting] = useState(true);
+  const [greeting, setGreeting] = useState('');
+  const [isLoadingGreeting, setIsLoadingGreeting] = useState(true);
+
+  // Get greeting based on time
+  useEffect(() => {
+    try {
+      const hour = new Date().getHours();
+      let greetingMessage = '';
+
+      if (hour >= 5 && hour < 12) {
+        greetingMessage = 'Good Morning';
+      } else if (hour >= 12 && hour < 17) {
+        greetingMessage = 'Good Afternoon';
+      } else if (hour >= 17 && hour < 21) {
+        greetingMessage = 'Good Evening';
+      } else {
+        greetingMessage = 'Good Night';
+      }
+
+      setGreeting(greetingMessage);
+      setIsLoadingGreeting(false);
+    } catch (error) {
+      console.error('Error calculating greeting:', error);
+      setGreeting('Hello');
+      setIsLoadingGreeting(false);
+    }
+
+    // Hide greeting after 1 second
+    const timer = setTimeout(() => {
+      setShowGreeting(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
 
   // Update current page based on pathname
@@ -196,14 +231,37 @@ const Navbar = memo(function Navbar() {
       {/* Center - Mobile Logo + Name (visible on small screens, clickable to open menu) */}
       <div className="absolute left-1/2 -translate-x-1/2 md:hidden w-[90%] max-w-[200px]" style={{ top: '8px' }}>
         <button onClick={() => setIsCommandModalOpen(true)} className="flex items-center justify-between px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 h-[42px] w-full">
-          <ABLogo size={28} />
-          <span className="text-white text-base font-bold">Ravindra</span>
+          {!showGreeting && <ABLogo size={28} />}
+          <span className={`text-white text-base font-bold transition-opacity duration-300 ${showGreeting ? 'w-full text-center' : ''}`}>
+            {showGreeting ? (
+              isLoadingGreeting ? (
+                <div className="flex items-center justify-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                  <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                  <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                </div>
+              ) : greeting
+            ) : 'Ravindra'}
+          </span>
         </button>
       </div>
 
       {/* Center - Desktop Navigation */}
-      <div className="justify-center absolute top-1/2 left-1/2 hidden w-fit -translate-x-1/2 -translate-y-1/2 rounded-full backdrop-blur-md md:flex" data-dropdown>
-        <ul className="relative hidden items-center space-x-1 rounded-full border border-white/10 bg-white/10 px-1.5 py-1 backdrop-blur-md md:flex">
+      <div className="justify-center absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 rounded-full backdrop-blur-md md:flex" data-dropdown style={{ width: '480px' }}>
+        {showGreeting ? (
+          <div className="flex items-center justify-center rounded-full border border-white/10 bg-white/10 backdrop-blur-md w-full" style={{ height: '42px' }}>
+            {isLoadingGreeting ? (
+              <div className="flex items-center justify-center gap-1">
+                <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+              </div>
+            ) : (
+              <span className="text-white text-base font-bold">{greeting}</span>
+            )}
+          </div>
+        ) : (
+        <ul className="relative hidden items-center space-x-1 rounded-full border border-white/10 bg-white/10 px-1.5 py-1 backdrop-blur-md md:flex w-full">
           {NAV_ITEMS.map((item) => {
             const active = isActive(item.page) || (item.name === 'Home' && pathname === '/');
             const showNotch = shouldShowNotch(item.name, active);
@@ -257,7 +315,8 @@ const Navbar = memo(function Navbar() {
             </button>
           </li>
         </ul>
-        
+        )}
+
         {/* More Dropdown */}
         <AnimatePresence>
           {isMoreDropdownOpen && (
@@ -872,87 +931,46 @@ const Navbar = memo(function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className={`relative w-[576px] max-w-[90vw] max-h-[90vh] bg-black border border-white/20 rounded-t-lg shadow-2xl ${
-                activeTab === 'fill-form' ? 'h-[459px]' : 'h-[386px]'
-              }`}
+              className="relative w-[700px] max-w-[90vw] bg-black/95 backdrop-blur-xl border border-white/10 rounded-t-3xl shadow-2xl overflow-hidden"
             >
               {/* Notch */}
-              <div className="flex justify-center pt-2">
-                <div className="w-16 h-1 bg-white/30 rounded-full"></div>
+              <div className="flex justify-center pt-4 pb-6">
+                <div className="w-12 h-1 bg-white/20 rounded-full"></div>
               </div>
 
               {/* Social Icons */}
-              <div className="flex items-center justify-center gap-6 p-6">
-                <a href="#" className="text-white/60 hover:text-white transition-colors">
-                  <svg
-                    stroke="currentColor"
-                    fill="none"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="stroke-1"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect width="4" height="12" x="2" y="9"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
+              <div className="flex items-center justify-center gap-8 pb-8">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors">
-                  <svg
-                    stroke="currentColor"
-                    fill="none"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="stroke-1"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors">
-                  <svg
-                    stroke="currentColor"
-                    fill="none"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="stroke-1"
-                  >
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
                 </a>
               </div>
 
-              {/* Tab Navigation */}
-              <div className="flex border-b border-white/10">
-                <button 
+              {/* Tab Headers */}
+              <div className="flex justify-center gap-8 pb-6">
+                <button
                   onClick={() => setActiveTab('quick-connect')}
-                  className={`flex-1 px-6 py-2 text-center font-medium transition-all duration-300 after:bg-primary relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 ${
-                    activeTab === 'quick-connect' 
-                      ? 'text-white after:scale-x-100' 
-                      : 'text-white/60 hover:text-white'
+                  className={`text-sm font-medium transition-colors ${
+                    activeTab === 'quick-connect' ? 'text-white' : 'text-white/40 hover:text-white/70'
                   }`}
                 >
                   Quick connect
                 </button>
-                <button 
+                <button
                   onClick={() => setActiveTab('fill-form')}
-                  className={`flex-1 px-6 py-2 text-center font-medium transition-all duration-300 after:bg-primary relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 ${
-                    activeTab === 'fill-form' 
-                      ? 'text-white after:scale-x-100' 
-                      : 'text-white/60 hover:text-white'
+                  className={`text-sm font-medium transition-colors ${
+                    activeTab === 'fill-form' ? 'text-white' : 'text-white/40 hover:text-white/70'
                   }`}
                 >
                   Fill a form
@@ -960,35 +978,33 @@ const Navbar = memo(function Navbar() {
               </div>
 
               {/* Content */}
-              <div className="flex-1 flex flex-col p-6">
+              <div className="px-8 pb-8">
                 {activeTab === 'quick-connect' && (
-                  <div className="flex-1 flex flex-col p-6">
-                    <div className="flex-1 grid grid-cols-2 gap-6">
-                      {/* Email Card */}
-                      <div className="bg-gray-800/50 border border-white/20 rounded-xl p-6 flex flex-col items-center text-center">
-                        <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
-                          <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                        <p className="text-white font-medium mb-4">your.email@example.com</p>
-                        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition-colors">
-                          Send message
-                        </button>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Email Card */}
+                    <div className="bg-gray-900/50 border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center hover:border-white/20 transition-colors">
+                      <div className="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
                       </div>
+                      <p className="text-white/90 text-sm mb-6">your.email@example.com</p>
+                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl font-medium transition-all hover:scale-105">
+                        Send message
+                      </button>
+                    </div>
 
-                      {/* Call Card */}
-                      <div className="bg-gray-800/50 border border-white/20 rounded-xl p-6 flex flex-col items-center text-center">
-                        <div className="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
-                          <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                          </svg>
-                        </div>
-                        <p className="text-white font-medium mb-4">+91 98765 43210</p>
-                        <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-medium transition-colors">
-                          Call now
-                        </button>
+                    {/* Call Card */}
+                    <div className="bg-gray-900/50 border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center hover:border-white/20 transition-colors">
+                      <div className="w-16 h-16 bg-green-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
                       </div>
+                      <p className="text-white/90 text-sm mb-6">+91 98765 43210</p>
+                      <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-xl font-medium transition-all hover:scale-105">
+                        Call now
+                      </button>
                     </div>
                   </div>
                 )}
