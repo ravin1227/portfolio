@@ -16,7 +16,6 @@ export default function BlogDetailsPage() {
   });
 
   const [activeSection, setActiveSection] = useState('');
-  console.log('Current activeSection:', activeSection);
 
   useEffect(() => {
     // Get selected post from localStorage
@@ -45,13 +44,12 @@ export default function BlogDetailsPage() {
         });
 
         if (mostVisible) {
-          console.log('Setting active section:', mostVisible.id);
           setActiveSection(mostVisible.id);
         }
       },
       {
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-        rootMargin: '-10% 0px -60% 0px',
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        rootMargin: '-15% 0px -50% 0px',
       }
     );
 
@@ -230,7 +228,9 @@ export default function BlogDetailsPage() {
                 </svg>
               </h2>
 
-              <p>As a Frontend Developer in 2025, I've fine-tuned my development environment with a set of powerful tools that enhance productivity, efficiency, and customization. Let me walk you through my stack and how these tools help me build better, faster, and more maintainable projects!</p>
+              <p>As a Frontend Developer in 2025, my development workflow is centered around tools that enable me to work faster and more effectively. The right tools help me write clean code, manage projects efficiently, and maintain a highly optimized environment. Over the years, I've learned that choosing the right stack can dramatically improve productivity, which is why I want to share the setup I'm currently using.</p>
+
+              <p>Let's take a look at the essential tools I rely on every day to streamline my work!</p>
 
               {/* My Stack */}
               <h2 id="️-my-stack" className="flex scroll-m-28 flex-row items-center gap-2">
@@ -241,7 +241,7 @@ export default function BlogDetailsPage() {
                 </svg>
               </h2>
 
-              <p>Here's a comprehensive overview of the tools, frameworks, and technologies I'm using in 2025 to build modern web applications:</p>
+              <p>Here's a breakdown of the tools and technologies that I use to build projects as a Frontend Developer:</p>
 
               {/* Development Environment */}
               <h3 id="-development-environment" className="flex scroll-m-28 flex-row items-center gap-2">
@@ -252,25 +252,12 @@ export default function BlogDetailsPage() {
                 </svg>
               </h3>
 
-              <div className="flex gap-2 my-4 rounded-xl border bg-fd-card callout-bg p-3 ps-1 text-sm text-fd-card-foreground shadow-md">
-                <div role="none" className="w-0.5 callout-border rounded-sm"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-5 -me-0.5 callout-icon">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 16v-4"></path>
-                  <path d="M12 8h.01"></path>
-                </svg>
-                <div className="flex flex-col gap-2 min-w-0 flex-1">
-                  <p className="font-medium !my-0">The Foundation of Great Development</p>
-                  <div className="text-fd-muted-foreground prose-no-margin empty:hidden">
-                    <p>Having a solid development environment is crucial. These core tools form the backbone of my daily workflow and significantly impact my productivity.</p>
-                  </div>
-                </div>
-              </div>
-
               <ul>
-                <li><strong>VS Code</strong> with essential extensions</li>
-                <li><strong>Terminal</strong> with custom configurations</li>
-                <li><strong>Git</strong> for version control</li>
+                <li><strong>Neovim</strong> – Neovim is my editor of choice. With the help of LSP, Treesitter, and a collection of custom plugins, it gives me a fast, modern, and distraction-free coding experience. I love how customizable it is to fit my needs.</li>
+                <li><strong>Wezterm</strong> – A powerful GPU-accelerated terminal that supports Wayland. It's fast, efficient, and customizable, helping me manage my workflow effortlessly.</li>
+                <li><strong>ZSH</strong> – Paired with Oh My Zsh, ZSH makes command-line navigation smooth and efficient. Its plugins and themes help me work faster, while the integration with Neovim enhances my workflow.</li>
+                <li><strong>Tmux</strong> – This terminal multiplexer is essential for managing multiple sessions within a single terminal window. Tmux helps me stay organized and work on multiple tasks simultaneously without losing context.</li>
+                <li><strong>Lazygit</strong> – A TUI (text-based user interface) for Git that simplifies repository management. It makes committing, branching, and navigating repositories faster and more intuitive.</li>
               </ul>
 
               {/* Productivity & Utilities */}
@@ -282,25 +269,14 @@ export default function BlogDetailsPage() {
                 </svg>
               </h3>
 
-              <div className="flex gap-2 my-4 rounded-xl border bg-fd-card callout-bg p-3 ps-1 text-sm text-fd-card-foreground shadow-md">
-                <div role="none" className="w-0.5 callout-border rounded-sm"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-5 -me-0.5 callout-icon">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 16v-4"></path>
-                  <path d="M12 8h.01"></path>
-                </svg>
-                <div className="flex flex-col gap-2 min-w-0 flex-1">
-                  <p className="font-medium !my-0">Supercharge Your Workflow</p>
-                  <div className="text-fd-muted-foreground prose-no-margin empty:hidden">
-                    <p>These utility apps streamline repetitive tasks and enhance overall system productivity, allowing me to focus more on actual development work.</p>
-                  </div>
-                </div>
-              </div>
-
               <ul>
-                <li><strong>Raycast</strong> for quick actions</li>
-                <li><strong>1Password</strong> for password management</li>
-                <li><strong>CleanShot X</strong> for screenshots</li>
+                <li><strong>Bat</strong> – A modern replacement for cat with syntax highlighting and Git integration. It's a small tool, but it's incredibly useful when inspecting code or configuration files in the terminal.</li>
+                <li><strong>Btop++</strong> – A visually appealing, feature-rich system monitor that helps me keep an eye on resource usage while coding. It's lightweight, fast, and displays detailed information about my system.</li>
+                <li><strong>FZF</strong> – A fuzzy finder that significantly boosts productivity when navigating large codebases. FZF makes searching for files, directories, or commands much faster and more intuitive.</li>
+                <li><strong>Better Commit</strong> – This tool ensures that my Git commit messages follow best practices, improving consistency and readability across my codebase.</li>
+                <li><strong>Neofetch</strong> – An aesthetic system information tool that displays essential details about your machine when you open the terminal. It's both fun and functional for showcasing the specs of my development environment.</li>
+                <li><strong>Hyprshot</strong> – A simple and efficient screenshot tool that integrates seamlessly into my workflow. It helps me capture and share visuals quickly, whether for documentation or just for fun.</li>
+                <li><strong>Cava</strong> – A terminal-based audio visualizer. While coding, it adds a fun element to my setup by visualizing music playback right in my terminal.</li>
               </ul>
 
               {/* API & Database Management */}
@@ -312,9 +288,11 @@ export default function BlogDetailsPage() {
                 </svg>
               </h3>
 
+              <p>I prefer tools that are lightweight and focused. These two help me move fast without the bloat.</p>
+
               <ul>
-                <li><strong>Postman</strong> for API testing</li>
-                <li><strong>TablePlus</strong> for database management</li>
+                <li><strong>Posting</strong> – A lightweight API testing tool that is a fast and efficient alternative to Postman. It makes testing endpoints quick and easy, saving me time when debugging or exploring new APIs.</li>
+                <li><strong>Harlequin</strong> – A minimalist SQL IDE that streamlines database querying. It simplifies complex SQL interactions and makes querying databases more efficient and less cumbersome.</li>
               </ul>
 
               {/* Other Essentials */}
@@ -327,32 +305,106 @@ export default function BlogDetailsPage() {
               </h3>
 
               <ul>
-                <li><strong>Figma</strong> for design</li>
-                <li><strong>Linear</strong> for project management</li>
-                <li><strong>Notion</strong> for documentation</li>
+                <li><strong>Nerd Fonts (Cascadia + Fira)</strong> – These fonts enhance my terminal experience by providing a clean and readable interface with support for icons and symbols that help organize and beautify the workspace.</li>
               </ul>
 
               {/* How This Stack Improves My Workflow */}
               <h2 id="-how-this-stack-improves-my-workflow" className="flex scroll-m-28 flex-row items-center gap-2">
-                <a href="#-how-this-stack-improves-my-workflow" className="peer">🚀 How This Stack Improves My Workflow</a>
+                <a href="#-how-this-stack-improves-my-workflow" className="peer">🔄 How This Stack Improves My Workflow</a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-3.5 shrink-0 text-fd-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100" aria-label="Link to section">
                   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                   <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                 </svg>
               </h2>
 
-              <p>Each tool in my stack serves a specific purpose and integrates seamlessly with the others, creating a cohesive development experience that allows me to focus on what matters most: building great applications.</p>
+              <p>Each tool in my stack contributes significantly to my productivity. Here's how:</p>
+
+              {/* Customized, Fast Editing with Neovim */}
+              <h3 id="-customized-fast-editing-with-neovim" className="flex scroll-m-28 flex-row items-center gap-2">
+                <a href="#-customized-fast-editing-with-neovim" className="peer">🧠 Customized, Fast Editing with Neovim</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-3.5 shrink-0 text-fd-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100" aria-label="Link to section">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </h3>
+
+              <p>Neovim gives me a highly customized, lightweight, and fast editor. With LSP, Treesitter, and plugins, I can develop in any language with speed and precision.</p>
+
+              {/* Streamlined Terminal Multitasking */}
+              <h3 id="-streamlined-terminal-multitasking" className="flex scroll-m-28 flex-row items-center gap-2">
+                <a href="#-streamlined-terminal-multitasking" className="peer">🧵 Streamlined Terminal Multitasking</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-3.5 shrink-0 text-fd-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100" aria-label="Link to section">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </h3>
+
+              <p>Wezterm, ZSH, and Tmux form the foundation of my terminal workflow. I can manage multiple tasks or projects in parallel without context switching.</p>
+
+              {/* Navigation Made Effortless */}
+              <h3 id="-navigation-made-effortless" className="flex scroll-m-28 flex-row items-center gap-2">
+                <a href="#-navigation-made-effortless" className="peer">📁 Navigation Made Effortless</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-3.5 shrink-0 text-fd-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100" aria-label="Link to section">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </h3>
+
+              <p>FZF and Bat help me quickly search, preview, and inspect files. These tools keep me focused and minimize time lost in navigation or boilerplate.</p>
+
+              {/* System Awareness in Real-Time */}
+              <h3 id="-system-awareness-in-real-time" className="flex scroll-m-28 flex-row items-center gap-2">
+                <a href="#-system-awareness-in-real-time" className="peer">📊 System Awareness in Real-Time</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-3.5 shrink-0 text-fd-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100" aria-label="Link to section">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </h3>
+
+              <p>With Btop++ and Neofetch, I always have an eye on system performance. This helps me avoid bottlenecks and maintain a smooth dev environment.</p>
+
+              {/* Consistent Commits and Efficient API Testing */}
+              <h3 id="-consistent-commits-and-efficient-api-testing" className="flex scroll-m-28 flex-row items-center gap-2">
+                <a href="#-consistent-commits-and-efficient-api-testing" className="peer">✅ Consistent Commits and Efficient API Testing</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-3.5 shrink-0 text-fd-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100" aria-label="Link to section">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </h3>
+
+              <p>Tools like Better Commit and Posting enforce Git best practices and simplify endpoint testing, bringing clarity and reliability to my development process.</p>
+
+              <p>By streamlining my development environment with this stack, I'm able to write cleaner code, maintain better organization, and focus on what matters most: building high-quality software.</p>
 
               {/* Final Thoughts */}
               <h2 id="-final-thoughts" className="flex scroll-m-28 flex-row items-center gap-2">
-                <a href="#-final-thoughts" className="peer">💭 Final Thoughts</a>
+                <a href="#-final-thoughts" className="peer">📈 Final Thoughts</a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-3.5 shrink-0 text-fd-muted-foreground opacity-0 transition-opacity peer-hover:opacity-100" aria-label="Link to section">
                   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                   <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                 </svg>
               </h2>
 
-              <p>The right tools can make all the difference in your development workflow. Invest time in finding and configuring tools that work for you, and don't be afraid to experiment with new ones.</p>
+              <div className="flex gap-2 my-4 rounded-xl border bg-fd-card callout-bg p-3 ps-1 text-sm text-fd-card-foreground shadow-md">
+                <div role="none" className="w-0.5 callout-border rounded-sm"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide size-5 -me-0.5 callout-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+                <div className="flex flex-col gap-2 min-w-0 flex-1">
+                  <p className="font-medium !my-0">🔍 Always Evolving</p>
+                  <div className="text-fd-muted-foreground prose-no-margin empty:hidden">
+                    <p>The frontend landscape is always shifting. I regularly reevaluate my stack to keep it lean, effective, and fun.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p>In 2025, having a tailored developer setup is no longer optional—it's essential. Whether you're starting out or refining your workflow, finding the right stack will dramatically enhance your performance and enjoyment.</p>
+
+              <p>Do you have favorite tools or terminal hacks I should try? Drop a comment or reach out—I love nerding out over dotfiles and setups!</p>
+
+              <p>Until next time, happy coding 👨‍💻✨</p>
             </div>
           </article>
 
@@ -398,8 +450,8 @@ export default function BlogDetailsPage() {
                     ⚙️ My Stack
                   </a>
 
-                  {/* Sub-section vertical line */}
-                  <div className="absolute left-5 w-px bg-white/08 toc-sub-line" style={{ top: '76px', height: '144px' }}></div>
+                  {/* Sub-section vertical line for My Stack */}
+                  <div className="absolute left-5 w-px bg-white/08 toc-sub-line" style={{ top: '76px', height: '176px' }}></div>
 
                   <a
                     data-active={activeSection === '-development-environment'}
@@ -443,15 +495,15 @@ export default function BlogDetailsPage() {
                     style={{ paddingInlineStart: '18px' }}
                     className="toc-link prose relative py-1.5 text-sm text-fd-muted-foreground [overflow-wrap:anywhere] first:pt-0 last:pb-0"
                   >
-                    🚀 How This Stack Improves My Workflow
+                    🔄 How This Stack Improves My Workflow
                   </a>
 
-                  {/* Sub-section vertical line for workflow improvements */}
-                  <div className="absolute left-5 w-px bg-white/08 toc-sub-line" style={{ top: '256px', height: '180px' }}></div>
+                  {/* Sub-section vertical line for How This Stack */}
+                  <div className="absolute left-5 w-px bg-white/08 toc-sub-line" style={{ top: '268px', height: '208px' }}></div>
 
                   <a
-                    data-active={activeSection === 'customized-fast-editing'}
-                    href="#customized-fast-editing"
+                    data-active={activeSection === '-customized-fast-editing-with-neovim'}
+                    href="#-customized-fast-editing-with-neovim"
                     style={{ paddingInlineStart: '32px' }}
                     className="toc-link prose relative py-1.5 text-sm text-fd-muted-foreground [overflow-wrap:anywhere] first:pt-0 last:pb-0"
                   >
@@ -459,17 +511,17 @@ export default function BlogDetailsPage() {
                   </a>
 
                   <a
-                    data-active={activeSection === 'streamlined-terminal'}
-                    href="#streamlined-terminal"
+                    data-active={activeSection === '-streamlined-terminal-multitasking'}
+                    href="#-streamlined-terminal-multitasking"
                     style={{ paddingInlineStart: '32px' }}
                     className="toc-link prose relative py-1.5 text-sm text-fd-muted-foreground [overflow-wrap:anywhere] first:pt-0 last:pb-0"
                   >
-                    📦 Streamlined Terminal Multitasking
+                    🧵 Streamlined Terminal Multitasking
                   </a>
 
                   <a
-                    data-active={activeSection === 'navigation-effortless'}
-                    href="#navigation-effortless"
+                    data-active={activeSection === '-navigation-made-effortless'}
+                    href="#-navigation-made-effortless"
                     style={{ paddingInlineStart: '32px' }}
                     className="toc-link prose relative py-1.5 text-sm text-fd-muted-foreground [overflow-wrap:anywhere] first:pt-0 last:pb-0"
                   >
@@ -477,8 +529,8 @@ export default function BlogDetailsPage() {
                   </a>
 
                   <a
-                    data-active={activeSection === 'system-awareness'}
-                    href="#system-awareness"
+                    data-active={activeSection === '-system-awareness-in-real-time'}
+                    href="#-system-awareness-in-real-time"
                     style={{ paddingInlineStart: '32px' }}
                     className="toc-link prose relative py-1.5 text-sm text-fd-muted-foreground [overflow-wrap:anywhere] first:pt-0 last:pb-0"
                   >
@@ -486,8 +538,8 @@ export default function BlogDetailsPage() {
                   </a>
 
                   <a
-                    data-active={activeSection === 'consistent-commits'}
-                    href="#consistent-commits"
+                    data-active={activeSection === '-consistent-commits-and-efficient-api-testing'}
+                    href="#-consistent-commits-and-efficient-api-testing"
                     style={{ paddingInlineStart: '32px' }}
                     className="toc-link prose relative py-1.5 text-sm text-fd-muted-foreground [overflow-wrap:anywhere] first:pt-0 last:pb-0"
                   >
@@ -500,7 +552,7 @@ export default function BlogDetailsPage() {
                     style={{ paddingInlineStart: '18px' }}
                     className="toc-link prose relative py-1.5 text-sm text-fd-muted-foreground [overflow-wrap:anywhere] first:pt-0 last:pb-0"
                   >
-                    💭 Final Thoughts
+                    📈 Final Thoughts
                   </a>
                 </div>
               </div>

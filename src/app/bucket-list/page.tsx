@@ -1,9 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { Check } from 'lucide-react';
+import { Check, X, ChevronLeft, ChevronRight, Download, Share2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function BucketListPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImages, setCurrentImages] = useState<{ src: string; alt: string }[]>([]);
   const bucketListItems = [
     {
       id: 1,
@@ -20,9 +24,9 @@ export default function BucketListPage() {
       description: "August 2024, https://www.ravindraverma.in",
       date: "August 2024",
       images: [
-        { src: "/_next/home-page.jpg", alt: "Create portfolio website" },
-        { src: "/_next/blog-page.jpg", alt: "Create portfolio website" },
-        { src: "/_next/project-page.jpg", alt: "Create portfolio website" }
+        { src: "/assets/projects/home.png", alt: "Portfolio Home Page" },
+        { src: "/assets/projects/about.png", alt: "Portfolio About Page" },
+        { src: "/assets/projects/work.png", alt: "Portfolio Work Page" }
       ]
     },
     {
@@ -139,6 +143,93 @@ export default function BucketListPage() {
     }
   ];
 
+  const openModal = (images: { src: string; alt: string }[], index: number) => {
+    setCurrentImages(images);
+    setCurrentImageIndex(index);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % currentImages.length);
+  };
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length);
+  };
+
+  const handleDownload = async () => {
+    try {
+      const imageSrc = currentImages[currentImageIndex].src;
+      const response = await fetch(imageSrc);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `portfolio-${currentImageIndex + 1}-${imageSrc.split('/').pop()}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Download failed:', error);
+    }
+  };
+
+  const handleShare = async () => {
+    const imageSrc = currentImages[currentImageIndex].src;
+    const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${imageSrc}` : imageSrc;
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: currentImages[currentImageIndex].alt,
+          text: 'Check out this portfolio page',
+          url: fullUrl,
+        });
+      } catch (error) {
+        // User cancelled or share failed, fallback to copy
+        if (error instanceof Error && error.name !== 'AbortError') {
+          await copyToClipboard(fullUrl);
+        }
+      }
+    } else {
+      // Fallback: copy to clipboard
+      await copyToClipboard(fullUrl);
+    }
+  };
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      // You could add a toast notification here
+    } catch (error) {
+      console.error('Failed to copy:', error);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isModalOpen) return;
+      
+      if (e.key === 'Escape') {
+        closeModal();
+      } else if (e.key === 'ArrowRight') {
+        goToNext();
+      } else if (e.key === 'ArrowLeft') {
+        goToPrevious();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isModalOpen, currentImages.length]);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="absolute inset-0  h-[450px] w-full overflow-hidden bg-neutral-100/60 dark:bg-neutral-950/80"
@@ -188,9 +279,10 @@ export default function BucketListPage() {
                     {item.images.map((image, imgIndex) => (
                       <button
                         key={imgIndex}
+                        onClick={() => openModal(item.images, imgIndex)}
                         data-state="closed"
                         data-slot="tooltip-trigger"
-                        className={`size-10 max-w-12 overflow-hidden rounded-[8px] border-2 p-0 transition-all duration-300 group-hover:rotate-0 hover:z-10 hover:scale-105 hover:rotate-0 md:max-w-24 ${
+                        className={`size-10 max-w-12 overflow-hidden rounded-[8px] border-2 p-0 transition-all duration-300 group-hover:rotate-0 hover:z-10 hover:scale-105 hover:rotate-0 cursor-pointer md:max-w-24 ${
                           imgIndex === 0 ? 'rotate-3' : imgIndex === 1 ? '-rotate-3' : 'rotate-0'
                         }`}
                       >
@@ -210,6 +302,97 @@ export default function BucketListPage() {
           ))}
         </div>
       </main>
+
+      {/* Full Screen Image Modal */}
+      {isModalOpen && currentImages.length > 0 && (
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm"
+          onClick={closeModal}
+        >
+          {/* Close Button - Top Left */}
+          <button
+            onClick={closeModal}
+            className="absolute top-4 left-4 z-50 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+            aria-label="Close modal"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Download and Share Buttons - Top Right */}
+          <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDownload();
+              }}
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              aria-label="Download image"
+            >
+              <Download className="w-5 h-5" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleShare();
+              }}
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              aria-label="Share image"
+            >
+              <Share2 className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Previous Button - Only show if not first image */}
+          {currentImages.length > 1 && currentImageIndex > 0 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
+              className="absolute left-4 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* Next Button - Only show if not last image */}
+          {currentImages.length > 1 && currentImageIndex < currentImages.length - 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
+              className="absolute right-4 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* Image Container */}
+          <div 
+            className="relative max-w-[95vw] max-h-[95vh] w-full h-full flex items-center justify-center p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={currentImages[currentImageIndex].src}
+              alt={currentImages[currentImageIndex].alt}
+              width={1920}
+              height={1080}
+              className="max-w-full max-h-full object-contain rounded-lg"
+              priority
+            />
+          </div>
+
+          {/* Image Counter */}
+          {currentImages.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm">
+              {currentImageIndex + 1} / {currentImages.length}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

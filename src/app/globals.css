@@ -51,6 +51,23 @@ body {
   font-family: 'Nyght', serif;
 }
 
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-space-grotesk {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/* Heading styles */
+h1 {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+h2 {
+  font-family: var(--font-inter), sans-serif;
+}
+
 .perspective-1000 {
   perspective: 1000px;
 }

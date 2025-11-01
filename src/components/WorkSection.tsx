@@ -150,6 +150,8 @@ export default function WorkSection() {
                 <div className="flex flex-col w-full">
                   <Link
                     href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="relative cursor-pointer overflow-hidden rounded-2xl border border-white-2 dark:border-white/15 bg-[#f2f2f20c] p-1.5 shadow-2xl lg:h-[500px] lg:rounded-3xl lg:p-2 group"
                     onMouseEnter={() => {
                       console.log('Hovering project:', project.id);

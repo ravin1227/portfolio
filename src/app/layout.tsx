@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Outfit } from "next/font/google";
+import { Instrument_Sans, Outfit, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import GetInTouchSection from "@/components/GetInTouchSection";
@@ -15,6 +15,18 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Dev Portfolio",
   description: "A modern developer portfolio built with Next.js",
@@ -28,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${instrumentSans.variable} ${outfit.variable} font-sans antialiased bg-black text-white`}
+        className={`${instrumentSans.variable} ${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-black text-white`}
       >
         <div className="min-h-screen bg-black flex flex-col">
           <Navbar />

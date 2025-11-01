@@ -166,181 +166,70 @@ export default function BlogPage() {
           </button>
         </div>
 
-        {/* Blog Posts Section */}
-        <div className="mt-20 flex w-full border-white/10 md:border-t">
-          <div className="mx-auto flex flex-col-reverse md:flex-row">
-            <div className="w-full border-white/10 md:border-r md:px-8 lg:min-w-3xl">
-              <div className="mx-auto flex max-w-3xl flex-col gap-6 px-0 py-10 pb-0">
-                {blogPosts.map((post) => (
-                  <article 
-                    key={post.id} 
-                    className="flex flex-col gap-4 border-b border-dashed border-white/10 pb-8 lg:flex-row-reverse lg:items-center cursor-pointer"
-                    onClick={() => {
-                      // Store selected post in localStorage and navigate
-                      localStorage.setItem('selectedBlogPost', JSON.stringify(post));
-                      router.push('/blog-details');
-                    }}
-                  >
-                    {/* Post Image */}
-                    <div className="relative z-1 h-44 w-auto overflow-hidden rounded-sm lg:h-28 lg:w-full lg:max-w-48 group">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    </div>
-                    
-                    {/* Post Content */}
-                    <div className="w-full px-2">
-                      <div className="flex items-center gap-3">
-                        <time className="text-muted-foreground text-xs">
-                          {post.date} (6 mo ago)
-                        </time>
-                        {post.isRecent && (
-                          <span className="rounded-full bg-green-500/20 px-2 py-1 text-xs font-medium text-green-400">
-                            Recently released
-                          </span>
-                        )}
-                      </div>
-                      
-                      <h3 
-                        className="relative mt-3 text-xl font-bold cursor-pointer"
-                      >
-                        {post.title}
-                      </h3>
-                      
-                      <p className="mt-1 text-sm text-neutral-900 dark:text-white/75">
-                        {post.description}
-                      </p>
-                      
-                      <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-                        <div className="flex items-center gap-2 text-xs text-green-400">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="h-4 w-4"
-                          >
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12,6 12,12 16,14"></polyline>
-                          </svg>
-                          {post.readTime}
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-1">
-                          {post.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-md border px-2 py-1 text-[10px] transition-all duration-200 border-neutral-300 bg-neutral-100 text-neutral-600 dark:border-neutral-700/50 dark:bg-neutral-800/60 dark:text-neutral-400"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
+        {/* Coming Soon Section */}
+        <div className="mt-20 flex w-full justify-center items-center min-h-[400px] py-20">
+          <div className="flex flex-col items-center justify-center text-center max-w-2xl px-4">
+            {/* Icon */}
+            <div className="mb-8 relative">
+              <div className="absolute inset-0 blur-3xl opacity-30 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full"></div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="120"
+                height="120"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-pen-line relative z-10 text-white/80"
+              >
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+              </svg>
             </div>
 
-            {/* Sidebar */}
-            <div className="h-full md:max-w-[350px] md:px-6 md:pt-6 md:pb-0">
-              <div className="sticky flex h-fit flex-col-reverse gap-8 md:flex-col">
-                {/* Sort Dropdown */}
-                <div className="bg-neutral-800/50 border border-neutral-700/50 rounded-xl px-4 py-1 backdrop-blur-sm">
-                  <button
-                    className="flex w-full items-center justify-between text-left"
-                    type="button"
-                  >
-                    <div className="flex items-center gap-3">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-neutral-400"
-                      >
-                        <path d="M8 2v4"></path>
-                        <path d="M16 2v4"></path>
-                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                        <path d="M3 10h18"></path>
-                      </svg>
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium text-white">Newest First</span>
-                        <span className="text-xs text-neutral-400">Most recent posts first</span>
-                      </div>
-                    </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-neutral-400"
-                    >
-                      <path d="m7 15 5 5 5-5"></path>
-                      <path d="m7 9 5-5 5 5"></path>
-                    </svg>
-                  </button>
-                </div>
+            {/* Coming Soon Text */}
+            <h3
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
+              style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: '0px 4px 20px rgba(255,255,255,0.1)'
+              }}
+            >
+              Coming Soon
+            </h3>
 
-                {/* Topics Section */}
-                <div>
-                  <div className="mb-4 flex items-center gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-neutral-400"
-                    >
-                      <line x1="4" x2="20" y1="9" y2="9"></line>
-                      <line x1="4" x2="20" y1="15" y2="15"></line>
-                      <line x1="10" x2="8" y1="3" y2="21"></line>
-                      <line x1="16" x2="14" y1="3" y2="21"></line>
-                    </svg>
-                    <h3 className="text-lg font-medium text-white">Topics</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      'nextjs', 'react', 'css', 'tailwindcss', 'java', 'flexbox', 
-                      'design', 'tips', 'grid', 'tools', 'vite', 'core-concept',
-                      'git', 'pattern', 'typescript', 'setup', 'form', 'productivity', 
-                      'web', 'animation'
-                    ].map((topic) => (
-                      <button
-                        key={topic}
-                        className="rounded-lg border border-neutral-600/50 bg-neutral-800/50 px-3 py-1 text-sm text-neutral-300 transition-all duration-200 hover:border-neutral-500/50 hover:bg-neutral-700/50 hover:text-white"
-                      >
-                        {topic}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-white/70 mb-8 leading-relaxed">
+              I'm working on amazing content. Stay tuned for insightful articles, tutorials, and stories from the world of development.
+            </p>
+
+            {/* Decorative Elements */}
+            <div className="flex items-center gap-3 text-white/50">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-sparkles animate-pulse"
+              >
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                <path d="M5 3v4"></path>
+                <path d="M19 17v4"></path>
+                <path d="M3 5h4"></path>
+                <path d="M17 19h4"></path>
+              </svg>
+              <div className="h-px w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
             </div>
           </div>
         </div>

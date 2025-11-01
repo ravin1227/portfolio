@@ -30,9 +30,9 @@ export default function GuestbookPage() {
             <span className="">I'd love to hear from you!</span>
           </span>
         </h2>
-        <p className="mt-2 text-center text-lg leading-7 text-balance text-black/65 md:text-xl dark:text-white/65">
+        {/* <p className="mt-2 text-center text-lg leading-7 text-balance text-black/65 md:text-xl dark:text-white/65">
           Sign my guestbook and share your idea. You can tell me anything here!
-        </p>
+        </p> */}
         
         <div className="mx-auto mt-10 mb-28 max-w-xl">
           <div className="flex w-full flex-col">

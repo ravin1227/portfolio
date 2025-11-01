@@ -168,7 +168,7 @@ export default function Footer() {
           {/* Social Media Icons */}
           <div className="flex gap-3">
             <Link
-              href="https://linkedin.com/in/raviveer"
+              href="https://www.linkedin.com/in/ravindraverma12/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-900 dark:text-neutral-300 transition-colors hover:text-neutral-700 dark:hover:text-neutral-100"
@@ -193,7 +193,7 @@ export default function Footer() {
             </Link>
 
             <Link
-              href="https://github.com/raviveer"
+              href="https://github.com/ravin1227"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-900 dark:text-neutral-300 transition-colors hover:text-neutral-700 dark:hover:text-neutral-100"
@@ -217,7 +217,7 @@ export default function Footer() {
             </Link>
 
             <Link
-              href="https://x.com/raviveer"
+              href="https://x.com/80_ravindra"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-900 dark:text-neutral-300 transition-colors hover:text-neutral-700 dark:hover:text-neutral-100"
@@ -235,7 +235,30 @@ export default function Footer() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="stroke-1"
               >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                <path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 0 0 .497-3.753c0-.249 1.51-2.772 1.818-4.013z"></path>
+              </svg>
+            </Link>
+
+            <Link
+              href="https://t.me/Ucant_see_me1210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-900 dark:text-neutral-300 transition-colors hover:text-neutral-700 dark:hover:text-neutral-100"
+            >
+              <span className="sr-only">Telegram</span>
+              <svg
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                height="20"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-1"
+              >
+                <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
               </svg>
             </Link>
           </div>
