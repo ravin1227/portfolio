@@ -14,7 +14,7 @@ export default function Footer() {
               <ABLogo size={40} />
             </Link>
             <p className="w-60 text-sm leading-5 dark:text-gray-300">
-              I'm Ravi - a full-stack developer, freelancer & problem solver. Thanks for checking out my site!
+              I'm Ravindra - a passionate full-stack developer crafting digital experiences. Whether it's building scalable applications or solving complex problems, I love turning ideas into reality. Thanks for visiting!
             </p>
           </div>
 
@@ -65,10 +65,12 @@ export default function Footer() {
               <ul className="flex flex-wrap items-start gap-x-4 gap-y-2 text-sm md:flex-col md:gap-y-3 dark:text-neutral-300">
                 <li>
                   <Link
-                    href="/guestbook"
+                    href="https://calendly.com/ravindraverma373"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="after:bg-primary relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100"
                   >
-                    Guest Book
+                    Book a Call
                   </Link>
                 </li>
                 <li>

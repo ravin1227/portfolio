@@ -134,20 +134,27 @@ export default function LinksPage() {
                 <div className="text-neutral-800 dark:text-neutral-200">GitHub</div>
               </a>
 
-              {/* Guestbook */}
+              {/* Calendly */}
               <a 
-                href="/guestbook" 
-                target="_blank" 
+                href="https://calendly.com/ravindraverma373" 
+                target="_blank"
                 rel="noopener noreferrer"
                 className="border-white-3 bg-white-2 relative flex h-14 w-full items-center justify-center rounded-xl border px-8 py-4 transition-colors duration-300 dark:border-neutral-700 dark:bg-[#151414]"
               >
                 <div className="absolute left-8">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-book-heart size-5 stroke-1 text-black dark:text-neutral-300" aria-hidden="true">
-                    <path d="M16 8.2A2.22 2.22 0 0 0 13.8 6c-.8 0-1.4.3-1.8.9-.4-.6-1-.9-1.8-.9A2.22 2.22 0 0 0 8 8.2c0 .6.3 1.2.7 1.6A226.652 226.652 0 0 0 12 13a404 404 0 0 0 3.3-3.1 2.413 2.413 0 0 0 .7-1.7"></path>
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar size-5 stroke-1 text-black dark:text-neutral-300" aria-hidden="true">
+                    <path d="M8 2v4"></path>
+                    <path d="M16 2v4"></path>
+                    <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                    <path d="M3 10h18"></path>
+                    <path d="M8 14h.01"></path>
+                    <path d="M12 14h.01"></path>
+                    <path d="M16 14h.01"></path>
+                    <path d="M8 18h.01"></path>
+                    <path d="M12 18h.01"></path>
                   </svg>
                 </div>
-                <div className="text-neutral-800 dark:text-neutral-200">Guestbook</div>
+                <div className="text-neutral-800 dark:text-neutral-200">Calendly (Book a call)</div>
               </a>
 
               {/* X (Twitter) */}
@@ -165,19 +172,21 @@ export default function LinksPage() {
                 <div className="text-neutral-800 dark:text-neutral-200">X (Twitter)</div>
               </a>
 
-              {/* BlueSky */}
+              {/* Instagram */}
               <a 
-                href="https://bsky.app/profile/ravindraverma.bsky.social" 
+                href="https://www.instagram.com/ravi._.1812/#" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="border-white-3 bg-white-2 relative flex h-14 w-full items-center justify-center rounded-xl border px-8 py-4 transition-colors duration-300 dark:border-neutral-700 dark:bg-[#151414]"
               >
                 <div className="absolute left-8">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-black dark:text-neutral-300">
-                    <path d="M4.90172 3.06907C6.96538 4.62164 9.18496 7.76969 10 9.45892C10.815 7.76969 13.0346 4.62164 15.0983 3.06907C16.5873 1.94881 19 1.08201 19 3.84022C19 4.39105 18.6848 8.46765 18.5 9.12954C17.8575 11.4304 15.5162 12.0173 13.4335 11.6621C17.0739 12.283 18 14.3396 16 16.3962C12.2016 20.3021 10.5407 15.4162 10.1151 14.1643C10.037 13.9348 10.0005 13.8274 10 13.9187C9.99946 13.8274 9.96295 13.9348 9.88493 14.1643C9.45934 15.4162 7.79839 20.3021 4 16.3962C2 14.3396 2.92606 12.283 6.56647 11.6621C4.48379 12.0173 2.14254 11.4304 1.5 9.12954C1.31517 8.46765 1 4.39105 1 3.84022C1 1.08201 3.41271 1.94881 4.90172 3.06907Z" stroke="currentColor" strokeWidth="0.8" strokeLinejoin="round"></path>
+                  <svg stroke="currentColor" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg" className="text-black dark:text-neutral-300">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
                 </div>
-                <div className="text-neutral-800 dark:text-neutral-200">BlueSky</div>
+                <div className="text-neutral-800 dark:text-neutral-200">Instagram</div>
               </a>
             </div>
           </div>
