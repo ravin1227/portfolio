@@ -174,10 +174,23 @@ const Navbar = memo(function Navbar() {
 
 
   return (
-    <nav className="fixed inset-x-0 top-2.5 z-5000 mx-auto mt-1.5 flex w-full max-w-7xl items-center justify-between px-6 py-1.5 pr-4 lg:top-4">
+    <>
+      {/* Full-width blur background with gradient fade */}
+      <div
+        className="fixed inset-x-0 top-0 z-5000 backdrop-blur-md bg-white/5 dark:bg-black/5"
+        style={{
+          height: '165px',
+          maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%)',
+        }}
+      ></div>
+
+      {/* Navbar content container */}
+      <nav className="fixed inset-x-0 top-2.5 z-5000 mx-auto mt-1.5 flex w-full max-w-7xl items-center justify-between px-6 py-1.5 pb-6 pr-4 lg:top-4">
+        <div className="relative z-10 flex w-full items-center justify-between">
       {/* Left Side - AB Logo */}
-      <Link href="/" className="size-7 p-1 drop-shadow-xl delay-200 md:size-8">
-        <ABLogo size={35} />
+      <Link href="/" className="flex items-center justify-center drop-shadow-xl delay-200">
+        <ABLogo size={55} />
       </Link>
 
       {/* Center - Desktop Navigation */}
@@ -981,7 +994,9 @@ const Navbar = memo(function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+        </div>
+      </nav>
+    </>
   );
 });
 
