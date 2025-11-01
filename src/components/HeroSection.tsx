@@ -90,7 +90,7 @@ export default function HeroSection() {
                       width={854}
                       height={425}
                       className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 w-full h-full object-cover"
-                      src="/assets/profile/ravi.jpeg"
+                      src="/assets/images/ravi_hero.png"
                     />
                   </div>
                 </div>
