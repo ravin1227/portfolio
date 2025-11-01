@@ -239,16 +239,16 @@ const AboutPage = () => {
 
           <div className="relative mx-auto mt-20 mb-20 max-w-7xl">
             <div className="flex w-full flex-col max-md:ps-14 md:gap-10">
-              {/* First Experience - Roboto Studio */}
+              {/* First Experience - Acorn Globus */}
               <article className="grid grid-cols-1 gap-6 py-12 first:pt-0 last:pb-0 md:grid-cols-[2fr_1fr_4fr]" style={{ paddingLeft: '50px' }}>
                 <div className="w-full lg:max-w-sm">
                   <div className="flex flex-col items-start gap-y-3 text-sm font-light">
-                    <time className="text-muted-foreground text-xs font-medium tracking-wide uppercase" dateTime="JAN 2025 - Present">
-                      JAN 2025 - Present
+                    <time className="text-muted-foreground text-xs font-medium tracking-wide uppercase" dateTime="NOV 2022 - Present">
+                      NOV 2022 - Present
                     </time>
                     <div className="flex items-center gap-2">
                       <h2 className="text-lg font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
-                        Roboto Studio
+                        Acorn Globus
                       </h2>
                     </div>
                     <div className="flex flex-col gap-2">
@@ -257,7 +257,7 @@ const AboutPage = () => {
                           <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
                           <circle cx="12" cy="10" r="3"></circle>
                         </svg>
-                        <span className="text-sm">London Area, United Kingdom</span>
+                        <span className="text-sm">Nagpur, Maharashtra, India</span>
                       </div>
                       <div className="text-muted-foreground flex items-center gap-1.5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-briefcase h-3.5 w-3.5 flex-shrink-0" aria-hidden="true">
@@ -274,28 +274,28 @@ const AboutPage = () => {
                   <div className="flex flex-col gap-y-6 text-xs leading-relaxed md:text-sm">
                     <header>
                       <h3 className="text-lg font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
-                        Frontend Engineer
+                        Full Stack Engineer
                       </h3>
                     </header>
                     <section aria-label="Key achievements">
                       <ul className="flex list-none flex-col gap-y-4 text-neutral-700 dark:text-neutral-300/90">
                         <li className="leading-relaxed">
-                          Architected enterprise-scale, <strong className="font-semibold text-neutral-900 dark:text-neutral-200">CMS-driven reusable pagebuilder blocks</strong> with dynamic configurability using <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Sanity and Contentful</strong>, enabling non-technical teams to manage content across <strong className="font-semibold text-neutral-900 dark:text-neutral-200">6+ production websites</strong>. Designed custom schemas and optimized GROQ queries, resulting in <strong className="font-semibold text-neutral-900 dark:text-neutral-200">40% faster content delivery</strong>.
+                          Worked on multiple platforms under Acorn Globus including <strong className="font-semibold text-neutral-900 dark:text-neutral-200">MyWiFi Networks</strong>, <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Formester</strong>, <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Rumie Learn</strong>, and <strong className="font-semibold text-neutral-900 dark:text-neutral-200">DealsOnFire</strong>, focusing on performance optimization and platform scalability.
                         </li>
                         <li className="leading-relaxed">
-                          Delivered <strong className="font-semibold text-neutral-900 dark:text-neutral-200">high-performance web applications</strong> using <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Next.js, React, and Tailwind CSS</strong> with advanced rendering strategies (SSG/SSR), achieving <strong className="font-semibold text-neutral-900 dark:text-neutral-200">25% increase in user engagement</strong> and <strong className="font-semibold text-neutral-900 dark:text-neutral-200">20% improvement in Core Web Vitals</strong>.
+                          Optimized platform performance by implementing <strong className="font-semibold text-neutral-900 dark:text-neutral-200">code splitting, lazy loading, and caching strategies</strong>, resulting in <strong className="font-semibold text-neutral-900 dark:text-neutral-200">40% faster page load times</strong> and improved Core Web Vitals across all platforms.
                         </li>
                         <li className="leading-relaxed">
-                          Implemented <strong className="font-semibold text-neutral-900 dark:text-neutral-200">TypeScript across full-stack codebases</strong>, reducing production defects by <strong className="font-semibold text-neutral-900 dark:text-neutral-200">15%</strong> and establishing type-safe development standards for enhanced code quality and maintainability.
+                          Architected and upscaled platforms to handle <strong className="font-semibold text-neutral-900 dark:text-neutral-200">increased traffic and user growth</strong>, implementing scalable infrastructure solutions, database optimizations, and efficient API designs to support millions of users.
                         </li>
                         <li className="leading-relaxed">
-                          Enhanced team productivity via a <strong className="font-semibold text-neutral-900 dark:text-neutral-200">scalable Monorepo architecture (Turborepo)</strong> and rigorous peer code reviews, contributing <strong className="font-semibold text-neutral-900 dark:text-neutral-200">40+ hours weekly</strong> while maintaining high engineering standards.
+                          Enhanced <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Formester</strong> with advanced form builder features including AI-powered form generation, improved analytics, and seamless integrations, contributing to the platform's growth to <strong className="font-semibold text-neutral-900 dark:text-neutral-200">15,000+ users</strong>.
                         </li>
                         <li className="leading-relaxed">
-                          Collaborated with <strong className="font-semibold text-neutral-900 dark:text-neutral-200">cross-functional teams (Design, Product)</strong> to ship <strong className="font-semibold text-neutral-900 dark:text-neutral-200">WCAG 2.1 AA-compliant</strong>, user-centered interfaces using <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Agile methodologies</strong>, managing sprints in Linear and coordinating communication via Slack.
+                          Revamped <strong className="font-semibold text-neutral-900 dark:text-neutral-200">MyWiFi Networks</strong> from legacy architecture to modern, scalable platform using <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Laravel and Vue.js</strong>, enabling businesses to deploy white-label WiFi marketing solutions with real-time analytics, automation features, and multi-language support.
                         </li>
                         <li className="leading-relaxed">
-                          Optimized performance and SEO by implementing <strong className="font-semibold text-neutral-900 dark:text-neutral-200">lazy loading, strategic code splitting</strong>, and adhering to <strong className="font-semibold text-neutral-900 dark:text-neutral-200">SEO best practices</strong>, resulting in higher search rankings and better UX metrics.
+                          Improved <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Rumie Learn</strong> and <strong className="font-semibold text-neutral-900 dark:text-neutral-200">DealsOnFire</strong> platforms by refactoring legacy code, implementing modern React patterns, and optimizing database queries, resulting in <strong className="font-semibold text-neutral-900 dark:text-neutral-200">improved user experience and faster response times</strong>.
                         </li>
                       </ul>
                     </section>
@@ -343,7 +343,7 @@ const AboutPage = () => {
                 </div>
               </article>
 
-              {/* Second Experience - GitHub */}
+              {/* Second Experience - Freelance */}
               <article className="grid grid-cols-1 gap-6 py-12 first:pt-0 last:pb-0 md:grid-cols-[2fr_1fr_4fr]" style={{ paddingLeft: '50px' }}>
                 <div className="w-full lg:max-w-sm">
                   <div className="flex flex-col items-start gap-y-3 text-sm font-light">
@@ -352,7 +352,7 @@ const AboutPage = () => {
                     </time>
                     <div className="flex items-center gap-2">
                       <h2 className="text-lg font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
-                        Github
+                        Freelance
                       </h2>
                     </div>
                     <div className="flex flex-col gap-2">
@@ -371,21 +371,36 @@ const AboutPage = () => {
                   <div className="flex flex-col gap-y-6 text-xs leading-relaxed md:text-sm">
                     <header>
                       <h3 className="text-xl font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
-                        Open Source Contributor
+                        Full Stack Developer
                       </h3>
                     </header>
                     <section aria-label="Key achievements">
                       <ul className="flex list-none flex-col gap-y-4 text-neutral-700 dark:text-neutral-300/90">
                         <li className="leading-relaxed">
-                          Contributed to <strong className="font-semibold text-neutral-900 dark:text-neutral-200">open-source projects with 15,000+ Github stars</strong>, improving code quality, feature implementations, and documentation.
+                          Developed <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Dailzy</strong>, a quick commerce platform connecting users with local helpers for daily tasks and instant deliveries, featuring 10-15 minute delivery times across multiple cities in India.
                         </li>
                         <li className="leading-relaxed">
-                          Engaged with <strong className="font-semibold text-neutral-900 dark:text-neutral-200">developer communities</strong>, collaborating on innovative solutions and best practices.
+                          Built scalable web and mobile applications using <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Laravel</strong> for backend APIs, <strong className="font-semibold text-neutral-900 dark:text-neutral-200">React Native</strong> for cross-platform mobile apps, and modern frontend technologies including <strong className="font-semibold text-neutral-900 dark:text-neutral-200">React, Next.js, TypeScript, and Tailwind CSS</strong>.
+                        </li>
+                        <li className="leading-relaxed">
+                          Delivered custom solutions for various clients including <strong className="font-semibold text-neutral-900 dark:text-neutral-200">e-commerce platforms, SaaS applications, and enterprise web portals</strong>, working independently to meet client requirements and deadlines.
+                        </li>
+                        <li className="leading-relaxed">
+                          Collaborated with international clients to architect and implement <strong className="font-semibold text-neutral-900 dark:text-neutral-200">RESTful APIs, database optimizations, and responsive UI/UX designs</strong>, ensuring optimal performance and user experience across all platforms.
                         </li>
                       </ul>
                     </section>
                     <section aria-label="Technologies used">
                       <div className="flex flex-wrap gap-2">
+                      <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          Ruby on Rails
+                        </span>
+                        <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          Laravel
+                        </span>
+                        <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          React Native
+                        </span>
                         <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
                           React
                         </span>
@@ -399,7 +414,22 @@ const AboutPage = () => {
                           Tailwind CSS
                         </span>
                         <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
-                          Turborepo
+                          PHP
+                        </span>
+                        <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          MySQL
+                        </span>
+                        <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          PostgreSQL
+                        </span>
+                        <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          Node.js
+                        </span>
+                        <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          REST API
+                        </span>
+                        <span className="inline-flex items-center justify-center rounded-lg border px-3 py-1 w-fit whitespace-nowrap shrink-0 gap-2 text-xs md:text-sm text-black dark:text-white border-white-3 dark:bg-neutral-900 dark:border-white/[0.14] bg-white-2">
+                          JavaScript
                         </span>
                       </div>
                     </section>

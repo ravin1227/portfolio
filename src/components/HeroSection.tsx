@@ -66,9 +66,9 @@ export default function HeroSection() {
 
           {/* Main Heading */}
           <h2 className="animate-fadeInUp w-full max-w-5xl mx-auto my-4 md:my-6 py-px text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-semibold text-balance text-zinc-700 opacity-90 dark:text-zinc-100">
-            <span className="block sm:inline">I help founders turn ideas</span>
+            <span className="block sm:inline font-instrument-serif font-normal" style={{ fontFamily: 'var(--font-instrument-serif), serif', fontWeight: 400 }}>I help founders turn ideas</span>
             <br className="hidden sm:block" />
-            <span className="block sm:inline">into seamless&nbsp;</span>
+            <span className="block sm:inline font-instrument-serif font-normal" style={{ fontFamily: 'var(--font-instrument-serif), serif', fontWeight: 400 }}>into seamless&nbsp;</span>
             <span className="font-nyght bg-linear-to-b from-zinc-500 via-zinc-600 to-zinc-900 bg-clip-text font-light tracking-wide text-transparent dark:from-zinc-700 dark:via-zinc-200 dark:to-zinc-50">
               digital experiences
             </span>
@@ -77,7 +77,7 @@ export default function HeroSection() {
           {/* Introduction with Profile Image */}
           <h1 className="animate-fadeInUp grad-white relative z-20 w-full max-w-4xl mx-auto mt-6 mb-8 md:mt-8 md:mb-10 flex flex-col sm:flex-row items-center justify-center text-center text-lg sm:text-xl md:text-2xl gap-2 sm:gap-0">
             <span className="grad-white flex items-center justify-center">
-              Hello, I'm Ravindra Verma
+              Hello, I'm Ravindra
               <div 
                 className="group relative z-300 mx-2 md:mx-3"
                 onMouseEnter={() => setShowWand(true)}
@@ -191,7 +191,7 @@ export default function HeroSection() {
                 <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
                 <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
               </svg>
-              hello@ravindraverma.in
+              ravindraverma37@gmail.com
             </button>
           </div>
         </div>

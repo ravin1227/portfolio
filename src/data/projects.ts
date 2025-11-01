@@ -31,159 +31,83 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 0,
-    title: "Next Ventures",
-    shortDes: "A online space for entrepreneurs to pitch ideas, explore others, and gain exposure with clean design.",
-    des: "NextVentures leverages the latest Next.js 15 capabilities, including background processing using After, faster development via Server Component HMR Cache, and Partial Prerendering for optimal performance. Its clean design creates an ideal space for entrepreneurs to share and explore innovative ideas.",
-    desc: "A platform designed for early-stage entrepreneurs to pitch, browse, and engage with startup ideas. Built to impress both users and investors with blazing speed, compelling visuals, and a modern tech stack.",
+    title: "MyWiFi Networks",
+    shortDes: "A white label WiFi marketing platform for digital agencies & MSPs to capture social data, analyze visitor metrics and automate loyalty marketing.",
+    des: "MyWiFi Networks is a comprehensive cloud-based WiFi marketing and analytics platform that helps businesses capture guest data, analyze visitor metrics, and automate loyalty marketing. The platform offers 100% white label solutions for digital agencies, managed service providers, and internet service providers to monetize their clients' guest WiFi networks.",
+    desc: "A leading WiFi marketing platform that enables businesses to capture guest data, generate real-time analytics, create custom splash pages, and automate marketing campaigns. Built with a focus on white label solutions for agencies and service providers.",
     bulletPoints: [
-      "Leveraged Partial Prerendering and After for faster loading.",
-      "Simplified idea submission with a clean, intuitive design.",
-      "Enhanced browsing with seamless performance optimization."
+      "100% white label platform with custom branding and domain support.",
+      "Real-time WiFi analytics with customizable reports and presence analytics for footfall heatmaps.",
+      "WYSIWYG campaign editor for creating beautiful guest WiFi splash pages without a designer.",
+      "Marketing automation engine with smart connection triggers, email/SMS integration, and webhook support.",
+      "GDPR compliant with consent forms, opt-out mechanisms, and data export capabilities.",
+      "Multi-language dashboard, portal, and reporting with client access and subuser management."
     ],
     img: {
-      src: "/screen1.jpg",
+      src: "/assets/projects/mywifinetworks.png",
       height: 753,
       width: 1203,
       blurDataURL: "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACQAQCdASoIAAUAAkA4JaQAAuUt8gAA/vvvFkm0Njg+jBrTz8JkE+/AuIuIkFAA"
     },
-    color: "pink",
-    bulletPointsColor: "fill-pink-600 text-pink-600 dark:text-pink-400 bg-pink-600/20 lg:bg-white-1 dark:lg:bg-black",
+    color: "blue",
+    bulletPointsColor: "fill-blue-600 text-blue-600 dark:text-blue-400 bg-blue-600/20 lg:bg-white-1 dark:lg:bg-black",
     techStack: [
-      { name: "Next.js", icon: "nextdotjs/white" },
-      { name: "React", icon: "react" },
-      { name: "Tailwind CSS", icon: "tailwindcss" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Motion.dev", icon: "framer" },
-      { name: "Sanity cms", icon: "sanity" },
-      { name: "Auth.js", icon: "nextdns" },
-      { name: "markdown", icon: "markdown/lightblue" },
-      { name: "GROQ", icon: "zod" },
-      { name: "Sentry", icon: "sentry/violet" }
+      { name: "Laravel", icon: "laravel" },
+      { name: "Vue.js", icon: "vuedotjs" },
+      { name: "Jenkins", icon: "jenkins" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "Docker", icon: "docker" }
     ],
-    liveLink: "/projects/next-venture",
-    githubLink: "https://github.com/RavindraVerma/Next-Venture"
+    liveLink: "https://www.mywifinetworks.com/"
   },
   {
     id: 1,
-    title: "Zenith Minds",
-    shortDes: "A platform connecting students and instructors for enhanced learning experiences.",
-    des: "ZenithMinds is an innovative educational platform designed to enhance learning for students and instructors. It provides an interactive and accessible environment where students can explore resources and instructors can share their expertise, fostering a global community of collaboration and continuous learning.",
-    desc: "An educational platform connecting students and instructors, fostering global collaboration and continuous learning.",
+    title: "Formester",
+    shortDes: "The easiest way to build powerful forms with AI, add logic jumps, and automate. No code. No hassle.",
+    des: "Formester is a comprehensive form builder platform that enables users to create interactive forms with AI capabilities, logic jumps, and automation. The platform offers features like custom PDFs, payment processing, collaboration tools, spam protection, and smart analytics. Trusted by over 15,000+ users including major brands like Peabody, Aramark, Loreal, Toptal, and Virgin.",
+    desc: "A powerful form builder platform that makes it easy to create interactive forms with AI, logic jumps, and automation. Features include custom PDFs, payments, collaboration, spam protection, and analytics.",
     bulletPoints: [
-      "Built with Next.js, React, and TypeScript for scalability.",
-      "Styled using Tailwind CSS with animations by Motion.dev.",
-      "Used Zustand for state management and Zod for validation.",
-      "Integrated MongoDB and RESTful APIs with Node.js and Express.",
-      "Designed a user-friendly interface for seamless interactions."
+      "AI-powered form generation and conditional logic for creating interactive forms without coding.",
+      "Built-in email & field validation, file uploads, meeting bookings, and e-signature capabilities.",
+      "Advanced spam protection with AI detection, email verification, and Turnstile integration.",
+      "Capture partial or incomplete entries even if users drop off, with offline form submission support.",
+      "Smart analytics with drop-off analysis, GA4 integration, and heatmap tracking for conversion optimization.",
+      "Extensive integrations with 50+ tools including CRMs, email platforms, cloud storage, and task management."
     ],
     img: {
-      src: "/screen1.jpg",
+      src: "/assets/projects/formester.png",
       height: 753,
       width: 1203,
       blurDataURL: "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAFAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAACagf/EAB0QAAECBwAAAAAAAAAAAAAAAAMCMQABBAUiUXH/2gAIAQEAAT8AFTCJbjGyktDNrkf/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAECAQE/AH//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAEDAQE/AH//2Q=="
     },
-    color: "blue",
-    bulletPointsColor: "fill-blue-600 text-blue-600 dark:text-blue-400 bg-blue-600/20 lg:bg-white-1 dark:lg:bg-black",
-    techStack: [
-      { name: "Next.js", icon: "nextdotjs/white" },
-      { name: "React", icon: "react" },
-      { name: "Tailwind CSS", icon: "tailwindcss" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Turborepo", icon: "turborepo" },
-      { name: "Zod", icon: "zod" },
-      { name: "Motion.dev", icon: "framer" },
-      { name: "Zustand", icon: "redux" },
-      { name: "MongoDB", icon: "mongodb" },
-      { name: "NodeJS", icon: "nodedotjs" },
-      { name: "ExpressJS", icon: "express/white" },
-      { name: "Razorpay", icon: "razorpay/blue" }
-    ],
-    liveLink: "/projects/zenith-minds",
-    githubLink: "https://github.com/RavindraVerma/ZenithMinds"
-  },
-  {
-    id: 2,
-    title: "Snippix",
-    shortDes: "A platform for creating and sharing code snippets with a clean and intuitive design.",
-    des: "Snippix is a platform for creating and sharing code snippets with a clean and intuitive design. It allows you to create, share, and discover code snippets with ease.",
-    desc: "A platform for creating and sharing code snippets with a clean and intuitive design that allows users to create, share, and discover code snippets with ease.",
-    bulletPoints: [
-      "Choose from over 10+ code editor themes (light and dark) and 12+ handpicked monospace fonts.",
-      "Automatic syntax highlighting powered by Highlight.js for all major programming languages",
-      "Export your snippet as PNG or SVG, copy it to your clipboard, or generate a shareable permalink.",
-      "Change font size, background styles, padding, window controls, line numbers,and more — Snippix adapts to your aesthetic.",
-      "Drag to resize the snippet container, and use keyboard shortcuts (via react-hotkeys-hook) for a faster workflow."
-    ],
-    img: {
-      src: "/screen1.jpg",
-      height: 967,
-      width: 1602,
-      blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAMAAABPT11nAAAANlBMVEUECAcsFhBfGjhCER0iIiMmDxlGFw0IEBMTEBQWDgxzHBpZJBdoIl9cGBeAHCtkNhyGPR1+JmH9NreCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAALklEQVR4nBXGyREAIAgEsBVQLs/+m3XIK4BNonAA/TFHq+wxbsVX5nHATFVV5AMUsAD7l2fGUgAAAABJRU5ErkJggg=="
-    },
     color: "teal",
     bulletPointsColor: "fill-teal-600 text-teal-600 dark:text-teal-400 bg-teal-600/20 lg:bg-white-1 dark:lg:bg-black",
     techStack: [
-      { name: "Next.js", icon: "nextdotjs/white" },
-      { name: "React", icon: "react" },
-      { name: "Tailwind CSS", icon: "tailwindcss" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Zustand", icon: "redux" },
-      { name: "Shadcn", icon: "shadcnui/white" },
-      { name: "Highlight.js", icon: "symphony" },
-      { name: "react-hotkeys-hook", icon: "react" }
-    ],
-    liveLink: "/projects/snippix",
-    githubLink: "https://github.com/RavindraVerma/Snippix"
-  },
-  {
-    id: 3,
-    title: "Personal Portfolio",
-    shortDes: "Design Unleashed: A Captivating Portfolio Showcasing Innovative Web Development and UI/UX",
-    des: "A personal portfolio that showcases modern web design and user experience. With a sleek layout and smooth animations, it highlights my skills and projects, serving as an inspiring reference for developers and designers. Explore the essence of contemporary web development!",
-    desc: "A personal portfolio showcasing modern web design and user experience with sleek layouts, smooth animations, and highlights of my skills and projects.",
-    bulletPoints: [
-      "Integrated PostgreSQL and Prisma for efficient data handling.",
-      "Built with Next.js and TypeScript for performance and scalability.",
-      "Implemented state management with Zustand and validation using Zod.",
-      "Secured authentication with Auth.js for user account management."
-    ],
-    img: {
-      src: "/screen1.jpg",
-      height: 702,
-      width: 1203,
-      blurDataURL: "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACQAQCdASoIAAUAAkA4JZQAAuUvfwAA/vy3lePrVF3KNJzCO83e0QEWnj3IPYZAAAA="
-    },
-    color: "purple",
-    bulletPointsColor: "fill-purple-600 text-purple-600 dark:text-purple-400 bg-purple-600/20 lg:bg-white-1 dark:lg:bg-black",
-    techStack: [
-      { name: "Next.js", icon: "nextdotjs/white" },
       { name: "React", icon: "react" },
       { name: "TypeScript", icon: "typescript" },
-      { name: "MDX", icon: "mdx/yellow" },
-      { name: "Tailwind CSS", icon: "tailwindcss" },
-      { name: "Motion.dev", icon: "framer" },
-      { name: "Zustand", icon: "redux" },
-      { name: "Zod", icon: "zod" },
-      { name: "PostgreSQL", icon: "postgresql" },
-      { name: "Prisma", icon: "prisma" },
-      { name: "Auth.js", icon: "nextdns" }
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "AI/ML", icon: "openai" },
+      { name: "Google Analytics", icon: "googleanalytics" },
+      { name: "Zapier", icon: "zapier" }
     ],
-    liveLink: "/projects/portfolio"
+    liveLink: "https://formester.com/"
   },
   {
-    id: 4,
-    title: "StarForge",
-    shortDes: "A sleek AI SaaS landing page with a user-friendly design that enhances engagement.",
-    des: "An AI SaaS landing page that showcases modern UI/UX excellence. With its sleek design and smooth animations, it delivers an engaging user experience and serves as an inspiring reference for developers and designers. Experience the future of web design with StarForge!",
-    desc: "An AI SaaS landing page showcasing modern UI/UX excellence. With sleek design and smooth animations, it delivers an engaging user experience and serves as an inspiring reference for developers and designers.",
+    id: 2,
+    title: "Dailzy",
+    shortDes: "A platform connecting users with local helpers for daily tasks, errands, reminders, and services.",
+    des: "Dailzy is a community-driven platform that connects users with reliable local helpers to complete daily tasks and errands. The platform facilitates task posting, helper matching, and service delivery, making it easy for users to outsource everyday responsibilities and for helpers to earn income by providing local services.",
+    desc: "A platform connecting users with local helpers for daily tasks, errands, reminders, and pet care services, facilitating efficient task completion and local service delivery.",
     bulletPoints: [
-      "Built with React and Vite for fast and scalable development.",
-      "Designed responsive layouts using Tailwind CSS.",
-      "Enhanced user experience with smooth animations using react-just-parallax.",
-      "Implemented JavaScript for dynamic interactions and seamless functionality."
+      "Task posting and matching system connecting users with reliable local helpers.",
+      "Community-driven platform for outsourcing daily errands and tasks efficiently.",
+      "Service categories including reminders, pet care, errands, and general assistance.",
+      "User-friendly interface for posting tasks and browsing available helpers.",
+      "Local service delivery system with secure transaction and communication features.",
+      "Flexible platform supporting both task requesters and service providers."
     ],
     img: {
-      src: "/screen1.jpg",
+      src: "/assets/projects/dailzy.png",
       height: 753,
       width: 1203,
       blurDataURL: "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoIAAUAAkA4JZQCdAEO94GJQAD+/A2P/7gwD1PFc6mse22XIWxUdD78Oe0rTfY5FKegAAAA"
@@ -191,48 +115,73 @@ export const projects: Project[] = [
     color: "pink",
     bulletPointsColor: "fill-pink-600 text-pink-600 dark:text-pink-400 bg-pink-600/20 lg:bg-white-1 dark:lg:bg-black",
     techStack: [
-      { name: "Next.js", icon: "nextdotjs/white" },
+      {name: "Laravel", icon: "laravel"},
       { name: "React", icon: "react" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Tailwind CSS", icon: "tailwindcss" },
-      { name: "react-just-parallax", icon: "react" },
-      { name: "Vercel", icon: "vercel/white" }
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "Database", icon: "postgresql" },
+      { name: "Docker", icon: "docker" }
     ],
-    liveLink: "/projects/star-forge",
-    githubLink: "https://github.com/RavindraVerma/Ai-SaaS-LandingPage"
+    liveLink: "https://dailzy.com/"
   },
   {
-    id: 5,
-    title: "FLux Lura",
-    shortDes: "Effortlessly convert images, audio, and videos with a seamless and free multimedia tool!",
-    des: "Unlock your creativity with FluxLura – the ultimate online tool for seamless and free multimedia conversion. Effortlessly transform images, audio, and videos without limits. Start converting today and elevate your content to new heights!",
-    desc: "A free online tool for seamless multimedia conversion. Effortlessly transform images, audio, and videos with ease and elevate your content instantly!",
+    id: 3,
+    title: "DealsOnFire",
+    shortDes: "A deals discovery platform where users can post, browse, and vote on the latest deals across various categories.",
+    des: "DealsOnFire is a community-driven deals platform that allows users to discover, share, and vote on the best deals available online. The platform features deals across multiple categories including Smart Home, Wearable Technology, and more. Users can post deals, track trending items, and find popular discounts with detailed pricing information.",
+    desc: "A community-driven deals platform for discovering, sharing, and voting on the latest deals across various product categories with real-time pricing and discount tracking.",
     bulletPoints: [
-      "Developed a multimedia converter using Next.js and TypeScript.",
-      "Styled with Tailwind CSS and enhanced with Motion.dev for smooth animations.",
-      "Integrated Shadcn UI for consistent and accessible design components.",
-      "Leveraged FFmpeg for efficient media processing and conversion.",
-      "Created a responsive and intuitive user interface for effortless conversions."
+      "Community-driven deal sharing platform with user-submitted deals and voting system.",
+      "Categorized deal listings including Smart Home, Wearable Technology, and multiple product categories.",
+      "Real-time deal tracking with original and discounted pricing information.",
+      "Trending and popular deals section to highlight the most valuable offers.",
+      "User engagement features including deal voting, comments, and deal posting capabilities.",
+      "Clean and intuitive interface for easy deal browsing and discovery."
     ],
     img: {
-      src: "/screen1.jpg",
-      height: 753,
+      src: "/assets/projects/dealsonfire.png",
+      height: 967,
+      width: 1602,
+      blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAMAAABPT11nAAAANlBMVEUECAcsFhBfGjhCER0iIiMmDxlGFw0IEBMTEBQWDgxzHBpZJBdoIl9cGBeAHCtkNhyGPR1+JmH9NreCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAALklEQVR4nBXGyREAIAgEsBVQLs/+m3XIK4BNonAA/TFHq+wxbsVX5nHATFVV5AMUsAD7l2fGUgAAAABJRU5ErkJggg=="
+    },
+    color: "purple",
+    bulletPointsColor: "fill-purple-600 text-purple-600 dark:text-purple-400 bg-purple-600/20 lg:bg-white-1 dark:lg:bg-black",
+    techStack: [
+      { name: "Vue.js", icon: "vuedotjs" },
+      { name: "Ruby on Rails", icon: "rubyonrails" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "Database", icon: "postgresql" }
+    ],
+    liveLink: "https://www.dealsonfire.ca/"
+  },
+  {
+    id: 4,
+    title: "Rumie Learn",
+    shortDes: "Transform your daily screen time into personal development with Byte Learning - learn new concepts in minutes.",
+    des: "Rumie Learn is an innovative educational platform that transforms daily screen time into personal development through Byte Learning. Bytes are bite-sized learning modules that allow users to learn new concepts in minutes, making them 20% more efficient than traditional learning. The platform features a wide range of topics including Career Skills, Health, Business Acumen, Digital Literacies, and more, with new Bytes published daily.",
+    desc: "An educational platform that transforms screen time into personal development through Byte Learning - bite-sized, efficient learning modules covering career skills, health, business, and more.",
+    bulletPoints: [
+      "Byte Learning format allows users to learn new concepts in minutes, 20% more efficient than traditional learning.",
+      "Daily publication of new Bytes across multiple categories including Career Skills, Health, Business Acumen, and Digital Literacies.",
+      "Trusted educational content created by professionals with no hidden agenda or sales pitches.",
+      "Personalized recommendations and trending Bytes based on user interests and community engagement.",
+      "Browse functionality with categories, tags, collections, and favorites for easy content discovery.",
+      "Community-driven platform with trending content and personalized learning paths for continuous skill development."
+    ],
+    img: {
+      src: "/assets/projects/rumielearn.png",
+      height: 702,
       width: 1203,
-      blurDataURL: "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAFAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAACSg//EABcQAAMBAAAAAAAAAAAAAAAAAAATIYH/2gAIAQEAAT8AqtP/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAECAQE/AH//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAEDAQE/AH//2Q=="
+      blurDataURL: "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACQAQCdASoIAAUAAkA4JZQAAuUvfwAA/vy3lePrVF3KNJzCO83e0QEWnj3IPYZAAAA="
     },
     color: "emerald",
     bulletPointsColor: "fill-emerald-600 text-emerald-600 dark:text-emerald-400 bg-emerald-600/20 lg:bg-white-1 dark:lg:bg-black",
     techStack: [
-      { name: "Next.js", icon: "nextdotjs/white" },
-      { name: "React", icon: "react" },
-      { name: "Tailwind CSS", icon: "tailwindcss" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Motion.dev", icon: "framer" },
-      { name: "Shadcn", icon: "shadcnui/white" },
-      { name: "FFmpeg", icon: "ffmpeg" }
+      { name: "Vue.js", icon: "vuedotjs" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "Database", icon: "postgresql" }
     ],
-    liveLink: "/projects/flux-lura",
-    githubLink: "https://github.com/RavindraVerma/flux-lura"
+    liveLink: "https://learn.rumie.org/"
   }
 ];
 
