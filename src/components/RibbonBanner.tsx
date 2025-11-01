@@ -14,7 +14,7 @@ export default function RibbonBanner() {
   ];
 
   return (
-    <section className="my-20 py-20">
+    <section className="w-full py-12 md:py-16 lg:py-20">
       {/* Background ribbon with 3D effect */}
       <div className="z-0 translate-y-10 rotate-6 bg-linear-to-r from-[#6799fe] to-[#0255fb] py-3 opacity-60 md:rotate-3 lg:translate-y-16 lg:py-6"></div>
       

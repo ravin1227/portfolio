@@ -155,7 +155,7 @@ export default function BucketListPage() {
       <main className="px-4 py-16 pt-36 md:px-1">
         <h2 
           style={{ textShadow: '0px 4px 8px rgba(255,255,255,.05),0px 8px 30px rgba(255,255,255,.25)' }}
-          className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:mb-36 md:text-6xl text-balance text-center max-w-xl mx-auto mb-20"
+          className="relative z-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-12 md:mb-16 lg:mb-20 text-balance text-center max-w-xl mx-auto px-4 sm:px-6"
         >
           <p className="mb-3 text-xs font-normal tracking-widest text-black/80 dark:text-white/70 uppercase md:text-sm">
             The Bucket List

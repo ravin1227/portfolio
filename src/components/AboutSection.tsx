@@ -53,9 +53,9 @@ export default function AboutSection() {
   }, [mousePosition]);
 
   return (
-    <section id="about" className="relative overflow-hidden px-4">
-      <div className="relative pb-10 lg:max-h-[1300px]">
-        <section className="relative mx-auto flex max-w-6xl flex-col items-center justify-center gap-8 lg:size-full lg:flex-row lg:justify-between">
+    <section id="about" className="relative w-full overflow-hidden py-12 md:py-16 lg:py-20">
+      <div className="relative pb-10">
+        <section className="relative mx-auto flex w-full flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between">
           {/* Left Side - Content */}
           <div className="max-w-[60%]">
             <h2 

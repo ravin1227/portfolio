@@ -1,6 +1,6 @@
 export default function MySiteSection() {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-10">
+    <section className="relative w-full py-12 md:py-16 lg:py-20">
       <h2 
         className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance text-center mb-4 md:mb-4 max-w-xl mx-auto"
         style={{

@@ -9,15 +9,19 @@ import MySiteSection from '@/components/MySiteSection';
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="w-full">
       <HeroSection />
-      <TechnologySection />
-      <WorkSection />
-      <SkillsSection />
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <TechnologySection />
+        <WorkSection />
+        <SkillsSection />
+      </div>
       <RibbonBanner />
-      <AboutSection />
-      <TestimonialSection />
-      <MySiteSection />
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AboutSection />
+        <TestimonialSection />
+        <MySiteSection />
+      </div>
     </div>
   );
 }

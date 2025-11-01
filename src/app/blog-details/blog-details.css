@@ -1,0 +1,381 @@
+/* Blog Details Custom Styles */
+
+:root {
+  /* Layout variables */
+  --fd-sidebar-width: 0px;
+  --fd-nav-height: 64px;
+  --fd-banner-height: 0px;
+  --fd-tocnav-height: 0px;
+  --fd-page-width: 1152px;
+  --fd-layout-width: 100vw;
+  --fd-toc-width: 286px;
+  --fd-content-width: 896px;
+
+  /* Color variables - Light mode */
+  --fd-foreground: rgb(23 23 23);
+  --fd-muted-foreground: rgb(107 114 126);
+  --fd-accent-foreground: rgb(23 23 23);
+  --fd-primary: rgb(56 189 248);
+  --fd-card: rgb(255 255 255);
+  --fd-card-foreground: rgb(23 23 23);
+
+  /* Custom color variables */
+  --color-fd-info: rgb(59 130 246);
+  --color-fd-muted: rgb(156 163 175);
+
+  /* White variants for light mode */
+  --white-1: rgb(255 255 255);
+  --white-2: rgb(250 250 250);
+  --white-3: rgb(229 231 235);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fd-foreground: rgb(250 250 250);
+    --fd-muted-foreground: rgb(161 161 170);
+    --fd-accent-foreground: rgb(250 250 250);
+    --fd-primary: rgb(56 189 248);
+    --fd-card: rgb(39 39 42);
+    --fd-card-foreground: rgb(250 250 250);
+
+    /* White variants for dark mode */
+    --white-1: rgb(0 0 0);
+    --white-2: rgb(23 23 23);
+    --white-3: rgb(39 39 42);
+  }
+}
+
+.dark {
+  --fd-foreground: rgb(250 250 250);
+  --fd-muted-foreground: rgb(161 161 170);
+  --fd-accent-foreground: rgb(250 250 250);
+  --fd-primary: rgb(56 189 248);
+  --fd-card: rgb(39 39 42);
+  --fd-card-foreground: rgb(250 250 250);
+
+  /* White variants for dark mode */
+  --white-1: rgb(0 0 0);
+  --white-2: rgb(23 23 23);
+  --white-3: rgb(39 39 42);
+}
+
+/* Custom background colors - Override global styles */
+.blog-details .bg-white-1 {
+  background-color: var(--white-1) !important;
+}
+
+.blog-details .bg-white-2 {
+  background-color: var(--white-2) !important;
+}
+
+.blog-details .border-white-3 {
+  border-color: var(--white-3) !important;
+}
+
+/* Ensure dark mode background works */
+@media (prefers-color-scheme: dark) {
+  .blog-details {
+    background-color: rgb(0 0 0) !important;
+    color: rgb(250 250 250) !important;
+  }
+}
+
+.dark .blog-details {
+  background-color: rgb(0 0 0) !important;
+  color: rgb(250 250 250) !important;
+}
+
+/* Text colors with CSS variables */
+.text-fd-muted-foreground {
+  color: var(--fd-muted-foreground);
+}
+
+.text-fd-accent-foreground {
+  color: var(--fd-accent-foreground);
+}
+
+.text-fd-primary {
+  color: var(--fd-primary);
+}
+
+.text-fd-card-foreground {
+  color: var(--fd-card-foreground);
+}
+
+/* Background colors with CSS variables */
+.bg-fd-card {
+  background-color: var(--fd-card);
+}
+
+/* Border colors with CSS variables */
+.bg-fd-foreground\/10 {
+  background-color: rgb(from var(--fd-foreground) r g b / 0.1);
+}
+
+.stroke-fd-foreground\/10 {
+  stroke: rgb(from var(--fd-foreground) r g b / 0.1);
+}
+
+/* Hover states */
+.hover\:text-fd-accent-foreground:hover {
+  color: var(--fd-accent-foreground);
+}
+
+/* Custom callout styling */
+.callout-bg {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.callout-border {
+  background-color: rgba(59, 130, 246, 0.5);
+}
+
+.callout-icon {
+  fill: rgb(59, 130, 246);
+  color: var(--fd-card);
+}
+
+.text-fd-card {
+  color: var(--fd-card);
+}
+
+/* Dark mode callout adjustments */
+@media (prefers-color-scheme: dark) {
+  .callout-bg {
+    background-color: rgba(59, 130, 246, 0.15);
+  }
+
+  .callout-border {
+    background-color: rgba(59, 130, 246, 0.6);
+  }
+}
+
+.dark .callout-bg {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.dark .callout-border {
+  background-color: rgba(59, 130, 246, 0.6);
+}
+
+/* Prose styling improvements */
+.prose-no-margin p {
+  margin: 0;
+}
+
+/* Width utilities for TOC */
+.w-\(--fd-toc-width\) {
+  width: var(--fd-toc-width);
+}
+
+/* Custom scrollbar styling */
+.scrollbar-width\:none {
+  scrollbar-width: none;
+}
+
+.scrollbar-width\:none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Font families */
+.font-instrument-serif {
+  font-family: "Instrument Serif", serif;
+}
+
+/* Typography improvements */
+.blog-details h1 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.blog-details h2 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  line-height: 1.2;
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-details h3 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(1.4rem, 3vw, 1.6rem);
+  line-height: 1.3;
+  font-weight: 400;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Text selection styling */
+.blog-details *::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: inherit;
+}
+
+.blog-details *::-moz-selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: inherit;
+}
+
+/* TOC Navigation Lines */
+.toc-vertical-line {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 1px;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.toc-connecting-line {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Continuous vertical line for main sections */
+.toc-main-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sub-section continuous line */
+.toc-sub-line {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* TOC Link base styles */
+.toc-link {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Active TOC highlighting */
+.toc-link[data-active="true"] {
+  color: rgb(255 255 255) !important;
+  font-weight: 600;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(2px);
+  background-color: rgba(56, 189, 248, 0.2) !important;
+  border-radius: 6px;
+  margin-left: -8px;
+  padding-left: 8px;
+  padding-right: 4px;
+  border-left: 3px solid rgb(56, 189, 248);
+}
+
+/* Hover effects */
+.toc-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0.5px);
+}
+
+.toc-link:hover .toc-vertical-line {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 1.5px;
+}
+
+.toc-link:hover .toc-connecting-line {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1.5;
+}
+
+/* Smooth color transitions for inactive links */
+.toc-link:not([data-active="true"]) {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toc-link:not([data-active="true"]) .toc-vertical-line {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toc-link:not([data-active="true"]) .toc-connecting-line {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode active TOC */
+@media (prefers-color-scheme: dark) {
+  .toc-link[data-active="true"] {
+    color: rgb(255 255 255) !important;
+  }
+
+  .toc-vertical-line {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .toc-connecting-line {
+    stroke: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.dark .toc-link[data-active="true"] {
+  color: rgb(255 255 255) !important;
+}
+
+.dark .toc-vertical-line {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark .toc-connecting-line {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add padding to content for fixed header offset */
+h1[id], h2[id], h3[id] {
+  scroll-margin-top: 120px;
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 1279px) {
+  :root {
+    --fd-toc-width: 0px;
+  }
+}
+
+/* Consistent content width across all screens */
+.blog-details .content-container {
+  max-width: var(--fd-content-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Responsive padding adjustments */
+@media (max-width: 768px) {
+  .blog-details .content-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .blog-details .content-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .blog-details .content-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}

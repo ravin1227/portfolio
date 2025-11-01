@@ -188,10 +188,18 @@ const Navbar = memo(function Navbar() {
       {/* Navbar content container */}
       <nav className="fixed inset-x-0 top-2.5 z-5000 mx-auto mt-1.5 flex w-full max-w-7xl items-center justify-between px-6 py-1.5 pb-6 pr-4 lg:top-4">
         <div className="relative z-10 flex w-full items-center justify-between">
-      {/* Left Side - AB Logo */}
-      <Link href="/" className="flex items-center justify-center drop-shadow-xl delay-200">
+      {/* Left Side - Logo (Hidden on mobile, visible on desktop) */}
+      <Link href="/" className="hidden md:flex items-center justify-center drop-shadow-xl delay-200">
         <ABLogo size={55} />
       </Link>
+
+      {/* Center - Mobile Logo + Name (visible on small screens, clickable to open menu) */}
+      <div className="absolute left-1/2 -translate-x-1/2 md:hidden w-[90%] max-w-[200px]" style={{ top: '8px' }}>
+        <button onClick={() => setIsCommandModalOpen(true)} className="flex items-center justify-between px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 h-[42px] w-full">
+          <ABLogo size={28} />
+          <span className="text-white text-base font-bold">Ravindra</span>
+        </button>
+      </div>
 
       {/* Center - Desktop Navigation */}
       <div className="justify-center absolute top-1/2 left-1/2 hidden w-fit -translate-x-1/2 -translate-y-1/2 rounded-full backdrop-blur-md md:flex" data-dropdown>
@@ -385,8 +393,8 @@ const Navbar = memo(function Navbar() {
         </AnimatePresence>
       </div>
 
-      {/* Right Side - Command Icon & Mobile Menu */}
-      <div className="flex items-center gap-2 delay-200">
+      {/* Right Side - Command Icon & Mobile Menu (Hidden on mobile) */}
+      <div className="hidden md:flex items-center gap-2 delay-200">
         {/* Command Icon Button */}
         <button
           className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] hover:text-accent-foreground dark:hover:bg-accent/50 size-9 group rounded-2xl hover:bg-white/5"
@@ -395,141 +403,185 @@ const Navbar = memo(function Navbar() {
         >
           <CommandIcon className="mx-0 size-5" size={36} />
         </button>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] hover:text-accent-foreground dark:hover:bg-accent/50 size-9 group rounded-2xl hover:bg-white/5 md:hidden"
-          aria-expanded={isMobileMenuOpen}
-          aria-label="Toggle menu"
-          onClick={toggleMobileMenu}
-        >
-          {/* Mobile Menu Icon */}
-          <svg
-            className={`pointer-events-none size-6 transition-all duration-300 ${
-              isMobileMenuOpen ? 'rotate-45' : ''
-            }`}
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4 12L20 12"
-              className={`origin-center transition-all duration-300 ${
-                isMobileMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-[7px]'
-              }`}
-            />
-            <path
-              d="M4 12H20"
-              className={`origin-center transition-all duration-300 ${
-                isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
-            <path
-              d="M4 12H20"
-              className={`origin-center transition-all duration-300 ${
-                isMobileMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-[7px]'
-              }`}
-            />
-          </svg>
-        </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - Full Screen Modal */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-1/2 -translate-x-1/2 w-full max-w-sm mt-4 md:hidden z-[9999]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[10000] md:hidden"
           >
-            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4">
-              <div className="space-y-2">
-                {NAV_ITEMS.map((item) => {
-                  const active = isActive(item.page);
-                  
-                  return (
+            {/* Backdrop */}
+            <motion.div
+              className="absolute inset-0 bg-black/95 backdrop-blur-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative h-full flex flex-col p-6"
+            >
+              {/* Search Bar */}
+              <div className="mb-8">
+                <div className="relative">
+                  <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className="w-full bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-12 py-3 text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                    autoFocus
+                  />
+                  <button
+                    onClick={closeMobileMenu}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 text-sm"
+                  >
+                    ESC
+                  </button>
+                </div>
+              </div>
+
+              {/* Navigation Section */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="space-y-2 mb-6">
+                  <h3 className="text-white/40 text-xs font-medium uppercase tracking-wider px-4 mb-3">Navigation</h3>
+                  {NAV_ITEMS.map((item) => {
+                    const active = isActive(item.page);
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={closeMobileMenu}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+                          active
+                            ? 'text-white bg-white/10'
+                            : 'text-white/70 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${active ? 'bg-white' : 'bg-white/10'}`}>
+                          {item.name === 'Home' && (
+                            <svg className={`w-4 h-4 ${active ? 'text-black' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                            </svg>
+                          )}
+                          {item.name === 'About' && (
+                            <svg className={`w-4 h-4 ${active ? 'text-black' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                            </svg>
+                          )}
+                          {item.name === 'Work' && (
+                            <svg className={`w-4 h-4 ${active ? 'text-black' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                            </svg>
+                          )}
+                          {item.name === 'Blog' && (
+                            <svg className={`w-4 h-4 ${active ? 'text-black' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" />
+                            </svg>
+                          )}
+                        </div>
+                        <div>
+                          <div className="font-medium">{item.name}</div>
+                          <div className="text-xs text-white/60">Welcome to my forever work-in-progress!</div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                {/* More Pages Section */}
+                <div className="space-y-2 mb-6">
+                  <h3 className="text-white/40 text-xs font-medium uppercase tracking-wider px-4 mb-3">More</h3>
+                  {SPECIFICS_ITEMS.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
                       onClick={closeMobileMenu}
-                      className={`block px-4 py-3 text-sm font-light transition rounded-xl ${
-                        active 
-                          ? 'text-white bg-white/10' 
-                          : 'text-white/70 hover:text-white hover:bg-white/5'
-                      }`}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors text-white/70 hover:text-white hover:bg-white/5"
                     >
-                      {item.name}
+                      <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                          <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="font-medium">{item.name}</div>
+                        <div className="text-xs text-white/60">{item.description}</div>
+                      </div>
                     </Link>
-                  );
-                })}
-                
-                {/* More Dropdown Button for Mobile */}
-                <div>
-                  <button
-                    onClick={() => setIsMoreDropdownOpen(!isMoreDropdownOpen)}
-                    className={`w-full text-left px-4 py-3 text-sm font-light transition rounded-xl ${
-                      isActive('more') 
-                        ? 'text-white bg-white/10' 
-                        : 'text-white/70 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    More
-                  </button>
-                  {isMoreDropdownOpen && (
-                    <div className="ml-4 mt-2 space-y-4">
-                      {/* Specifics Section */}
-                      <div>
-                        <h4 className="text-white font-medium text-sm mb-2">Specifics</h4>
-                        <div className="space-y-1">
-                          {SPECIFICS_ITEMS.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              onClick={closeMobileMenu}
-                              className="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* More Section */}
-                      <div>
-                        <h4 className="text-white font-medium text-sm mb-2">More</h4>
-                        <div className="space-y-1">
-                          {MORE_ITEMS.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              onClick={closeMobileMenu}
-                              className="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  ))}
                 </div>
-                <button 
-                  onClick={() => {
-                    setIsBookCallDrawerOpen(true);
-                    closeMobileMenu();
-                  }}
-                  className="w-full px-4 py-3 text-sm font-light text-white/70 transition hover:text-white hover:bg-white/5 rounded-xl">
-                  Book a Call
-                </button>
+
+                {/* Links Section */}
+                <div className="space-y-2">
+                  <Link
+                    href="/links"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                  >
+                    <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium">Links</div>
+                      <div className="text-xs text-white/60">All my links are here</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/bucket-list"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                  >
+                    <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium">Bucket List</div>
+                      <div className="text-xs text-white/60">Things to do at least once in my life</div>
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
+
+              {/* Bottom Social Links */}
+              <div className="pt-6 border-t border-white/10">
+                <div className="flex items-center gap-6 justify-center">
+                  <a href="https://linkedin.com" className="text-white/60 hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </a>
+                  <a href="https://github.com" className="text-white/60 hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                  </a>
+                  <a href="https://twitter.com" className="text-white/60 hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -582,7 +634,13 @@ const Navbar = memo(function Navbar() {
                 </div>
 
                 {/* Command List */}
-                <div className="relative max-h-96 overflow-y-scroll scrollbar-thin border border-white/10 rounded-lg">
+                <div
+                  className="relative max-h-96 overflow-y-scroll"
+                  style={{
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: 'rgba(255, 255, 255, 0.3) transparent'
+                  }}
+                >
                   {/* Navigation Section */}
                   <div className="p-2">
                     <div className="px-3 py-2 text-xs font-medium text-white/60 uppercase tracking-wider">

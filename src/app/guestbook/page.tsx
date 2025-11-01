@@ -17,7 +17,7 @@ export default function GuestbookPage() {
         />
       </div>
 
-      <section className="mx-auto w-full max-w-7xl px-4 pt-28 md:px-8">
+      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 lg:pt-36">
         <h2 
           style={{ textShadow: '0px 4px 8px rgba(255,255,255,.05),0px 8px 30px rgba(255,255,255,.25)' }}
           className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-center mb-4 md:mb-8 max-w-xl mx-auto text-balance"

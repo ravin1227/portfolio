@@ -13,12 +13,12 @@ export default function TimezoneSection() {
   const [selectedCountry, setSelectedCountry] = useState('India');
 
   return (
-    <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center p-8">
+    <div className="relative w-full min-h-screen bg-black text-white flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900 opacity-80"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto text-center">
         {/* Title */}
         <h2 className="text-5xl md:text-6xl font-bold mb-8">
           I'm very flexible with{' '}

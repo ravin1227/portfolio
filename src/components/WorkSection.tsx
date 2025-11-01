@@ -83,10 +83,10 @@ export default function WorkSection() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black pb-8">
+    <div className="w-full bg-white dark:bg-black py-12 md:py-16 lg:py-20">
       {/* Hero Section */}
-      <section className="relative">
-        <div className="relative mx-auto max-w-6xl px-4 py-16">
+      <section className="relative w-full">
+        <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
           <h2 
             className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance text-center"
             style={{
@@ -107,7 +107,7 @@ export default function WorkSection() {
       </section>
 
       {/* Projects Section */}
-      <section ref={sectionRef} className="relative mx-auto w-full max-w-7xl mt-0 px-4 py-16">
+      <section ref={sectionRef} className="relative mx-auto w-full mt-0 px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
         <div className="relative mx-auto flex w-full">
           {/* Left Side - Project Cards */}
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2 lg:flex lg:max-w-[65%] lg:flex-col lg:gap-y-24">

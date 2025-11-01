@@ -30,9 +30,9 @@ export default function RootLayout({
       <body
         className={`${instrumentSans.variable} ${outfit.variable} font-sans antialiased bg-black text-white`}
       >
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-black flex flex-col">
           <Navbar />
-          <main>
+          <main className="flex-1 w-full">
             {children}
           </main>
           <GetInTouchSection />

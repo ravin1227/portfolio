@@ -18,10 +18,10 @@ export default function LinksPage() {
       </div>
 
       <main className="relative mx-auto w-full overflow-hidden">
-        <section className="mx-auto w-full max-w-7xl overflow-x-hidden">
-          <div className="relative mx-auto min-h-screen max-w-lg overflow-x-hidden px-4">
+        <section className="mx-auto w-full max-w-7xl overflow-x-hidden px-4 sm:px-6 lg:px-8">
+          <div className="relative mx-auto min-h-screen max-w-lg overflow-x-hidden">
             {/* Profile Section */}
-            <div className="relative mx-auto flex flex-col items-center justify-center gap-4 overflow-hidden pt-24 pb-6">
+            <div className="relative mx-auto flex flex-col items-center justify-center gap-4 overflow-hidden pt-24 md:pt-32 lg:pt-36 pb-12 md:pb-16 lg:pb-20">
               <img 
                 src="https://lh3.googleusercontent.com/a/ACg8ocIvRQZl9V7AbR05EQA0fSc9jHFidf9j5xV6W-rRR1-SGw3C3cy4=s317-c-no"
                 width="90" 

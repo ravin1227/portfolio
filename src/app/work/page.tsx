@@ -83,9 +83,9 @@ export default function Work() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="w-full bg-white dark:bg-black">
       {/* Hero Section */}
-      <section className="relative">
+      <section className="relative w-full">
         {/* Background Texture */}
         <div 
           className="absolute inset-0 h-[450px] w-full overflow-hidden bg-neutral-100/60 dark:bg-neutral-950/80"
@@ -103,7 +103,7 @@ export default function Work() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-4 pt-28 pb-12 md:pt-36 md:pb-20">
+        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 lg:pt-36 pb-12 md:pb-16 lg:pb-20">
           <h2 
             className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance text-center"
             style={{
@@ -124,7 +124,7 @@ export default function Work() {
       </section>
 
       {/* Projects Section */}
-      <section ref={sectionRef} className="relative mx-auto w-full max-w-7xl mt-0 px-4 py-36">
+      <section ref={sectionRef} className="relative mx-auto w-full max-w-7xl mt-0 px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
         <div className="relative mx-auto flex w-full">
           {/* Left Side - Project Cards */}
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2 lg:flex lg:max-w-[65%] lg:flex-col lg:gap-y-24">
@@ -161,14 +161,14 @@ export default function Work() {
                         background: 'linear-gradient(90deg, rgba(0, 0, 0, 0) 5%, rgba(255, 255, 255, 0.8) 35%, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0.8) 65%, rgba(0, 0, 0, 0) 95%)'
                       }}
                     />
-                    
+
                     <div className="group relative flex size-full flex-col items-center justify-between overflow-hidden rounded-xl lg:rounded-2xl dark:bg-linear-to-b from-black/40 to-transparent transition-all duration-300">
                       {/* Background gradient */}
                       <div
                         className="absolute inset-0 -z-1"
                         style={getGradientStyle(project.color)}
                       />
-                      
+
                       {/* Inner gradient line */}
                       <div
                         className="absolute inset-x-0 top-px z-10 h-[0.8px] opacity-70"
@@ -176,7 +176,7 @@ export default function Work() {
                           background: 'linear-gradient(90deg, rgba(0, 0, 0, 0) 20%, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 80%)'
                         }}
                       />
-                      
+
                       {/* Project title (hidden on mobile, shown on desktop) */}
                       <div className="hidden w-full flex-row items-center justify-between px-12 py-8 lg:flex text-white/90">
                         <h3 className="max-w-[90%] text-2xl">{project.shortDes}</h3>
@@ -197,7 +197,7 @@ export default function Work() {
                           <path d="m12 5 7 7-7 7"></path>
                         </svg>
                       </div>
-                      
+
                       {/* Project image */}
                       <Image
                         alt={project.title}
@@ -215,6 +215,72 @@ export default function Work() {
                       />
                     </div>
                   </Link>
+
+                  {/* Project Details - Mobile/Tablet Only */}
+                  <div className="mt-6 flex flex-col lg:hidden">
+                    <div className="flex">
+                      {/* Color indicator line */}
+                      <div
+                        aria-hidden="true"
+                        className="my-1 mr-4 h-1 min-w-6 rounded-full"
+                        style={{
+                          backgroundColor: getMainColor(project.color)
+                        }}
+                      />
+
+                      <div className="flex flex-col items-start w-full">
+                        <div className="flex items-center gap-3">
+                          <h3 className="text-white text-xl md:text-2xl font-bold">
+                            {project.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-white/70 my-2 text-sm md:text-base font-light">
+                          {project.desc}
+                        </p>
+
+                        {/* Bullet points */}
+                        <ul className="text-white/90 mt-4 flex flex-col gap-y-2">
+                          {project.bulletPoints.map((point, pointIndex) => (
+                            <li key={pointIndex} className="flex items-start text-xs md:text-sm">
+                              <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="mt-0.5 mr-2 size-4 md:size-5 shrink-0"
+                                style={{
+                                  fill: getMainColor(project.color)
+                                }}
+                              >
+                                <path d="M12 1C12 1 12 8 10 10C8 12 1 12 1 12C1 12 8 12 10 14C12 16 12 23 12 23C12 23 12 16 14 14C16 12 23 12 23 12C23 12 16 12 14 10C12 8 12 1 12 1Z" />
+                              </svg>
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+
+                        {/* Tech stack badges */}
+                        <div className="mt-6 flex flex-wrap gap-2 md:gap-3">
+                          {project.techStack.map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className="inline-flex items-center justify-center rounded-lg border px-2.5 py-1 md:px-3 text-xs md:text-sm w-fit whitespace-nowrap shrink-0 gap-1.5 md:gap-2 text-white/90 bg-black/20 border-white/20"
+                            >
+                              <img
+                                height="14"
+                                width="14"
+                                src={`https://cdn.simpleicons.org/${tech.icon}`}
+                                alt={tech.name}
+                                className="md:h-4 md:w-4"
+                              />
+                              {tech.name}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

@@ -46,7 +46,7 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section id="skills" className="relative mx-auto flex h-full flex-col rounded-3xl py-0 md:px-10">
+    <section id="skills" className="relative w-full mx-auto flex flex-col py-12 md:py-16 lg:py-20">
       <div className="relative mx-auto size-fit overflow-hidden">
         <div
           className="[mask-image:linear-gradient(to_top,transparent,black_50%,black_90%,transparent)] [masak-image:linear-gradient(to_top,transparent,#000_100%)]"

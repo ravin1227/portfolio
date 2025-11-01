@@ -21,16 +21,16 @@ export default function HeroSection() {
   };
 
   return (
-    <main className="relative flex flex-col items-center justify-center">
-      <section id="hero-section" className="relative mb-10 min-h-screen w-full overflow-hidden">
+    <main className="relative flex flex-col items-center justify-center w-full">
+      <section id="hero-section" className="relative w-full min-h-screen overflow-hidden flex flex-col">
         {/* Background blur effect */}
-        <div 
+        <div
           aria-hidden="true"
-          className="absolute top-1/2 left-1/2 z-0 h-[500px] w-4xl -translate-x-1/2 -translate-y-1/2 bg-purple-300/75 blur-[150px] dark:bg-[#0b0218]"
+          className="absolute top-1/2 left-1/2 z-0 h-[500px] w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-purple-300/75 blur-[150px] dark:bg-[#0b0218]"
         />
-        
+
         {/* Main content */}
-        <div className="relative z-20 mx-auto mt-32 mb-2 flex max-w-full flex-col items-center justify-center px-3 md:mt-36 md:max-w-4xl lg:max-w-5xl">
+        <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 lg:pt-36 pb-12 flex flex-col items-center justify-center flex-1">
           {/* Announcement Banner */}
           <a 
             className="group flex cursor-pointer items-center rounded-full border border-black/5 bg-neutral-200 text-sm backdrop-blur-xs transition-transform duration-300 ease-in lg:text-base dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 animate-fadeInDown"
@@ -65,17 +65,17 @@ export default function HeroSection() {
           </a>
 
           {/* Main Heading */}
-          <h2 className="animate-fadeInUp my-2 w-full py-px text-center text-4xl leading-snug! font-semibold text-balance text-zinc-700 opacity-90 md:text-5xl lg:text-6xl dark:text-zinc-100">
-            <span className="md:text-nowrap">I help founders turn ideas</span>
-            <br className="hidden md:block" />
-            into seamless&nbsp;
+          <h2 className="animate-fadeInUp w-full max-w-5xl mx-auto my-4 md:my-6 py-px text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-semibold text-balance text-zinc-700 opacity-90 dark:text-zinc-100">
+            <span className="block sm:inline">I help founders turn ideas</span>
+            <br className="hidden sm:block" />
+            <span className="block sm:inline">into seamless&nbsp;</span>
             <span className="font-nyght bg-linear-to-b from-zinc-500 via-zinc-600 to-zinc-900 bg-clip-text font-light tracking-wide text-transparent dark:from-zinc-700 dark:via-zinc-200 dark:to-zinc-50">
               digital experiences
             </span>
           </h2>
 
           {/* Introduction with Profile Image */}
-          <h1 className="animate-fadeInUp grad-white relative z-20 mt-4 mb-7 flex flex-col items-center justify-center text-center text-xl sm:flex-row md:text-xl lg:mt-7 lg:text-2xl">
+          <h1 className="animate-fadeInUp grad-white relative z-20 w-full max-w-4xl mx-auto mt-6 mb-8 md:mt-8 md:mb-10 flex flex-col sm:flex-row items-center justify-center text-center text-lg sm:text-xl md:text-2xl gap-2 sm:gap-0">
             <span className="grad-white flex items-center justify-center">
               Hello, I'm Ravindra Verma
               <div 
@@ -128,7 +128,7 @@ export default function HeroSection() {
           </h1>
 
           {/* CTA Buttons */}
-          <div className="animate-fadeInUp z-100 mt-4 flex flex-col items-center justify-center gap-6 sm:flex-row md:mt-8 md:gap-10">
+          <div className="animate-fadeInUp z-100 w-full max-w-2xl mx-auto mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 px-4">
             <button className="group relative inline-flex cursor-pointer items-center justify-between overflow-hidden rounded-full border border-black/30 bg-black/20 py-[3px] pr-[3px] pl-2 text-base font-medium opacity-85 backdrop-blur-xs transition-all hover:bg-transparent md:py-1 md:pr-1 md:pl-3 dark:border-white/10 dark:bg-white/10">
               <span className="z-10 px-3 text-black transition-colors duration-300 group-hover:text-white dark:text-white dark:group-hover:text-black">
                 Let's Connect
@@ -664,12 +664,12 @@ export default function HeroSection() {
         </div>
 
         {/* Bottom gradient effects */}
-        <div className="relative h-60 w-full z-[19] mt-8">
+        <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 z-[19] mt-auto">
           <div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 h-[600px] w-[2200px] transform overflow-hidden"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 h-[600px] w-full max-w-[2200px] transform overflow-hidden"
             style={{
-              maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-              WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+              maskImage: 'linear-gradient(to right, transparent 5%, black 15%, black 85%, transparent 95%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 5%, black 15%, black 85%, transparent 95%)'
             }}
           >
             {/* Purple radial gradient blur */}

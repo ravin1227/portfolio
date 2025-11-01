@@ -113,7 +113,7 @@ export default function BlogPage() {
       />
 
       {/* Main Content */}
-      <main className="mx-auto flex flex-col justify-center px-4 py-16 pt-36 md:px-1">
+      <main className="mx-auto w-full max-w-7xl flex flex-col justify-center px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 lg:pt-36 pb-12 md:pb-16 lg:pb-20">
         {/* Title Section */}
         <h2 
           style={{

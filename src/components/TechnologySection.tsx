@@ -49,7 +49,7 @@ export default function TechnologySection() {
   );
 
   return (
-    <section className="my-20 w-full max-w-7xl px-4 mx-auto">
+    <section className="my-12 md:my-16 lg:my-20 w-full">
       <div className="grid grid-cols-6 gap-4 md:max-w-full md:auto-rows-[19rem] mb-20 md:my-20">
         {/* Collaboration Card */}
         <div className="group relative flex size-full flex-col justify-between overflow-hidden rounded-xl shadow-[0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:shadow-[0_-20px_80px_-20px_#ffffff1f_inset] dark:border-[1px_solid_rgba(255,255,255,.1)] border border-white/20 col-span-6 md:col-span-3 lg:col-span-4 max-md:h-[21rem]">

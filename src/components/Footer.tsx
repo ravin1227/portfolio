@@ -5,8 +5,8 @@ import ABLogo from './ABLogo';
 
 export default function Footer() {
   return (
-    <footer className="mx-auto my-6 max-w-6xl max-lg:px-4">
-      <div className="bg-neutral-900 relative mx-auto flex flex-col items-center gap-6 rounded-3xl px-4 py-10 shadow-sm backdrop-blur-lg md:flex-row dark:bg-neutral-900 border border-white/10">
+    <footer className="w-full mx-auto my-6 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="bg-neutral-900 relative mx-auto flex flex-col items-center gap-6 rounded-3xl px-6 sm:px-8 md:px-10 py-10 shadow-sm backdrop-blur-lg md:flex-row dark:bg-neutral-900 border border-white/10">
         <div className="flex flex-1 flex-col items-start gap-4 md:flex-row md:gap-10 md:px-8">
           {/* Left Section - Logo and Description */}
           <div className="hidden flex-col gap-y-6 md:flex md:w-1/2">

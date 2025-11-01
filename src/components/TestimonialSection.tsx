@@ -55,10 +55,10 @@ export default function TestimonialSection() {
   ];
 
   return (
-    <section className="my-32 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] md:mt-32">
-      <h2 
+    <section className="w-full py-12 md:py-16 lg:py-20 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <h2
         style={{textShadow: '0px 4px 8px rgba(255,255,255,.05),0px 8px 30px rgba(255,255,255,.25)'}}
-        className="relative z-2 mb-20 text-4xl font-medium tracking-tight sm:text-5xl md:mb-36 md:text-6xl text-balance text-center mt-44 md:mt-28 mb-16! mx-12 md:mx-2"
+        className="relative z-2 mb-12 md:mb-16 lg:mb-20 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance text-center px-4 sm:px-6"
       >
         <p className="mb-3 text-xs font-normal tracking-widest text-black/80 dark:text-white/70 uppercase md:text-sm">
           TESTIMONIALS

@@ -56,9 +56,9 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="w-full bg-white dark:bg-black">
       {/* Hero Section */}
-      <section className="relative">
+      <section className="relative w-full">
         {/* Background Texture */}
         <div 
           className="absolute inset-0 h-[450px] w-full overflow-hidden bg-neutral-100/60 dark:bg-neutral-950/80"
@@ -76,7 +76,7 @@ const AboutPage = () => {
           />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-4 pt-28 pb-12 md:pt-36 md:pb-20">
+        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 lg:pt-36 pb-12 md:pb-16 lg:pb-20">
           <h2 
             className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance text-center mb-8 md:mb-0 lg:text-left max-w-lg"
             style={{
@@ -218,8 +218,8 @@ const AboutPage = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" ref={experienceRef} className="relative px-4 pt-24 pb-12 md:pt-32 md:pb-20" aria-labelledby="experience-heading">
-        <div className="mx-auto w-full max-w-6xl md:px-10">
+      <section id="experience" ref={experienceRef} className="relative w-full px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20" aria-labelledby="experience-heading">
+        <div className="mx-auto w-full max-w-7xl">
           <h2 
             className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-center mb-4 md:mb-0 max-w-lg mx-auto text-balance"
             style={{
@@ -238,16 +238,16 @@ const AboutPage = () => {
           </h2>
 
           <div className="relative mx-auto mt-20 mb-20 max-w-7xl">
-            <div className="flex w-full flex-col max-md:ps-16 md:gap-10">
+            <div className="flex w-full flex-col max-md:ps-14 md:gap-10">
               {/* First Experience - Roboto Studio */}
-              <article className="grid grid-cols-1 gap-6 py-12 first:pt-0 last:pb-0 md:grid-cols-[2fr_1fr_4fr]">
+              <article className="grid grid-cols-1 gap-6 py-12 first:pt-0 last:pb-0 md:grid-cols-[2fr_1fr_4fr]" style={{ paddingLeft: '50px' }}>
                 <div className="w-full lg:max-w-sm">
                   <div className="flex flex-col items-start gap-y-3 text-sm font-light">
                     <time className="text-muted-foreground text-xs font-medium tracking-wide uppercase" dateTime="JAN 2025 - Present">
                       JAN 2025 - Present
                     </time>
                     <div className="flex items-center gap-2">
-                      <h2 className="text-xl font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
+                      <h2 className="text-lg font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
                         Roboto Studio
                       </h2>
                     </div>
@@ -273,7 +273,7 @@ const AboutPage = () => {
                 <div className="relative w-full">
                   <div className="flex flex-col gap-y-6 text-xs leading-relaxed md:text-sm">
                     <header>
-                      <h3 className="text-xl font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
+                      <h3 className="text-lg font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
                         Frontend Engineer
                       </h3>
                     </header>
@@ -344,14 +344,14 @@ const AboutPage = () => {
               </article>
 
               {/* Second Experience - GitHub */}
-              <article className="grid grid-cols-1 gap-6 py-12 first:pt-0 last:pb-0 md:grid-cols-[2fr_1fr_4fr]">
+              <article className="grid grid-cols-1 gap-6 py-12 first:pt-0 last:pb-0 md:grid-cols-[2fr_1fr_4fr]" style={{ paddingLeft: '50px' }}>
                 <div className="w-full lg:max-w-sm">
                   <div className="flex flex-col items-start gap-y-3 text-sm font-light">
                     <time className="text-muted-foreground text-xs font-medium tracking-wide uppercase" dateTime="JUN 2024 - Present">
                       JUN 2024 - Present
                     </time>
                     <div className="flex items-center gap-2">
-                      <h2 className="text-xl font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
+                      <h2 className="text-lg font-bold text-neutral-900 md:text-2xl dark:text-neutral-100">
                         Github
                       </h2>
                     </div>
@@ -409,7 +409,7 @@ const AboutPage = () => {
             </div>
 
             {/* Timeline Line */}
-            <div className="absolute top-0 h-full w-8 max-md:ms-2 md:left-[calc(32%_-_1rem)]">
+            <div className="absolute top-0 h-full w-8 max-md:left-0 md:left-[calc(32%_-_1rem)]">
               <div className="relative h-full w-full">
                 {/* Profile Image */}
                 <div 
@@ -447,7 +447,8 @@ const AboutPage = () => {
       </section>
 
       {/* GitHub Activity Section */}
-      <section id="github" className="mx-auto my-24 w-full max-w-[984px] px-4 mt-10 mb-32">
+      <section id="github" className="w-full px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
+        <div className="mx-auto w-full max-w-7xl">
         <h2 
           className="relative z-2 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl text-balance mb-12 md:mb-12 text-center"
           style={{
@@ -466,6 +467,7 @@ const AboutPage = () => {
         </h2>
         
         <GitHubActivity username="ravin1227" />
+        </div>
         
         {/* <div className="mx-auto mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
           <div className="relative overflow-hidden rounded-xl border p-3 transition-all duration-300 md:p-4 bg-zinc-900/50 border-purple-500/30 hover:bg-purple-500/5 col-span-1">
