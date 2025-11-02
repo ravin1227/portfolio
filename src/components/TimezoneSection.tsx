@@ -21,7 +21,7 @@ export default function TimezoneSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto text-center">
         {/* Title */}
         <h2 className="text-5xl md:text-6xl font-bold mb-8">
-          I'm very flexible with{' '}
+          I&apos;m very flexible with{' '}
           <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             time zone communications
           </span>

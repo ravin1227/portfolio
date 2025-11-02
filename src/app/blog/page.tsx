@@ -205,7 +205,7 @@ export default function BlogPage() {
 
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-white/70 mb-8 leading-relaxed">
-              I'm working on amazing content. Stay tuned for insightful articles, tutorials, and stories from the world of development.
+              I&apos;m working on amazing content. Stay tuned for insightful articles, tutorials, and stories from the world of development.
             </p>
 
             {/* Decorative Elements */}

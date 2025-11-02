@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --font-sans: var(--font-instrument-sans);
-  --font-mono: var(--font-outfit);
+  --font-sans: var(--font-playfair-display);
+  --font-body: var(--font-source-sans-pro);
   --muted-foreground: 0 0% 45.1%;
   --primary: 0 0% 9%;
 }
 
 @theme inline {
-  --font-sans: var(--font-instrument-sans);
-  --font-mono: var(--font-outfit);
+  --font-sans: var(--font-playfair-display);
+  --font-body: var(--font-source-sans-pro);
   --muted-foreground: 0 0% 45.1%;
   --primary: 0 0% 9%;
 }
 
 body {
-  font-family: var(--font-instrument-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-source-sans-pro), Arial, Helvetica, sans-serif;
 }
 
 /* Custom scrollbar styles - Always visible */
@@ -51,21 +51,30 @@ body {
   font-family: 'Nyght', serif;
 }
 
-.font-inter {
-  font-family: var(--font-inter), sans-serif;
+.font-playfair {
+  font-family: var(--font-playfair-display), serif;
 }
 
-.font-space-grotesk {
-  font-family: var(--font-space-grotesk), sans-serif;
+.font-source-sans {
+  font-family: var(--font-source-sans-pro), sans-serif;
 }
 
-/* Heading styles */
+/* Heading styles - Elegant serif for headings */
 h1 {
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-playfair-display), serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-playfair-display), serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: var(--font-playfair-display), serif;
+  font-weight: 600;
 }
 
 .perspective-1000 {

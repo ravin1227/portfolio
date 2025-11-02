@@ -87,7 +87,7 @@ const AboutPage = () => {
               More About Me
             </p>
             <span>
-              I'm Ravindra, a creative{' '}
+              I&apos;m Ravindra, a creative{' '}
               <span className="text-colorfull animate-gradient-x font-nyght tracking-wide">
                 engineer
               </span>
@@ -98,13 +98,13 @@ const AboutPage = () => {
             {/* Text Content */}
             <div className="relative mt-10 z-5 mx-auto flex max-w-xl flex-col gap-y-8 text-center text-base font-light tracking-wider text-black/80 lg:mx-0 lg:max-w-[550px] lg:text-left lg:text-lg dark:text-neutral-300">
               <p>
-                I'm Ravindra Verma, a proactive full-stack developer passionate about creating dynamic web
+                I&apos;m Ravindra Verma, a proactive full-stack developer passionate about creating dynamic web
                 experiences. From frontend to backend, I thrive on solving complex problems with clean,
-                efficient code. My expertise spans React, Next.js, and Node.js, and I'm always eager to
+                efficient code. My expertise spans React, Next.js, and Node.js, and I&apos;m always eager to
                 learn more.
               </p>
               <p>
-                When I'm not immersed in work, I'm exploring new ideas and staying curious. Life's
+                When I&apos;m not immersed in work, I&apos;m exploring new ideas and staying curious. Life&apos;s
                 about balance, and I love embracing every part of it.
               </p>
               <p>I believe in waking up each day eager to make a difference!</p>
@@ -289,7 +289,7 @@ const AboutPage = () => {
                           Architected and upscaled platforms to handle <strong className="font-semibold text-neutral-900 dark:text-neutral-200">increased traffic and user growth</strong>, implementing scalable infrastructure solutions, database optimizations, and efficient API designs to support millions of users.
                         </li>
                         <li className="leading-relaxed">
-                          Enhanced <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Formester</strong> with advanced form builder features including AI-powered form generation, improved analytics, and seamless integrations, contributing to the platform's growth to <strong className="font-semibold text-neutral-900 dark:text-neutral-200">15,000+ users</strong>.
+                          Enhanced <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Formester</strong> with advanced form builder features including AI-powered form generation, improved analytics, and seamless integrations, contributing to the platform&apos;s growth to <strong className="font-semibold text-neutral-900 dark:text-neutral-200">15,000+ users</strong>.
                         </li>
                         <li className="leading-relaxed">
                           Revamped <strong className="font-semibold text-neutral-900 dark:text-neutral-200">MyWiFi Networks</strong> from legacy architecture to modern, scalable platform using <strong className="font-semibold text-neutral-900 dark:text-neutral-200">Laravel and Vue.js</strong>, enabling businesses to deploy white-label WiFi marketing solutions with real-time analytics, automation features, and multi-language support.

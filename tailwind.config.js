@@ -10,8 +10,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'instrument-sans': ['var(--font-instrument-sans)', 'sans-serif'],
-        'outfit': ['var(--font-outfit)', 'sans-serif'],
+        'playfair': ['var(--font-playfair-display)', 'serif'],
+        'source-sans': ['var(--font-source-sans-pro)', 'sans-serif'],
+        'sans': ['var(--font-source-sans-pro)', 'sans-serif'],
+        'serif': ['var(--font-playfair-display)', 'serif'],
       },
       colors: {
         primary: {

@@ -340,7 +340,7 @@ export default function TechnologySection() {
 
             {/* Title - Absolute positioned on top */}
             <h3 className="absolute top-6 left-0 right-0 w-full text-center text-2xl font-bold text-gray-300 z-10 mb-4">
-              I'm very flexible with <span className="text-cyan-400">time zone communications</span>
+              I&apos;m very flexible with <span className="text-cyan-400">time zone communications</span>
             </h3>
 
             {/* Country Flags - Absolute positioned on top with more gap */}
@@ -396,13 +396,13 @@ export default function TechnologySection() {
                 />
               </div>
               
-              <span 
+              <span
                 className="relative text-[rgb(0,0,0,65%)] dark:text-[rgb(255,255,255,90%)] w-full -translate-y-4 py-2 text-center text-3xl font-bold text-balance"
                 style={{
                   textShadow: '0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)'
                 }}
               >
-                Let's work together on your next project
+                Let&apos;s work together on your next project
               </span> 
               <div className="relative flex">
                 <button

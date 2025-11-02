@@ -228,9 +228,9 @@ export default function BlogDetailsPage() {
                 </svg>
               </h2>
 
-              <p>As a Frontend Developer in 2025, my development workflow is centered around tools that enable me to work faster and more effectively. The right tools help me write clean code, manage projects efficiently, and maintain a highly optimized environment. Over the years, I've learned that choosing the right stack can dramatically improve productivity, which is why I want to share the setup I'm currently using.</p>
+              <p>As a Frontend Developer in 2025, my development workflow is centered around tools that enable me to work faster and more effectively. The right tools help me write clean code, manage projects efficiently, and maintain a highly optimized environment. Over the years, I&apos;ve learned that choosing the right stack can dramatically improve productivity, which is why I want to share the setup I&apos;m currently using.</p>
 
-              <p>Let's take a look at the essential tools I rely on every day to streamline my work!</p>
+              <p>Let&apos;s take a look at the essential tools I rely on every day to streamline my work!</p>
 
               {/* My Stack */}
               <h2 id="️-my-stack" className="flex scroll-m-28 flex-row items-center gap-2">
@@ -241,7 +241,7 @@ export default function BlogDetailsPage() {
                 </svg>
               </h2>
 
-              <p>Here's a breakdown of the tools and technologies that I use to build projects as a Frontend Developer:</p>
+              <p>Here&apos;s a breakdown of the tools and technologies that I use to build projects as a Frontend Developer:</p>
 
               {/* Development Environment */}
               <h3 id="-development-environment" className="flex scroll-m-28 flex-row items-center gap-2">
@@ -254,7 +254,7 @@ export default function BlogDetailsPage() {
 
               <ul>
                 <li><strong>Neovim</strong> – Neovim is my editor of choice. With the help of LSP, Treesitter, and a collection of custom plugins, it gives me a fast, modern, and distraction-free coding experience. I love how customizable it is to fit my needs.</li>
-                <li><strong>Wezterm</strong> – A powerful GPU-accelerated terminal that supports Wayland. It's fast, efficient, and customizable, helping me manage my workflow effortlessly.</li>
+                <li><strong>Wezterm</strong> – A powerful GPU-accelerated terminal that supports Wayland. It&apos;s fast, efficient, and customizable, helping me manage my workflow effortlessly.</li>
                 <li><strong>ZSH</strong> – Paired with Oh My Zsh, ZSH makes command-line navigation smooth and efficient. Its plugins and themes help me work faster, while the integration with Neovim enhances my workflow.</li>
                 <li><strong>Tmux</strong> – This terminal multiplexer is essential for managing multiple sessions within a single terminal window. Tmux helps me stay organized and work on multiple tasks simultaneously without losing context.</li>
                 <li><strong>Lazygit</strong> – A TUI (text-based user interface) for Git that simplifies repository management. It makes committing, branching, and navigating repositories faster and more intuitive.</li>
@@ -270,11 +270,11 @@ export default function BlogDetailsPage() {
               </h3>
 
               <ul>
-                <li><strong>Bat</strong> – A modern replacement for cat with syntax highlighting and Git integration. It's a small tool, but it's incredibly useful when inspecting code or configuration files in the terminal.</li>
-                <li><strong>Btop++</strong> – A visually appealing, feature-rich system monitor that helps me keep an eye on resource usage while coding. It's lightweight, fast, and displays detailed information about my system.</li>
+                <li><strong>Bat</strong> – A modern replacement for cat with syntax highlighting and Git integration. It&apos;s a small tool, but it&apos;s incredibly useful when inspecting code or configuration files in the terminal.</li>
+                <li><strong>Btop++</strong> – A visually appealing, feature-rich system monitor that helps me keep an eye on resource usage while coding. It&apos;s lightweight, fast, and displays detailed information about my system.</li>
                 <li><strong>FZF</strong> – A fuzzy finder that significantly boosts productivity when navigating large codebases. FZF makes searching for files, directories, or commands much faster and more intuitive.</li>
                 <li><strong>Better Commit</strong> – This tool ensures that my Git commit messages follow best practices, improving consistency and readability across my codebase.</li>
-                <li><strong>Neofetch</strong> – An aesthetic system information tool that displays essential details about your machine when you open the terminal. It's both fun and functional for showcasing the specs of my development environment.</li>
+                <li><strong>Neofetch</strong> – An aesthetic system information tool that displays essential details about your machine when you open the terminal. It&apos;s both fun and functional for showcasing the specs of my development environment.</li>
                 <li><strong>Hyprshot</strong> – A simple and efficient screenshot tool that integrates seamlessly into my workflow. It helps me capture and share visuals quickly, whether for documentation or just for fun.</li>
                 <li><strong>Cava</strong> – A terminal-based audio visualizer. While coding, it adds a fun element to my setup by visualizing music playback right in my terminal.</li>
               </ul>
@@ -317,7 +317,7 @@ export default function BlogDetailsPage() {
                 </svg>
               </h2>
 
-              <p>Each tool in my stack contributes significantly to my productivity. Here's how:</p>
+              <p>Each tool in my stack contributes significantly to my productivity. Here&apos;s how:</p>
 
               {/* Customized, Fast Editing with Neovim */}
               <h3 id="-customized-fast-editing-with-neovim" className="flex scroll-m-28 flex-row items-center gap-2">
@@ -374,7 +374,7 @@ export default function BlogDetailsPage() {
 
               <p>Tools like Better Commit and Posting enforce Git best practices and simplify endpoint testing, bringing clarity and reliability to my development process.</p>
 
-              <p>By streamlining my development environment with this stack, I'm able to write cleaner code, maintain better organization, and focus on what matters most: building high-quality software.</p>
+              <p>By streamlining my development environment with this stack, I&apos;m able to write cleaner code, maintain better organization, and focus on what matters most: building high-quality software.</p>
 
               {/* Final Thoughts */}
               <h2 id="-final-thoughts" className="flex scroll-m-28 flex-row items-center gap-2">
@@ -400,7 +400,7 @@ export default function BlogDetailsPage() {
                 </div>
               </div>
 
-              <p>In 2025, having a tailored developer setup is no longer optional—it's essential. Whether you're starting out or refining your workflow, finding the right stack will dramatically enhance your performance and enjoyment.</p>
+              <p>In 2025, having a tailored developer setup is no longer optional—it&apos;s essential. Whether you&apos;re starting out or refining your workflow, finding the right stack will dramatically enhance your performance and enjoyment.</p>
 
               <p>Do you have favorite tools or terminal hacks I should try? Drop a comment or reach out—I love nerding out over dotfiles and setups!</p>
 

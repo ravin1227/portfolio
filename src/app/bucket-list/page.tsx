@@ -252,9 +252,9 @@ export default function BucketListPage() {
             The Bucket List
           </p>
           <span className="">
-            <span className="md:text-6xl">The Things I'll Do</span>{' '}
+            <span className="md:text-6xl">The Things I&apos;ll Do</span>{' '}
             <span className="text-colorfull animate-gradient-x font-nyght tracking-wide">
-              Before I'm Done
+              Before I&apos;m Done
             </span>
           </span>
         </h2>

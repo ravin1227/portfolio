@@ -1,30 +1,21 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Outfit, Inter, Space_Grotesk } from "next/font/google";
+import { Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import GetInTouchSection from "@/components/GetInTouchSection";
 import Footer from "@/components/Footer";
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const sourceSansPro = Source_Sans_3({
+  variable: "--font-source-sans-pro",
   subsets: ["latin"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -40,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${instrumentSans.variable} ${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-black text-white`}
+        className={`${playfairDisplay.variable} ${sourceSansPro.variable} font-sans antialiased bg-black text-white`}
       >
         <div className="min-h-screen bg-black flex flex-col">
           <Navbar />

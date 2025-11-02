@@ -133,8 +133,6 @@ const GitHubActivity = ({ username, usernames }: GitHubActivityProps) => {
           throw new Error('No usernames provided');
         }
 
-        console.log('Fetching GitHub contributions for accounts:', accountsToFetch);
-
         // Fetch data for all accounts in parallel
         const promises = accountsToFetch.map(async (user) => {
           const response = await fetch(`/api/github?username=${user}`);
@@ -149,7 +147,6 @@ const GitHubActivity = ({ username, usernames }: GitHubActivityProps) => {
         });
 
         const allAccountsData = await Promise.all(promises);
-        console.log('All GitHub GraphQL Responses:', allAccountsData);
 
         // Merge all accounts data
         const mergedData = mergeContributionData(allAccountsData);

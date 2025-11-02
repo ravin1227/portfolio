@@ -69,9 +69,6 @@ export async function GET(request: NextRequest) {
       throw new Error(data.errors[0].message);
     }
 
-    console.log('GitHub API returned:', JSON.stringify(data, null, 2));
-    console.log('Total contributions:', data?.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions);
-
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching GitHub data:', error);

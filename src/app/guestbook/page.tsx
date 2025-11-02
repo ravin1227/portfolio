@@ -27,7 +27,7 @@ export default function GuestbookPage() {
           </p>
           <span className="">
             <span className="text-colorfull animate-gradient-x font-nyght tracking-wide">Got a message? </span>
-            <span className="">I'd love to hear from you!</span>
+            <span className="">I&apos;d love to hear from you!</span>
           </span>
         </h2>
         {/* <p className="mt-2 text-center text-lg leading-7 text-balance text-black/65 md:text-xl dark:text-white/65">
@@ -50,7 +50,7 @@ export default function GuestbookPage() {
                       <div className="text-sm text-white/60">Sep 10, 2025 (3 d ago)</div>
                     </div>
                   </div>
-                  <div className="mt-2 text-white">This is Literally the best portfolio site i've ever seen, no jokes. 👍</div>
+                  <div className="mt-2 text-white">This is Literally the best portfolio site i&apos;ve ever seen, no jokes. 👍</div>
                 </div>
                 
                 {/* SAmmyuxh */}
@@ -78,7 +78,7 @@ export default function GuestbookPage() {
                       <div className="text-sm text-white/60">Aug 28, 2025 (16 d ago)</div>
                     </div>
                   </div>
-                  <div className="mt-2 text-white">Best personal website. It's awesome, I'm inspired now.</div>
+                  <div className="mt-2 text-white">Best personal website. It&apos;s awesome, I&apos;m inspired now.</div>
                 </div>
                 
                 {/* Salah */}
@@ -92,7 +92,7 @@ export default function GuestbookPage() {
                       <div className="text-sm text-white/60">Aug 24, 2025 (20 d ago)</div>
                     </div>
                   </div>
-                  <div className="mt-2 text-white">Awesome! I'm inspired now.</div>
+                  <div className="mt-2 text-white">Awesome! I&apos;m inspired now.</div>
                 </div>
                 
                 {/* Preeti Priyanka */}
@@ -134,7 +134,7 @@ export default function GuestbookPage() {
                       <div className="text-sm text-white/60">Jul 15, 2025 (2 mo ago)</div>
                     </div>
                   </div>
-                  <div className="mt-2 text-white">Best personal website I've ever seen in my life!</div>
+                  <div className="mt-2 text-white">Best personal website I&apos;ve ever seen in my life!</div>
                 </div>
                 
                 {/* Dhruv Panchal */}

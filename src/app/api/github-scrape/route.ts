@@ -110,7 +110,7 @@ function generateWeeksFromDays(contributionDays: { [key: string]: { count: numbe
   const dayOfWeek = startDate.getDay();
   startDate.setDate(startDate.getDate() - dayOfWeek);
 
-  let currentDate = new Date(startDate);
+  const currentDate = new Date(startDate);
 
   for (let week = 0; week < 53; week++) {
     const contributionDays = [];
