@@ -1,8 +1,11 @@
 'use client';
 
 import Globe from './Globe';
+import { useUIStore } from '@/store/useStore';
 
 export default function GlobeScene() {
+  const { setIsBookCallDrawerOpen } = useUIStore();
+
   return (
     <div className="relative w-full h-full bg-transparent overflow-hidden">
       {/* Globe container - positioned at bottom left corner */}
@@ -40,7 +43,10 @@ export default function GlobeScene() {
         <div className="text-2xl font-bold mb-3">India</div>
 
         {/* Connect now button */}
-        <button className="group flex items-center gap-2 text-white hover:text-blue-400 transition-colors duration-300">
+        <button
+          onClick={() => setIsBookCallDrawerOpen(true)}
+          className="group flex items-center gap-2 text-white hover:text-blue-400 transition-colors duration-300"
+        >
           <span className="text-sm font-medium">Connect now</span>
           <svg
             className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"

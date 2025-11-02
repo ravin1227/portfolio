@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 import GlobeScene from './GlobeScene';
+import { useUIStore } from '@/store/useStore';
 
 // Helper function to get Skill Icons URL
 const getSkillIconUrl = (iconName: string): string => {
@@ -11,7 +12,15 @@ const getSkillIconUrl = (iconName: string): string => {
 
 export default function TechnologySection() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const { setIsBookCallDrawerOpen } = useUIStore();
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('ravindraverma373@gmail.com');
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
   const frontendTechs = [
     { name: 'ReactJS', icon: getSkillIconUrl('react') },
     { name: 'NextJS', icon: getSkillIconUrl('nextjs') },
@@ -205,13 +214,16 @@ export default function TechnologySection() {
             <p className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">I prioritize client collaboration, fostering open communication</p>
           </div>
           <div className="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-            <a href="contact.html" className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-8 rounded-md gap-1.5 px-3 pointer-events-auto">
+            <button
+              onClick={() => setIsBookCallDrawerOpen(true)}
+              className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-8 rounded-md gap-1.5 px-3 pointer-events-auto"
+            >
               Book a call
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right ml-2 size-4" aria-hidden="true">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
-            </a>
+            </button>
           </div>
           <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] dark:group-hover:bg-neutral-800/10"></div>
         </div>
@@ -393,27 +405,46 @@ export default function TechnologySection() {
                 Let's work together on your next project
               </span> 
               <div className="relative flex">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
+                  onClick={copyEmail}
                   className="items-center gap-2 py-3 text-base font-light text-black dark:text-white/75 outline-hidden transition-all duration-300 cursor-pointer hover:text-black/60 dark:hover:text-white/90 flex w-full justify-center rounded-md bg-white/10 px-8 shadow-[inset_0_3px_10px_#ffffff3f]"
                 >
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24"
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round"
-                    strokeLinejoin="round" 
-                    className="lucide lucide-copy" 
-                    aria-hidden="true"
-                  >
-                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-                  </svg>
-                  hello@ravindraverma.in
+                  {isCopied ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-copy"
+                      aria-hidden="true"
+                    >
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  )}
+                  {isCopied ? 'Copied!' : 'ravindraverma373@gmail.com'}
                 </button>
               </div>
             </div>
@@ -554,7 +585,7 @@ export default function TechnologySection() {
             <p className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">Currently building a SaaS Application</p>
           </div>
           <div className="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-            <a href="#work" className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-8 rounded-md gap-1.5 px-3 pointer-events-auto">
+            <a href="/work" className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-8 rounded-md gap-1.5 px-3 pointer-events-auto">
               View Recent work
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right ml-2 size-4" aria-hidden="true">
                 <path d="M5 12h14"></path>

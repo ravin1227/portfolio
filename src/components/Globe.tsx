@@ -105,7 +105,8 @@ export default function Globe() {
         controls.enablePan = false;
         controls.enableRotate = true;
         controls.rotateSpeed = 0.8;
-        controls.autoRotate = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = -0.5; // Slow rotation speed, left to right
         controls.minDistance = 200;
         controls.maxDistance = 300;
 
