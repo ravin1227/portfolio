@@ -69,6 +69,20 @@ const Navbar = memo(function Navbar() {
   const [greeting, setGreeting] = useState('');
   const [isLoadingGreeting, setIsLoadingGreeting] = useState(true);
 
+  // Contact form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [formErrors, setFormErrors] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   // Get greeting based on time
   useEffect(() => {
     try {
@@ -207,6 +221,87 @@ const Navbar = memo(function Navbar() {
     };
   }, [isBookCallDrawerOpen]);
 
+  // Form handlers
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+
+    // Clear error when user starts typing
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Reset errors and status
+    setFormErrors({ name: '', email: '', message: '' });
+    setSubmitStatus('idle');
+
+    // Validation
+    const errors = {
+      name: '',
+      email: '',
+      message: '',
+    };
+
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+    } else if (!validateEmail(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.message.trim()) {
+      errors.message = 'Message is required';
+    }
+
+    // If there are errors, set them and return
+    if (errors.name || errors.email || errors.message) {
+      setFormErrors(errors);
+      return;
+    }
+
+    // Submit form
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+
+        // Close drawer after 2 seconds
+        setTimeout(() => {
+          setIsBookCallDrawerOpen(false);
+          setSubmitStatus('idle');
+        }, 2000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -1007,7 +1102,10 @@ const Navbar = memo(function Navbar() {
                     {/* Email and Book a Call Cards - Side by Side */}
                     <div className="grid grid-cols-2 gap-3">
                       {/* Email Card */}
-                      <div className="bg-[#242424] border border-white/10 rounded-xl p-5 flex flex-col items-start hover:border-white/20 transition-colors">
+                      <a
+                        href="mailto:ravindraverma373@gmail.com"
+                        className="bg-[#242424] border border-white/10 rounded-xl p-5 flex flex-col items-start hover:border-white/20 transition-colors cursor-pointer"
+                      >
                         <div className="flex-shrink-0 mb-4">
                           <div className="w-11 h-11 bg-blue-600/20 rounded-xl flex items-center justify-center">
                             <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1017,13 +1115,18 @@ const Navbar = memo(function Navbar() {
                         </div>
                         <div className="flex-1 w-full">
                           <h3 className="text-white font-medium text-sm mb-2">Email</h3>
-                          <p className="text-white/60 text-xs mb-2 break-all">hello@aayushbharti.in</p>
+                          <p className="text-white/60 text-xs mb-2 break-all">ravindraverma373@gmail.com</p>
                           <p className="text-white/50 text-xs">Send me an email directly</p>
                         </div>
-                      </div>
+                      </a>
 
                       {/* Book a Call Card */}
-                      <div className="bg-[#242424] border border-white/10 rounded-xl p-5 flex flex-col items-start hover:border-white/20 transition-colors">
+                      <a
+                        href="https://calendly.com/ravindraverma373"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-[#242424] border border-white/10 rounded-xl p-5 flex flex-col items-start hover:border-white/20 transition-colors cursor-pointer"
+                      >
                         <div className="flex-shrink-0 mb-4">
                           <div className="w-11 h-11 bg-purple-600/20 rounded-xl flex items-center justify-center">
                             <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1036,7 +1139,7 @@ const Navbar = memo(function Navbar() {
                           <p className="text-white/60 text-xs mb-2">Schedule a time slot</p>
                           <p className="text-white/50 text-xs">Book a call on my calendar</p>
                         </div>
-                      </div>
+                      </a>
                     </div>
 
                     {/* Availability Status */}
@@ -1048,24 +1151,40 @@ const Navbar = memo(function Navbar() {
                 )}
 
                 {activeTab === 'fill-form' && (
-                  <div className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     {/* Name and Email - Side by Side */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="block text-xs font-medium text-white/70 mb-2">Name</label>
                         <input
                           type="text"
-                          className="w-full px-3 py-2 bg-[#242424] border border-white/10 rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className={`w-full px-3 py-2 bg-[#242424] border rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors ${
+                            formErrors.name ? 'border-red-500' : 'border-white/10'
+                          }`}
                           placeholder="Your name"
                         />
+                        {formErrors.name && (
+                          <p className="mt-1 text-xs text-red-400">{formErrors.name}</p>
+                        )}
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-white/70 mb-2">Email</label>
                         <input
                           type="email"
-                          className="w-full px-3 py-2 bg-[#242424] border border-white/10 rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className={`w-full px-3 py-2 bg-[#242424] border rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors ${
+                            formErrors.email ? 'border-red-500' : 'border-white/10'
+                          }`}
                           placeholder="your@email.com"
                         />
+                        {formErrors.email && (
+                          <p className="mt-1 text-xs text-red-400">{formErrors.email}</p>
+                        )}
                       </div>
                     </div>
 
@@ -1074,28 +1193,72 @@ const Navbar = memo(function Navbar() {
                       <label className="block text-xs font-medium text-white/70 mb-2">Message</label>
                       <div className="relative">
                         <textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
                           rows={4}
                           maxLength={1000}
-                          className="w-full px-3 py-2 bg-[#242424] border border-white/10 rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                          className={`w-full px-3 py-2 bg-[#242424] border rounded-lg text-white text-sm placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors resize-none ${
+                            formErrors.message ? 'border-red-500' : 'border-white/10'
+                          }`}
                           placeholder="What would you like to discuss?"
                         />
                         <div className="absolute bottom-2 right-3 text-xs text-white/40">
-                          0/1000
+                          {formData.message.length}/1000
                         </div>
                       </div>
+                      {formErrors.message && (
+                        <p className="mt-1 text-xs text-red-400">{formErrors.message}</p>
+                      )}
                     </div>
+
+                    {/* Success/Error Message */}
+                    {submitStatus === 'success' && (
+                      <div className="flex items-center gap-2 text-sm text-green-400 bg-green-400/10 border border-green-400/20 rounded-lg p-3">
+                        <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>Message sent successfully!</span>
+                      </div>
+                    )}
+
+                    {submitStatus === 'error' && (
+                      <div className="flex items-center gap-2 text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg p-3">
+                        <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span>Failed to send message. Please try again.</span>
+                      </div>
+                    )}
 
                     {/* Send Message Button */}
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 bg-white text-black py-2.5 px-4 rounded-lg font-medium text-sm transition-all hover:bg-white/90"
+                      disabled={isSubmitting}
+                      className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-medium text-sm transition-all ${
+                        isSubmitting
+                          ? 'bg-white/50 text-black/50 cursor-not-allowed'
+                          : 'bg-white text-black hover:bg-white/90'
+                      }`}
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
-                      Send message
+                      {isSubmitting ? (
+                        <>
+                          <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                          </svg>
+                          <span>Send message</span>
+                        </>
+                      )}
                     </button>
-                  </div>
+                  </form>
                 )}
               </div>
             </motion.div>

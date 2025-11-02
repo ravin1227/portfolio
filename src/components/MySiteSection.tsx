@@ -18,7 +18,7 @@ export default function MySiteSection() {
         </span>
       </h2>
       
-      <div className="mt-20 grid grid-cols-1 gap-3 md:grid-cols-12 px-16 sm:px-24 lg:px-40">
+      <div className="mt-20 grid grid-cols-1 gap-3 md:grid-cols-12">
         {/* Uses Card */}
         <a
           className="group relative flex flex-col justify-between rounded-xl col-span-12 h-[300px] md:col-span-12 md:row-span-6 lg:col-span-4"

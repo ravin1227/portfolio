@@ -14,7 +14,7 @@ export default function Footer() {
               <ABLogo size={40} />
             </Link>
             <p className="w-60 text-sm leading-5 dark:text-gray-300">
-              I'm Ravindra - a passionate full-stack developer crafting digital experiences. Whether it's building scalable applications or solving complex problems, I love turning ideas into reality. Thanks for visiting!
+              I&apos;m Ravi - a full-stack developer, freelancer & problem solver. Thanks for checking out my site!
             </p>
           </div>
 
