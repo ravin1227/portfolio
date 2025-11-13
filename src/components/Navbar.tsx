@@ -84,8 +84,18 @@ const Navbar = memo(function Navbar() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // Get greeting based on time
+  // Get greeting based on time - only show on first load
   useEffect(() => {
+    // Check if greeting has already been shown in this session
+    const greetingShown = sessionStorage.getItem('greetingShown');
+
+    if (greetingShown) {
+      // If greeting was already shown, don't show it again
+      setShowGreeting(false);
+      setIsLoadingGreeting(false);
+      return;
+    }
+
     try {
       const hour = new Date().getHours();
       let greetingMessage = '';
@@ -94,14 +104,15 @@ const Navbar = memo(function Navbar() {
         greetingMessage = 'Good Morning';
       } else if (hour >= 12 && hour < 17) {
         greetingMessage = 'Good Afternoon';
-      } else if (hour >= 17 && hour < 21) {
-        greetingMessage = 'Good Evening';
       } else {
-        greetingMessage = 'Good Night';
+        greetingMessage = 'Good Evening';
       }
 
       setGreeting(greetingMessage);
       setIsLoadingGreeting(false);
+
+      // Mark greeting as shown in session storage
+      sessionStorage.setItem('greetingShown', 'true');
     } catch (error) {
       console.error('Error calculating greeting:', error);
       setGreeting('Hello');
