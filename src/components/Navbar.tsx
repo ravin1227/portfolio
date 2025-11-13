@@ -64,6 +64,7 @@ const Navbar = memo(function Navbar() {
   const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useNavigationStore();
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
   const [isCommandModalOpen, setIsCommandModalOpen] = useState(false);
+  const [selectedCommandIndex, setSelectedCommandIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<TabType>('quick-connect');
   const [showGreeting, setShowGreeting] = useState(true);
   const [greeting, setGreeting] = useState('');
@@ -185,6 +186,9 @@ const Navbar = memo(function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isCommandModalOpen]);
 
+  // Get all command items
+  const allCommandItems = [...NAV_ITEMS, ...MORE_ITEMS];
+
   // Handle keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -196,12 +200,33 @@ const Navbar = memo(function Navbar() {
       if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
         event.preventDefault();
         setIsCommandModalOpen(true);
+        setSelectedCommandIndex(0);
+      }
+
+      // Arrow key navigation in command modal
+      if (isCommandModalOpen) {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          setSelectedCommandIndex((prev) =>
+            prev < allCommandItems.length - 1 ? prev + 1 : prev
+          );
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          setSelectedCommandIndex((prev) => (prev > 0 ? prev - 1 : 0));
+        } else if (event.key === 'Enter') {
+          event.preventDefault();
+          const selectedItem = allCommandItems[selectedCommandIndex];
+          if (selectedItem) {
+            setIsCommandModalOpen(false);
+            router.push(selectedItem.href);
+          }
+        }
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isCommandModalOpen, selectedCommandIndex, allCommandItems, router]);
 
   // Close book call drawer when clicking outside
   useEffect(() => {
@@ -342,7 +367,7 @@ const Navbar = memo(function Navbar() {
       </div>
 
       {/* Center - Desktop Navigation */}
-      <div className="justify-center absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 rounded-full backdrop-blur-md md:flex" data-dropdown style={{ width: '480px' }}>
+      <div className="justify-center absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 rounded-full backdrop-blur-md md:flex" data-dropdown style={{ width: 'fit-content' }}>
         {showGreeting ? (
           <div className="flex items-center justify-center rounded-full border border-white/10 bg-white/10 backdrop-blur-md w-full" style={{ height: '42px' }}>
             {isLoadingGreeting ? (
@@ -365,14 +390,14 @@ const Navbar = memo(function Navbar() {
               <li key={item.name} className="relative list-none">
                 <Link
                   href={item.href}
-                  className={`relative z-10 block px-4 py-1.5 text-sm font-light transition hover:text-white ${
-                    active ? 'text-white' : 'text-white/70'
+                  className={`relative z-10 block px-4 py-1.5 text-sm transition hover:text-white ${
+                    active ? 'text-white font-medium' : 'text-white/70 font-light'
                   }`}
                 >
                   {item.name}
                 </Link>
                 {showNotch && (
-                  <span className="bg-white/10 absolute inset-0 z-0 w-full rounded-full">
+                  <span className="bg-white/20 absolute inset-0 z-0 w-full rounded-full">
                     <div className="bg-white absolute -top-[9px] left-1/2 h-1 w-8 -translate-x-1/2 rounded-t-full" style={{backgroundColor: 'white'}}></div>
                   </span>
                 )}
@@ -385,14 +410,14 @@ const Navbar = memo(function Navbar() {
             <button
               onMouseEnter={() => setIsMoreDropdownOpen(true)}
               onMouseLeave={() => setIsMoreDropdownOpen(false)}
-              className={`relative z-10 block px-4 py-1.5 text-sm font-light transition hover:text-white ${
-                isActive('more') ? 'text-white' : 'text-white/70'
+              className={`relative z-10 block px-4 py-1.5 text-sm transition hover:text-white ${
+                isActive('more') ? 'text-white font-medium' : 'text-white/70 font-light'
               }`}
             >
               More
             </button>
             {shouldShowNotch('More', isActive('more')) && (
-              <span className="bg-white/10 absolute inset-0 z-0 w-full rounded-full">
+              <span className="bg-white/20 absolute inset-0 z-0 w-full rounded-full">
                 <div className="bg-white absolute -top-[9px] left-1/2 h-1 w-8 -translate-x-1/2 rounded-t-full" style={{backgroundColor: 'white'}}></div>
               </span>
             )}
@@ -806,12 +831,15 @@ const Navbar = memo(function Navbar() {
                       Navigation
                     </div>
                     <div className="space-y-1">
-                      {NAV_ITEMS.map((item) => {
+                      {NAV_ITEMS.map((item, index) => {
                         const isActive = pathname === item.href || (item.name === 'Home' && pathname === '/');
+                        const isSelected = selectedCommandIndex === index;
                         return (
                           <button
                             key={item.name}
-                            className="w-full flex items-center gap-3 px-3 py-2 text-left text-white hover:bg-white/10 rounded-lg transition-colors h-[50px]"
+                            className={`w-full flex items-center gap-3 px-3 py-2 text-left text-white rounded-lg transition-colors h-[50px] ${
+                              isSelected ? 'bg-white/20' : 'hover:bg-white/10'
+                            }`}
                             onClick={() => {
                               setIsCommandModalOpen(false);
                               router.push(item.href);
@@ -856,43 +884,49 @@ const Navbar = memo(function Navbar() {
                       More
                     </div>
                     <div className="space-y-1">
-                      {MORE_ITEMS.map((item) => (
-                        <button
-                          key={item.name}
-                          className="w-full flex items-center gap-3 px-3 py-2 text-left text-white hover:bg-white/10 rounded-lg transition-colors h-[50px]"
-                          onClick={() => {
-                            setIsCommandModalOpen(false);
-                            router.push(item.href);
-                          }}
-                        >
-                          <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
-                            {item.name === 'Links' && (
-                              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
-                              </svg>
-                            )}
-                            {item.name === 'Uses' && (
-                              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
-                              </svg>
-                            )}
-                            {item.name === 'Attribution' && (
-                              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                              </svg>
-                            )}
-                          </div>
-                          <div>
-                            <div className="font-medium">{item.name}</div>
-                            <div className="text-sm text-white/60">{item.description}</div>
-                          </div>
-                        </button>
-                      ))}
+                      {MORE_ITEMS.map((item, index) => {
+                        const itemIndex = NAV_ITEMS.length + index;
+                        const isSelected = selectedCommandIndex === itemIndex;
+                        return (
+                          <button
+                            key={item.name}
+                            className={`w-full flex items-center gap-3 px-3 py-2 text-left text-white rounded-lg transition-colors h-[50px] ${
+                              isSelected ? 'bg-white/20' : 'hover:bg-white/10'
+                            }`}
+                            onClick={() => {
+                              setIsCommandModalOpen(false);
+                              router.push(item.href);
+                            }}
+                          >
+                            <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+                              {item.name === 'Links' && (
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                              {item.name === 'Uses' && (
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                              {item.name === 'Attribution' && (
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                                </svg>
+                              )}
+                            </div>
+                            <div>
+                              <div className="font-medium">{item.name}</div>
+                              <div className="text-sm text-white/60">{item.description}</div>
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
                   {/* Additional Commands Section for Testing Scrollbar */}
-                  <div className="p-2">
+                  <div className="p-2 hidden">
                     <div className="px-3 py-2 text-xs font-medium text-white/60 uppercase tracking-wider">
                       Additional Commands
                     </div>

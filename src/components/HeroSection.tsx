@@ -83,56 +83,64 @@ export default function HeroSection() {
 
           {/* Introduction with Profile Image */}
           <h1 className="animate-fadeInUp grad-white relative z-20 w-full max-w-4xl mx-auto mt-6 mb-8 md:mt-8 md:mb-10 flex flex-col sm:flex-row items-center justify-center text-center text-lg sm:text-xl md:text-2xl gap-2 sm:gap-0">
-            <span className="grad-white flex items-center justify-center">
+            <span className="grad-white sm:flex items-center justify-center hidden">
               Hello, I'm Ravindra
-              <div 
-                className="group relative z-300 mx-2 md:mx-3"
-                onMouseEnter={() => setShowWand(true)}
-                onMouseLeave={() => setShowWand(false)}
-              >
-                <div className="w-28 cursor-pointer overflow-hidden rounded-3xl md:w-36 lg:mx-3">
-                  <div className="relative w-full h-full group">
-                    <Image
-                      alt="Ravindra Verma Image" 
-                      width={854}
-                      height={425}
-                      className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 w-full h-full object-cover"
-                      src="/assets/images/ravi_hero.png"
-                    />
-                  </div>
-                </div>
-                
-                {/* Magic Wand */}
-                {showWand && (
-                  <div
-                    className="pointer-events-none absolute bottom-0 left-0 z-50 flex items-center justify-center rounded-full border border-white/[0.25] backdrop-blur-sm"
-                    style={{
-                      transform: 'translate(0, 12px)'
-                    }}
-                  >
-                    <svg 
-                      className="w-8 h-8 text-white animate-pulse" 
-                      viewBox="0 0 36 36" 
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="m4.861 9.147c.94-.657 2.357-.531 3.201.166l-.968-1.407c-.779-1.111-.5-2.313.612-3.093 1.112-.777 4.263 1.312 4.263 1.312-.786-1.122-.639-2.544.483-3.331 1.122-.784 2.67-.513 3.456.611l10.42 14.72-1.328 12.875-11.083-4.042-9.667-14.333c-.793-1.129-.519-2.686.611-3.478z"
-                        fill="#ef9645"
-                      />
-                      <path
-                        d="m2.695 17.336s-1.132-1.65.519-2.781c1.649-1.131 2.78.518 2.78.518l5.251 7.658c.181-.302.379-.6.6-.894l-7.288-10.627s-1.131-1.649.519-2.78c1.649-1.131 2.78.518 2.78.518l6.855 9.997c.255-.208.516-.417.785-.622l-7.947-11.591s-1.131-1.649.519-2.78c1.649-1.131 2.78.518 2.78.518l7.947 11.589c.292-.179.581-.334.871-.498l-7.428-10.832s-1.131-1.649.518-2.78 2.78.518 2.78.518l7.854 11.454 1.194 1.742c-4.948 3.394-5.419 9.779-2.592 13.902.565.825 1.39.26 1.39.26-3.393-4.949-2.357-10.51 2.592-13.903l-1.459-7.302s-.545-1.924 1.378-2.47c1.924-.545 2.47 1.379 2.47 1.379l1.685 5.004c.668 1.984 1.379 3.961 2.32 5.831 2.657 5.28 1.07 11.842-3.94 15.279-5.465 3.747-12.936 2.354-16.684-3.11z"
-                        fill="#ffdc5d"
-                      />
-                      <g fill="#5dadec">
-                        <path d="m12 32.042c-4 0-8.042-4.042-8.042-8.042 0-.553-.405-1-.958-1s-1.042.447-1.042 1c0 6 4.042 10.042 10.042 10.042.553 0 1-.489 1-1.042s-.447-.958-1-.958z" />
-                        <path d="m7 34c-3 0-5-2-5-5 0-.553-.447-1-1-1s-1 .447-1 1c0 4 3 7 7 7 .553 0 1-.447 1-1s-.447-1-1-1zm17-32c-.552 0-1 .448-1 1s.448 1 1 1c4 0 8 3.589 8 8 0 .552.448 1 1 1s1-.448 1-1c0-5.514-4-10-10-10z" />
-                        <path d="m29 .042c-.552 0-1 .406-1 .958s.448 1.042 1 1.042c3 0 4.958 2.225 4.958 4.958 0 .552.489 1 1.042 1s.958-.448.958-1c0-3.837-2.958-6.958-6.958-6.958z" />
-                      </g>
-                    </svg>
-                  </div>
-                )}
-              </div>
             </span>
+
+            {/* Mobile layout - Text on top */}
+            <span className="grad-white flex sm:hidden items-center justify-center">
+              Hello, I'm Ravindra
+            </span>
+
+            {/* Profile Image */}
+            <div
+              className="group relative z-300 mx-2 md:mx-3"
+              onMouseEnter={() => setShowWand(true)}
+              onMouseLeave={() => setShowWand(false)}
+            >
+              <div className="w-28 cursor-pointer overflow-hidden rounded-3xl md:w-36 lg:mx-3">
+                <div className="relative w-full h-full group">
+                  <Image
+                    alt="Ravindra Verma Image"
+                    width={854}
+                    height={425}
+                    className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 w-full h-full object-cover"
+                    src="/assets/images/ravi_hero.png"
+                  />
+                </div>
+              </div>
+
+              {/* Magic Wand */}
+              {showWand && (
+                <div
+                  className="pointer-events-none absolute bottom-0 left-0 z-50 flex items-center justify-center rounded-full border border-white/[0.25] backdrop-blur-sm"
+                  style={{
+                    transform: 'translate(0, 12px)'
+                  }}
+                >
+                  <svg
+                    className="w-8 h-8 text-white animate-pulse"
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m4.861 9.147c.94-.657 2.357-.531 3.201.166l-.968-1.407c-.779-1.111-.5-2.313.612-3.093 1.112-.777 4.263 1.312 4.263 1.312-.786-1.122-.639-2.544.483-3.331 1.122-.784 2.67-.513 3.456.611l10.42 14.72-1.328 12.875-11.083-4.042-9.667-14.333c-.793-1.129-.519-2.686.611-3.478z"
+                      fill="#ef9645"
+                    />
+                    <path
+                      d="m2.695 17.336s-1.132-1.65.519-2.781c1.649-1.131 2.78.518 2.78.518l5.251 7.658c.181-.302.379-.6.6-.894l-7.288-10.627s-1.131-1.649.519-2.78c1.649-1.131 2.78.518 2.78.518l6.855 9.997c.255-.208.516-.417.785-.622l-7.947-11.591s-1.131-1.649.519-2.78c1.649-1.131 2.78.518 2.78.518l7.947 11.589c.292-.179.581-.334.871-.498l-7.428-10.832s-1.131-1.649.518-2.78 2.78.518 2.78.518l7.854 11.454 1.194 1.742c-4.948 3.394-5.419 9.779-2.592 13.902.565.825 1.39.26 1.39.26-3.393-4.949-2.357-10.51 2.592-13.903l-1.459-7.302s-.545-1.924 1.378-2.47c1.924-.545 2.47 1.379 2.47 1.379l1.685 5.004c.668 1.984 1.379 3.961 2.32 5.831 2.657 5.28 1.07 11.842-3.94 15.279-5.465 3.747-12.936 2.354-16.684-3.11z"
+                      fill="#ffdc5d"
+                    />
+                    <g fill="#5dadec">
+                      <path d="m12 32.042c-4 0-8.042-4.042-8.042-8.042 0-.553-.405-1-.958-1s-1.042.447-1.042 1c0 6 4.042 10.042 10.042 10.042.553 0 1-.489 1-1.042s-.447-.958-1-.958z" />
+                      <path d="m7 34c-3 0-5-2-5-5 0-.553-.447-1-1-1s-1 .447-1 1c0 4 3 7 7 7 .553 0 1-.447 1-1s-.447-1-1-1zm17-32c-.552 0-1 .448-1 1s.448 1 1 1c4 0 8 3.589 8 8 0 .552.448 1 1 1s1-.448 1-1c0-5.514-4-10-10-10z" />
+                      <path d="m29 .042c-.552 0-1 .406-1 .958s.448 1.042 1 1.042c3 0 4.958 2.225 4.958 4.958 0 .552.489 1 1.042 1s.958-.448.958-1c0-3.837-2.958-6.958-6.958-6.958z" />
+                    </g>
+                  </svg>
+                </div>
+              )}
+            </div>
+
             <span className="grad-white leading-relaxed">a Full Stack Developer</span>
           </h1>
 
@@ -699,22 +707,22 @@ export default function HeroSection() {
         </div>
 
         {/* Bottom gradient effects */}
-        <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 z-[19] mt-auto">
+        <div className="relative w-full h-96 sm:h-64 md:h-56 lg:h-64 z-[19] mt-auto overflow-visible">
           <div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 h-[600px] w-full max-w-[2200px] transform overflow-hidden"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 h-[1200px] sm:h-[600px] w-full max-w-[2200px] transform overflow-visible"
             style={{
               maskImage: 'linear-gradient(to right, transparent 5%, black 15%, black 85%, transparent 95%)',
               WebkitMaskImage: 'linear-gradient(to right, transparent 5%, black 15%, black 85%, transparent 95%)'
             }}
           >
             {/* Purple radial gradient blur */}
-            <div className="absolute bottom-[250px] left-1/2 h-[150px] w-[1000px] -translate-x-1/2 transform overflow-hidden bg-[radial-gradient(50%_50%_at_50%_50%,#5506ba_0%,rgba(10,10,10,0)_100%)] blur-[70px] dark:bg-[radial-gradient(50%_50%_at_50%_50%,#8b5cf6_0%,rgba(255,255,255,0)_100%)]"></div>
+            <div className="absolute bottom-[200px] sm:bottom-[250px] left-1/2 h-[150px] w-[1000px] -translate-x-1/2 transform overflow-hidden bg-[radial-gradient(50%_50%_at_50%_50%,#5506ba_0%,rgba(10,10,10,0)_100%)] blur-[70px] dark:bg-[radial-gradient(50%_50%_at_50%_50%,#8b5cf6_0%,rgba(255,255,255,0)_100%)]"></div>
 
             {/* Large circular gradient element */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-905px] w-[1800px] h-[1200px] rounded-[100%] bg-gradient-to-b from-black to-transparent dark:from-white dark:to-transparent"></div>
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-950px] sm:bottom-[-905px] w-[1800px] h-[1200px] rounded-[100%] bg-gradient-to-b from-black to-transparent dark:from-white dark:to-transparent"></div>
 
             {/* Main curved element with shadow */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-915px] w-[1900px] h-[1200px] rounded-[100%] bg-white-1 shadow-[inset_0_2px_20px_#fff,0_-10px_50px_1px_#ffffff7d] dark:!bg-black dark:!shadow-[inset_0_2px_20px_#000,0_-10px_50px_1px_#0000007d] transition-colors duration-300"></div>
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-960px] sm:bottom-[-915px] w-[1900px] h-[1200px] rounded-[100%] bg-white-1 shadow-[inset_0_2px_20px_#fff,0_-10px_50px_1px_#ffffff7d] dark:!bg-black dark:!shadow-[inset_0_2px_20px_#000,0_-10px_50px_1px_#0000007d] transition-colors duration-300"></div>
           </div>
         </div>
       </section>
