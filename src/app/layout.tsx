@@ -19,8 +19,11 @@ const sourceSansPro = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Dev Portfolio",
-  description: "A modern developer portfolio built with Next.js",
+  title: {
+    default: "Ravindra",
+    template: "Ravindra | %s",
+  },
+  description: "Full-stack developer passionate about creating dynamic web experiences",
 };
 
 export default function RootLayout({
