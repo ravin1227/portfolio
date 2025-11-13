@@ -1,0 +1,26 @@
+import { MetadataRoute } from 'next'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://ravindraverma.tech'
+
+  // Define all your routes here
+  const routes = [
+    '',
+    '/about',
+    '/work',
+    '/blog',
+    '/guestbook',
+    '/bucket-list',
+    '/uses',
+    '/links',
+    '/privacy',
+    '/terms',
+  ]
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: route === '' ? 'daily' : 'weekly',
+    priority: route === '' ? 1.0 : 0.8,
+  }))
+}
