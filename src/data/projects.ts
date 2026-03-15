@@ -182,6 +182,37 @@ export const projects: Project[] = [
       { name: "Database", icon: "postgresql" }
     ],
     liveLink: "https://learn.rumie.org/"
+  },
+  {
+    id: 5,
+    title: "Biller App",
+    shortDes: "Multi-tenant mobile billing app for Indian GST-based furniture businesses with real-time sync and PDF invoicing.",
+    des: "Biller is a comprehensive mobile billing application designed specifically for Indian GST-based furniture businesses. Built with Flutter and Supabase, it provides a complete suite of invoicing, party management, and real-time team collaboration features. The app handles complex GST calculations, automatic invoice numbering, and professional PDF generation with support for multiple devices syncing.",
+    desc: "A Flutter-powered mobile app for managing invoices, parties, and teams in Indian GST-compliant furniture businesses with real-time Supabase sync and PDF invoicing.",
+    bulletPoints: [
+      "Multi-tenant architecture with role-based access control (admin/agent) and organization-level data isolation.",
+      "Intelligent GST calculation engine - reverse-calculates base amount from inclusive price with automatic CGST/SGST splitting.",
+      "Atomic invoice numbering system using PostgreSQL RPC functions ensuring zero duplicate invoice numbers across simultaneous requests.",
+      "Real-time Supabase synchronization across multiple devices with Row-Level Security for data privacy.",
+      "Professional PDF invoice generation with QR codes, item breakdowns, and tax summaries.",
+      "Driver and team member management with customizable roles and permissions for collaborative invoicing."
+    ],
+    img: {
+      src: "/assets/projects/biller.png",
+      height: 2622,
+      width: 1206,
+      blurDataURL: "data:image/webp;base64,UklGRiYAAABXRUJQVlA4IBYAAAAwAQCdASoBAAUAAkA4JZACdLoAyQAA/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v4AAAA="
+    },
+    color: "teal",
+    bulletPointsColor: "fill-teal-600 text-teal-600 dark:text-teal-400 bg-teal-600/20 lg:bg-white-1 dark:lg:bg-black",
+    techStack: [
+      { name: "Flutter", icon: "flutter" },
+      { name: "Dart", icon: "dart" },
+      { name: "Supabase", icon: "supabase" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "PDF", icon: "adobeacrobatreader" }
+    ],
+    liveLink: "#",
   }
 ];
 
