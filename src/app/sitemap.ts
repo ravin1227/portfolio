@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/bucket-list',
     '/uses',
     '/links',
+    '/resume',
     '/privacy',
     '/terms',
   ]
