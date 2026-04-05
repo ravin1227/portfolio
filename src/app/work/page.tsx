@@ -97,10 +97,11 @@ export default function Work() {
   const getMainColor = (color: string) => {
     const colorMap = {
       pink: '#DB2777',
-      blue: '#2932CB', 
+      blue: '#2932CB',
       teal: '#14B8A6',
       purple: '#7C3AED',
-      emerald: '#10B981'
+      emerald: '#10B981',
+      amber: '#D97706'
     };
     return colorMap[color as keyof typeof colorMap] || '#DB2777';
   };
@@ -166,7 +167,7 @@ export default function Work() {
               >
                 <div className="flex flex-col lg:mx-10 lg:w-full">
                   <Link
-                    href={project.liveLink}
+                    href={`/project-details/${project.id}`}
                     className="relative cursor-pointer overflow-hidden rounded-2xl border border-white-2 dark:border-white/15 bg-[#f2f2f20c] p-1.5 shadow-2xl lg:h-[560px] lg:rounded-3xl lg:p-2 group"
                     onMouseEnter={() => setHoveredProject(project.id)}
                     onMouseLeave={() => setHoveredProject(null)}

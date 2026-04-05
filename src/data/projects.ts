@@ -1,5 +1,5 @@
 // Types
-export type ProjectColor = 'pink' | 'blue' | 'teal' | 'purple' | 'emerald';
+export type ProjectColor = 'pink' | 'blue' | 'teal' | 'purple' | 'emerald' | 'amber';
 
 export interface ProjectImage {
   readonly src: string;
@@ -213,6 +213,39 @@ export const projects: Project[] = [
       { name: "PDF", icon: "adobeacrobatreader" }
     ],
     liveLink: "#",
+  },
+  {
+    id: 6,
+    title: "UnBox Robotics - Fleet Speedometer",
+    shortDes: "Real-time fleet monitoring system with live sensor data ingestion, WebSocket updates, and batch processing for scalable telemetry collection.",
+    des: "UnBox Robotics Fleet Speedometer is a full-stack real-time monitoring system designed for collecting and processing continuous sensor data from vehicle fleets. Built with Express.js, React, BullMQ queue system, and PostgreSQL, it provides live speed readings with WebSocket-based updates, historical tracking, and intelligent batch processing for optimal database performance.",
+    desc: "A distributed real-time fleet monitoring dashboard with live WebSocket updates, queue-based async processing, and fault-tolerant batch writes to PostgreSQL.",
+    bulletPoints: [
+      "Real-time sensor data ingestion with 1-second update intervals and live WebSocket broadcasts to the frontend.",
+      "Queue-based async processing using BullMQ and Redis for decoupling ingest from database operations.",
+      "Intelligent batch write optimization - buffers records and flushes when reaching 60 records or 60-second timeout.",
+      "Live speedometer dashboard with animated gauge, real-time readings panel, and trajectory projections.",
+      "Sensor offline detection with automatic status updates within 10 seconds of connection loss.",
+      "Horizontally scalable architecture with Docker Compose orchestration (Postgres, Redis, API, worker, UI, sensors)."
+    ],
+    img: {
+      src: "/assets/projects/unbox.png",
+      height: 843,
+      width: 1024,
+      blurDataURL: "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACQAQCdASoIAAUAAkA4JaQAAuUt8gAA/vvvFkm0Njg+jBrTz8JkE+/AuIuIkFAA"
+    },
+    color: "amber",
+    bulletPointsColor: "fill-amber-600 text-amber-600 dark:text-amber-400 bg-amber-600/20 lg:bg-white-1 dark:lg:bg-black",
+    techStack: [
+      { name: "React", icon: "react" },
+      { name: "Express.js", icon: "express" },
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Redis", icon: "redis" },
+      { name: "Docker", icon: "docker" }
+    ],
+    liveLink: "#",
+    githubLink: "https://github.com/ravin1227/unbox-robotics-assignment"
   }
 ];
 
@@ -243,7 +276,8 @@ export const getProjectGradients = (): Record<ProjectColor, string> => {
     blue: "linear-gradient(188.62deg, #070E57 49.9%, #2932CB 81.7%, #7980FF 93.88%, #F9D793 113.5%)",
     teal: "linear-gradient(188.62deg, #134E4A 49.9%, #14B8A6 81.7%, #5EEAD4 93.88%, #F9D793 113.5%)",
     purple: "linear-gradient(188.62deg, #581C87 49.9%, #7C3AED 81.7%, #A855F7 93.88%, #F9D793 113.5%)",
-    emerald: "linear-gradient(188.62deg, #064E3B 49.9%, #10B981 81.7%, #34D399 93.88%, #F9D793 113.5%)"
+    emerald: "linear-gradient(188.62deg, #064E3B 49.9%, #10B981 81.7%, #34D399 93.88%, #F9D793 113.5%)",
+    amber: "linear-gradient(188.62deg, #78350F 49.9%, #D97706 81.7%, #FBBF24 93.88%, #F9D793 113.5%)"
   } as const;
 };
 
@@ -253,6 +287,7 @@ export const getProjectShadows = (): Record<ProjectColor, string> => {
     blue: "shadow-[0_0_30px_#2932CB]",
     teal: "shadow-[0_0_30px_#14B8A6]",
     purple: "shadow-[0_0_30px_#7C3AED]",
-    emerald: "shadow-[0_0_30px_#10B981]"
+    emerald: "shadow-[0_0_30px_#10B981]",
+    amber: "shadow-[0_0_30px_#D97706]"
   } as const;
 };

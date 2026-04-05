@@ -134,12 +134,19 @@ const Navbar = memo(function Navbar() {
     if (pathname.startsWith('/blog-details')) {
       page = 'blog';
     }
+    if (pathname.startsWith('/project-details')) {
+      page = 'work';
+    }
     setCurrentPage(page);
   }, [pathname, setCurrentPage]);
 
   const isActive = useCallback((page: string): boolean => {
     if (pathname.startsWith('/blog-details')) {
       return page === 'blog';
+    }
+
+    if (pathname.startsWith('/project-details')) {
+      return page === 'work';
     }
 
     if (MORE_PAGES.includes(pathname as any)) {
